@@ -5,9 +5,9 @@ let browser;
 let page;
 
 beforeAll(async () => {
-  browser = await chromium.launch({ headless: false }); // Browser launch karein
-  const context = await browser.newContext(); // Naya context banayein
-  page = await context.newPage(); // Page create karein
+  browser = await chromium.launch({ headless: false }); // Browser launch 
+  const context = await browser.newContext(); // made new context 
+  page = await context.newPage(); // Page create 
 });
 
 test('Signup Flow', async ({ page }) => {
