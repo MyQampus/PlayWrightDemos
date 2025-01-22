@@ -1,0 +1,94 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "https://app.dev.myqampus.com",
+      "localStorage": [
+        {
+          "name": "theme",
+          "value": "{\"name\":\"green\"}"
+        },
+        {
+          "name": "generalSettingSiteTitle",
+          "value": "university of managemenentsdf"
+        },
+        {
+          "name": "auth.currentUser",
+          "value": "{\"id\":\"1bb096e1-a270-40b8-90a4-6905f330a3c8\",\"profile\":{\"address\":\"35 Street 18 Sector Z DHA Phase 3 Lahore Punjab Pakistan\",\"date_of_birth\":\"2005-03-01\",\"weight\":null,\"nationality\":\"undefined\",\"about\":null,\"blood_group\":\"A+\",\"disablity_remarks\":null,\"disablity_type\":null,\"emergency_contact\":null,\"ethnicity\":[],\"height\":null,\"premanant_address\":null,\"religion\":\"Islam\",\"temporary_address\":null},\"user_type\":null,\"image\":\"https://qampus-dev.s3.amazonaws.com/pbxi_umt/users/dp/1bb096e1-a270-40b8-90a4-6905f330a3c8.jpg?v=63881882035\",\"username\":null,\"is_owner\":true,\"email\":\"abdulrehman.regbits@gmail.com\",\"last_name\":\"Rehman1\",\"first_name\":\"Abdul\",\"phone\":\"+923145688932\",\"gender\":\"female\",\"major_role\":null,\"user_roles\":[{\"role_id\":\"super_admin\",\"is_default\":true},{\"role_id\":\"campus_admin\",\"is_default\":false},{\"role_id\":\"section_teacher\",\"is_default\":false},{\"role_id\":\"section_student\",\"is_default\":false},{\"role_id\":\"guardian\",\"is_default\":false},{\"role_id\":\"staff\",\"is_default\":false},{\"role_id\":\"pickup_person\",\"is_default\":false}]}"
+        },
+        {
+          "name": "user",
+          "value": "{\"id\":\"1bb096e1-a270-40b8-90a4-6905f330a3c8\",\"profile\":{\"address\":\"35 Street 18 Sector Z DHA Phase 3 Lahore Punjab Pakistan\",\"date_of_birth\":\"2005-03-01\",\"weight\":null,\"nationality\":\"undefined\",\"about\":null,\"blood_group\":\"A+\",\"disablity_remarks\":null,\"disablity_type\":null,\"emergency_contact\":null,\"ethnicity\":[],\"height\":null,\"premanant_address\":null,\"religion\":\"Islam\",\"temporary_address\":null},\"user_type\":null,\"image\":\"https://qampus-dev.s3.amazonaws.com/pbxi_umt/users/dp/1bb096e1-a270-40b8-90a4-6905f330a3c8.jpg?v=63881882035\",\"username\":null,\"is_owner\":true,\"email\":\"abdulrehman.regbits@gmail.com\",\"last_name\":\"Rehman1\",\"first_name\":\"Abdul\",\"phone\":\"+923145688932\",\"gender\":\"female\",\"major_role\":null,\"user_roles\":[{\"role_id\":\"super_admin\",\"is_default\":true},{\"role_id\":\"campus_admin\",\"is_default\":false},{\"role_id\":\"section_teacher\",\"is_default\":false},{\"role_id\":\"section_student\",\"is_default\":false},{\"role_id\":\"guardian\",\"is_default\":false},{\"role_id\":\"staff\",\"is_default\":false},{\"role_id\":\"pickup_person\",\"is_default\":false}]}"
+        },
+        {
+          "name": "signUpSlider",
+          "value": "false"
+        },
+        {
+          "name": "generalSettingLogo",
+          "value": "https://qampus-dev.s3.amazonaws.com/uploads/images/Screenshot%20from%202025-01-13%2012-50-28.png?v=63904061696"
+        },
+        {
+          "name": "isAssociatedStudentProfileActive",
+          "value": "false"
+        },
+        {
+          "name": "setting",
+          "value": "{\"title\":\"University of Engineering and Managementtsddf\",\"image\":\"https://qampus-dev.s3.amazonaws.com/uploads/images/Screenshot%20from%202025-01-13%2012-50-28.png?v=63904061696\",\"updated_at\":\"2025-01-21T09:35:27Z\",\"inserted_at\":\"2024-04-01T05:52:21Z\",\"default_currency\":{\"default_currency\":\"pkr\",\"is_editable_default_currency\":true,\"is_locked_default_currency\":false},\"site_title\":{\"site_title\":\"university of managemenentsdf\",\"is_locked_site_title\":false,\"is_editable_site_title\":true},\"auto_generate_registration_no\":{\"auto_generate_registration_no\":false,\"is_editable_auto_generate_registration_no\":true,\"is_locked_auto_generate_registration_no\":false},\"default_language\":{\"default_language\":\"en\",\"is_editable_default_language\":true,\"is_locked_default_language\":false},\"default_theme\":{\"default_theme\":\"green\",\"is_editable_default_theme\":true,\"is_locked_default_theme\":false},\"default_timezone\":{\"default_timezone\":\"Asia/Karachi\",\"is_locked_default_timezone\":false,\"is_editable_default_timezone\":true},\"ended_at_time\":{\"ended_at_time\":\"2022-01-02T19:59:59Z\",\"is_editable_ended_at_time\":true,\"is_locked_ended_at_time\":false},\"favicon\":\"https://qampus-dev.s3.amazonaws.com/uploads/images/Screenshot%20from%202025-01-13%2012-46-18.png?v=63904061676\",\"fee_due_days\":{\"fee_due_days\":10,\"is_locked_fee_due_days\":false,\"is_editable_fee_due_days\":true},\"format_of_date\":{\"format_of_date\":\"YYYY-MM-DD\",\"is_locked_format_of_date\":false,\"is_editable_format_of_date\":true},\"format_of_time\":{\"format_of_time\":\"HH:MM:SS\",\"is_locked_format_of_time\":false,\"is_editable_format_of_time\":true},\"manual_password_reset_allowed\":false,\"max_file_size\":{\"max_file_size\":500,\"is_editable_max_file_size\":true,\"is_locked_max_file_size\":false},\"permissible_languages\":{\"permissible_languages\":[\"en\",\"ur\",\"ar\"],\"is_editable_permissible_languages\":true,\"is_locked_permissible_languages\":false},\"permissible_themes\":{\"permissible_themes\":[\"green\",\"maroon\",\"green dark\",\"maroon dark\"],\"is_editable_permissible_themes\":true,\"is_locked_permissible_themes\":false},\"registration_postfix\":{\"registration_postfix\":null,\"is_editable_registration_postfix\":true,\"is_locked_registration_postfix\":false},\"registration_prefix\":{\"registration_prefix\":null,\"is_editable_registration_prefix\":true,\"is_locked_registration_prefix\":false},\"started_at_time\":{\"started_at_time\":\"2022-01-01T20:00:00Z\",\"is_editable_started_at_time\":true,\"is_locked_started_at_time\":false},\"url_path\":{\"url_path\":null,\"is_locked_url_path\":false,\"is_editable_url_path\":true},\"week_start_day\":{\"week_start_day\":\"monday\",\"is_editable_week_start_day\":true,\"is_locked_week_start_day\":false}}"
+        },
+        {
+          "name": "generalSettingInstituteName",
+          "value": "University of Engineering and Managementtsddf"
+        },
+        {
+          "name": "permittedCountries",
+          "value": "[{\"title\":\"Pakistan (‫پاکستان‬‎)\",\"id\":\"pk\"},{\"title\":\"Qatar (‫قطر‬‎)\",\"id\":\"qa\"},{\"title\":\"United Kingdom\",\"id\":\"gb\"},{\"title\":\"United States\",\"id\":\"us\"}]"
+        },
+        {
+          "name": "generalSettingFavicon",
+          "value": "https://qampus-dev.s3.amazonaws.com/uploads/images/Screenshot%20from%202025-01-13%2012-46-18.png?v=63904061676"
+        },
+        {
+          "name": "jwt",
+          "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjYW1wdXNfYXBpIiwiZXhwIjoxNzM3NjMxMzIwLCJmY21fdG9rZW4iOm51bGwsImlhdCI6MTczNzU0NDkyMCwiaXNzIjoiY2FtcHVzX2FwaSIsImp0aSI6ImRlMGNkM2I2LTQzMTUtNGNmYy05NWQxLTZjYTIxNjNlNDE4NyIsIm15cWFtcHVzX3NpdGUiOiJodHRwczovL3VtdC5kZXYubXlxYW1wdXMuY29tIiwibmJmIjoxNzM3NTQ0OTE5LCJzdWIiOiIxYmIwOTZlMS1hMjcwLTQwYjgtOTBhNC02OTA1ZjMzMGEzYzgiLCJ0ZW5hbnRfbmFtZSI6InBhayBncmFtbWVyIHNjaG9vbCIsInRlbmFudF9wcmVmaXgiOiJwYnhpX3VtdCIsInR5cCI6ImFjY2VzcyJ9.OuoozVxjYc7D0_N25E6SIZ7wpZJDQ_--n6P8-yz8zFn9Rbar1xgm2IFma5Li4iOYtm1Q2qBbGZSh_-YRVnjF4A"
+        },
+        {
+          "name": "subDomain",
+          "value": "\"umt\""
+        },
+        {
+          "name": "tabRightNav",
+          "value": "true"
+        },
+        {
+          "name": "curLanguage",
+          "value": "{}"
+        },
+        {
+          "name": "institutesCounts",
+          "value": "{\"campuses_count\":16,\"sections_count\":39,\"classes_count\":27}"
+        },
+        {
+          "name": "pickupAssignee",
+          "value": "true"
+        },
+        {
+          "name": "instituteTitle",
+          "value": "\"University of Engineering and Managementtsddf\""
+        },
+        {
+          "name": "currentSectionScope",
+          "value": "\"\""
+        },
+        {
+          "name": "selectedRoleId",
+          "value": "super_admin"
+        },
+        {
+          "name": "generalSettings",
+          "value": "{\"is_locked_allowed_countries\":false,\"is_locked_up_week_start_day\":false,\"allowed_languages\":[\"en\",\"ur\",\"ar\"],\"is_locked_up_max_file_size\":false,\"is_locked_up_site_title\":false,\"is_locked_up_format_of_date\":false,\"allowed_currencies\":[\"gbp\",\"pkr\",\"qar\",\"usd\"],\"format_of_date\":\"YYYY-MM-DD\",\"max_file_size\":2048,\"is_locked_default_language\":false,\"is_locked_up_default_timezone\":false,\"is_locked_up_allowed_timezones\":false,\"allowed_countries\":[\"pk\",\"qa\",\"gb\",\"us\"],\"campus_ends_at_time\":\"02:00:00.000000\",\"is_locked_up_format_of_time\":false,\"default_timezone\":\"+0500\",\"campus_starts_at_time\":\"16:00:00.000000\",\"is_locked_max_file_size\":false,\"is_locked_campus_ends_at_time\":false,\"week_start_day\":\"monday\",\"is_locked_default_timezone\":false,\"is_locked_up_default_country\":false,\"site_title\":\"MyQampus\",\"default_language\":\"en\",\"is_locked_campus_starts_at_time\":false,\"is_locked_format_of_time\":false,\"is_locked_week_start_day\":false,\"is_locked_default_currency\":false,\"default_country\":\"pk\",\"campus_id\":null,\"is_locked_up_default_currency\":false,\"is_locked_format_of_date\":false,\"is_locked_default_country\":false,\"is_locked_allowed_languages\":false,\"allowed_timezones\":[\"+0000\",\"+0000\",\"+0300\",\"+0300\",\"+0300\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0300\",\"+0300\",\"+0000\",\"+0300\",\"+0000\",\"+0300\",\"+0000\",\"+0300\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"-0800\",\"-0800\",\"-0800\",\"-0800\",\"-0800\",\"+0500\",\"+0300\",\"+0000\",\"+0300\",\"+0300\",\"+0500\",\"+0500\",\"+0500\",\"+0500\",\"+0500\",\"+0300\",\"+0300\",\"+0300\",\"+0500\",\"+0300\",\"+0500\",\"+0300\",\"+0500\",\"+0300\",\"+0500\",\"+0300\",\"+0500\",\"+0500\",\"+0500\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"-0800\",\"+0000\",\"+0000\",\"+0000\",\"-0800\",\"+0000\",\"+0300\",\"+0500\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0300\",\"+0000\",\"+0300\",\"+0000\",\"+0000\",\"+0300\",\"+0300\",\"+0300\",\"+0300\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0000\",\"+0300\",\"+0300\",\"+0500\",\"+0500\",\"+0300\",\"-0800\",\"-0800\",\"-0800\",\"+0000\",\"+0300\",\"+0000\",\"-0800\",\"+0000\",\"+0000\",\"+0300\",\"+0000\",\"+0000\"],\"is_locked_up_allowed_languages\":false,\"default_currency\":\"pkr\",\"is_locked_up_campus_starts_at_time\":false,\"format_of_time\":\"HH:MM:SS\",\"is_locked_up_default_language\":false,\"is_locked_allowed_timezones\":false,\"is_locked_allowed_currencies\":false,\"is_locked_site_title\":false,\"is_locked_up_campus_ends_at_time\":false,\"is_locked_up_allowed_currencies\":false,\"is_locked_up_allowed_countries\":false}"
+        }
+      ]
+    }
+  ]
+}
