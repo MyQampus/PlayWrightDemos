@@ -52,6 +52,38 @@ test.describe("test case for demo video", () => {
       .nth(2)
       .click();
     await page.getByText("pioneer").click();
+    // add classes
+    await page.getByRole("link", { name: "Classes" }).nth(1).click();
+    await page.getByRole("button", { name: "Add Class" }).click();
+    await page.getByPlaceholder("Class Title").click();
+    await page.getByPlaceholder("Class Title").fill("9 class");
+    await page.getByPlaceholder("Class Description").click();
+    await page.getByPlaceholder("Class Description").fill("boys 9th class");
+    await page.getByRole("button", { name: "Save" }).click();
+
+    //add section
+    await page.getByRole("link", { name: "Sections" }).click();
+    await page.getByRole("button", { name: "Add Section" }).click();
+    await page.getByPlaceholder("Section Name").click();
+    await page.getByPlaceholder("Section Name").fill("a section");
+    await page.getByPlaceholder("Section Description").click();
+    await page.getByPlaceholder("Section Description").fill("section for boys");
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.getByText("9 class").click();
+    await page.getByRole("button", { name: "Save" }).click();
+    //edit class
+    await page.getByRole("link", { name: "Classes" }).click();
+    await page.locator("td").nth(3).click();
+    await page.locator("li").filter({ hasText: "Edit" }).click();
+    await page.getByPlaceholder("Class Title").click();
+    await page.getByPlaceholder("Class Title").fill("9th class");
+    await page.getByPlaceholder("Class Description").click();
+    await page.getByPlaceholder("Class Description").fill("Class name updated");
+    await page.getByRole("button", { name: "Update" }).click();
     // add campus admin
     await page
       .locator("div")
@@ -178,7 +210,6 @@ test.describe("test case for demo video", () => {
     await page.getByPlaceholder("Enter Identity No").click();
     await page.getByPlaceholder("Enter Identity No").fill("52776778876");
     await page.getByRole("button", { name: "Save" }).click();
-
     //add Teacher
     await page.getByRole("link", { name: "Teachers" }).first().click();
     await page.getByRole("button", { name: "Add Teacher" }).click();
@@ -305,6 +336,30 @@ test.describe("test case for demo video", () => {
     await page.getByRole("button", { name: "Add", exact: true }).click();
     await page.getByRole("button", { name: "Skip" }).click();
 
+    // Student Enrollment
+    await page.evaluate(() => {
+      const table = document.getElementById("table-container");
+      if (table) {
+        table.scrollLeft = table.scrollWidth;
+      }
+    });
+    await page.waitForTimeout(1000);
+    await page.locator("td:nth-child(17)").click();
+    await page.locator("li").filter({ hasText: "Enrollment" }).click();
+    await page
+      .locator("div:nth-child(2) > .min-w-1 > section > div > div > .w-full")
+      .click();
+    await page.locator("li").filter({ hasText: "9 class" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "a section" }).click();
+    await page.getByPlaceholder("Roll Number").click();
+    await page.getByPlaceholder("Roll Number").fill("1");
+    await page.getByRole("button", { name: "Save" }).click();
+
     // Add guardian
     await page.getByRole("link", { name: "Guardians" }).click();
     await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
@@ -408,24 +463,6 @@ test.describe("test case for demo video", () => {
     // all users page
     await page.getByRole("link", { name: "All Users" }).click();
     await page.waitForTimeout(2000);
-    // add classes
-    await page.getByRole("link", { name: "Classes" }).click();
-    await page.getByRole("button", { name: "Add Class" }).click();
-    await page.getByPlaceholder("Class Title").click();
-    await page.getByPlaceholder("Class Title").fill("9 class");
-    await page.getByPlaceholder("Class Description").click();
-    await page.getByPlaceholder("Class Description").fill("boys 9th class");
-    await page.getByRole("button", { name: "Save" }).click();
-    //edit class
-    await page
-      .getByRole("row", { name: "class boys 9th class N/A" })
-      .getByRole("img")
-      .click();
-    await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
-    await page.getByText("Edit").click();
-    await page.getByPlaceholder("Class Title").click();
-    await page.getByPlaceholder("Class Title").fill("9th class");
-    await page.getByRole("button", { name: "Update" }).click();
 
     //add room
     await page.getByRole("link", { name: "Rooms" }).click();
@@ -433,20 +470,7 @@ test.describe("test case for demo video", () => {
     await page.getByPlaceholder("Room Title").click();
     await page.getByPlaceholder("Room Title").fill("Room 1");
     await page.getByRole("button", { name: "Save" }).click();
-    //add section
-    await page.getByRole("link", { name: "Sections" }).click();
-    await page.getByRole("button", { name: "Add Section" }).click();
-    await page.getByPlaceholder("Section Name").click();
-    await page.getByPlaceholder("Section Name").fill("a section");
-    await page.getByPlaceholder("Section Description").click();
-    await page.getByPlaceholder("Section Description").fill("section for boys");
-    await page
-      .locator("div")
-      .filter({ hasText: /^Select$/ })
-      .nth(2)
-      .click();
-    await page.getByText("9th class").click();
-    await page.getByRole("button", { name: "Save" }).click();
+
     // add existing user as teacher
     await page
       .locator("div")
@@ -645,6 +669,5 @@ test.describe("test case for demo video", () => {
     await page.locator("li").filter({ hasText: "DRdanish rasheed" }).click();
     await page.getByRole("button", { name: "Mark", exact: true }).click();
     await page.context().storageState({ path: authFile });
-
   });
 });
