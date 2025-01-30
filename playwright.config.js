@@ -41,21 +41,21 @@ module.exports = defineConfig({
   /* Configure projects for major browsers */
   projects: [
     // Setup project
-    { name: 'setup', testMatch: /.*\.setup\.js/ },
+    // { name: 'setup', testMatch: "demoVideo.spec.js" },
     {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
         // viewport: { width: 1324, height: 768 },
         launchOptions: {
-          headless: true,
+          headless: false,
           args: ['--ignore-certificate-errors']
         },
          // Use prepared auth state.
-         storageState: './authenticated_user.json'
+        //  storageState: './authenticated_user.json'
 
       },
-      dependencies: ['setup'],
+      // dependencies: ['setup'],
     },
 
     // {

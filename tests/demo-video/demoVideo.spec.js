@@ -1,8 +1,49 @@
 import { test, expect } from "@playwright/test";
-import { baseUrl, password } from "../../.env.js";
+import { baseUrl, email, domain, password } from "../../.env.js";
 import SETUP_CONSTANTS from "../../constants/setup-constants.js";
+const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
   test("test", async ({ page }) => {
+    // Perform authentication steps. Replace these actions with your own.
+    await page.goto(`${baseUrl}/signin`);
+    await page.getByPlaceholder("Email").click();
+    await page.getByPlaceholder("Email").fill(email);
+    await page.getByPlaceholder("Institute sub-domain").click();
+    await page.getByPlaceholder("Institute sub-domain").fill(domain);
+    await page.getByPlaceholder("Password").click();
+    await page.getByPlaceholder("Password").fill(password);
+    await page.getByRole("button", { name: "Log in" }).click();
+    await page.waitForTimeout(2000);
+    // End of authentication steps.
+    let signUpSlider = await page.evaluate(() => {
+      // Access local storage and retrieve the data
+      return localStorage.signUpSlider;
+    });
+    if (signUpSlider === "true") {
+      await expect(page).toHaveURL(`${baseUrl}/setup-slider`);
+      await page.getByPlaceholder("Email").click();
+      //Create dynamic email for every testing cycle
+      let currentSeconds = await Math.round(new Date().getTime() / 1000);
+      let dynamicEmail = `testing${currentSeconds}@gmail.com`;
+      await page.getByPlaceholder("Email").fill(dynamicEmail);
+      await page.getByRole("button", { name: "Next" }).click();
+      await page.waitForTimeout(1000);
+      await page.getByPlaceholder("Campus Name").click();
+      await page.getByPlaceholder("Campus Name").fill("pioneer");
+      await page.getByRole("button", { name: "Next" }).click();
+      await page.waitForTimeout(1000);
+      await page.getByPlaceholder("Class Name").click();
+      await page
+        .getByPlaceholder("Class Name")
+        .fill(SETUP_CONSTANTS.DEFAULT_CLASS);
+      await page.getByPlaceholder("Section").click();
+      await page
+        .getByPlaceholder("Section")
+        .fill(SETUP_CONSTANTS.DEFAULT_SECTION);
+      await page.getByRole("button", { name: "Confirm" }).click();
+    } else {
+      await expect(page).toHaveURL(`${baseUrl}/quick-actions`);
+    }
     //add campus
     await page.goto(`${baseUrl}/quick-actions`);
     await page
@@ -569,5 +610,41 @@ test.describe("test case for demo video", () => {
       .first()
       .click();
     await page.getByRole("button", { name: "Cancel" }).click();
+    //Mark Attendance
+    await page.locator(".min-w-1 > section > div > div").first().click();
+    await page.locator(".bg-primary-gray-50 > div > div:nth-child(2)").click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Attendance$/ })
+      .nth(1)
+      .click();
+    await page.getByText("Campus Attendance").click();
+    await page.getByRole("link", { name: "Campus Attendance" }).click();
+    await page.getByRole("button", { name: "Mark Attendance In" }).click();
+    await page
+      .locator(
+        "div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
+      )
+      .first()
+      .click();
+    await page.locator("span").filter({ hasText: /^20$/ }).click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "DRdanish rasheed" }).click();
+    await page.getByRole("button", { name: "Mark", exact: true }).click();
+    await page.getByRole("button", { name: "Mark Attendance Out" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "DRdanish rasheed" }).click();
+    await page.getByRole("button", { name: "Mark", exact: true }).click();
+    await page.context().storageState({ path: authFile });
+
   });
 });
