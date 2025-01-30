@@ -56,11 +56,20 @@ test.describe("test case for demo video", () => {
     await page.getByRole("link", { name: "Classes" }).nth(1).click();
     await page.getByRole("button", { name: "Add Class" }).click();
     await page.getByPlaceholder("Class Title").click();
-    await page.getByPlaceholder("Class Title").fill("9 class");
+    await page.getByPlaceholder("Class Title").fill("9th class");
     await page.getByPlaceholder("Class Description").click();
     await page.getByPlaceholder("Class Description").fill("boys 9th class");
     await page.getByRole("button", { name: "Save" }).click();
 
+    //edit class
+    // await page.getByRole("link", { name: "Classes" }).click();
+    // await page.locator("td").nth(3).click();
+    // await page.locator("li").filter({ hasText: "Edit" }).click();
+    // await page.getByPlaceholder("Class Title").click();
+    // await page.getByPlaceholder("Class Title").fill("9th class");
+    // await page.getByPlaceholder("Class Description").click();
+    // await page.getByPlaceholder("Class Description").fill("Class name updated");
+    // await page.getByRole("button", { name: "Update" }).click();
     //add section
     await page.getByRole("link", { name: "Sections" }).click();
     await page.getByRole("button", { name: "Add Section" }).click();
@@ -73,17 +82,9 @@ test.describe("test case for demo video", () => {
       .filter({ hasText: /^Select$/ })
       .nth(2)
       .click();
-    await page.getByText("9 class").click();
+    await page.getByText("9th class").click();
     await page.getByRole("button", { name: "Save" }).click();
-    //edit class
-    await page.getByRole("link", { name: "Classes" }).click();
-    await page.locator("td").nth(3).click();
-    await page.locator("li").filter({ hasText: "Edit" }).click();
-    await page.getByPlaceholder("Class Title").click();
-    await page.getByPlaceholder("Class Title").fill("9th class");
-    await page.getByPlaceholder("Class Description").click();
-    await page.getByPlaceholder("Class Description").fill("Class name updated");
-    await page.getByRole("button", { name: "Update" }).click();
+
     // add campus admin
     await page
       .locator("div")
@@ -349,7 +350,7 @@ test.describe("test case for demo video", () => {
     await page
       .locator("div:nth-child(2) > .min-w-1 > section > div > div > .w-full")
       .click();
-    await page.locator("li").filter({ hasText: "9 class" }).click();
+    await page.locator("li").filter({ hasText: "9th class" }).click();
     await page
       .locator("div")
       .filter({ hasText: /^Select$/ })
