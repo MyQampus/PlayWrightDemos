@@ -669,7 +669,6 @@ test.describe("test case for demo video", () => {
       .click();
     await page.locator("li").filter({ hasText: "DRdanish rasheed" }).click();
     await page.getByRole("button", { name: "Mark", exact: true }).click();
-    await page.context().storageState({ path: authFile });
     // add fee type
     await page
       .locator("div")
@@ -729,51 +728,240 @@ test.describe("test case for demo video", () => {
     await page.getByText("a section").click();
     await page.getByRole("button", { name: "Save" }).click();
     // Accept Payment fee
-    await page.getByRole("link", { name: "Receivable" }).click();
-    await page.evaluate(() => {
-      const table = document.getElementById("table-container");
-      if (table) {
-        table.scrollLeft = table.scrollWidth;
-      }
-    });
+    // await page.getByRole("link", { name: "Receivable" }).click();
+    // await page.evaluate(() => {
+    //   const table = document.getElementById("table-container");
+    //   if (table) {
+    //     table.scrollLeft = table.scrollWidth;
+    //   }
+    // });
 
-    await page.locator("td:nth-child(19)").click();
+    // await page.locator("td:nth-child(19)").click();
+    // await page
+    //   .locator("#table-container li")
+    //   .filter({ hasText: "Accept Payment" })
+    //   .click();
+    // await page.getByPlaceholder("Receiving Amount").click();
+    // await page.getByPlaceholder("Receiving Amount").fill("2000");
+    // await page.getByRole("button", { name: "Select Date" }).click();
+    // await page.getByRole("button", { name: "Apply" }).click();
+    // await page.getByPlaceholder("Payment Comment").click();
+    // await page.getByPlaceholder("Payment Comment").fill("installment");
+    // await page.getByPlaceholder("Payment Method").click();
+    // await page.getByPlaceholder("Payment Method").fill("Cash");
+    // await page.getByRole("button", { name: "Accept" }).click();
+    // await page.waitForTimeout(1000);sss
+
+    // await page.getByRole("link", { name: "Receivable" }).click();
+    // await page.evaluate(() => {
+    //   const table = document.getElementById("table-container");
+    //   if (table) {
+    //     table.scrollLeft = table.scrollWidth;
+    //   }
+    // });
+
+    // await page.locator("td:nth-child(19)").click();
+    // await page
+    //   .locator("#table-container li")
+    //   .filter({ hasText: "Accept Payment" })
+    //   .click();
+    // await page.getByPlaceholder("Receiving Amount").click();
+    // await page.getByPlaceholder("Receiving Amount").fill("400");
+    // await page.getByRole("button", { name: "Select Date" }).click();
+    // await page.getByRole("button", { name: "Apply" }).click();
+    // await page.getByPlaceholder("Payment Comment").click();
+    // await page.getByPlaceholder("Payment Comment").fill("installment");
+    // await page.getByPlaceholder("Payment Method").click();
+    // await page.getByPlaceholder("Payment Method").fill("Cash");sss
+    // await page.getByRole("button", { name: "Accept" }).click();
+    // Add Student in class
     await page
-      .locator("#table-container li")
-      .filter({ hasText: "Accept Payment" })
+      .locator("div")
+      .filter({ hasText: /^Select Class$/ })
+      .nth(2)
       .click();
-    await page.getByPlaceholder("Receiving Amount").click();
-    await page.getByPlaceholder("Receiving Amount").fill("2000");
+    await page.locator("li").filter({ hasText: "9th class" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Users$/ })
+      .nth(1)
+      .click();
+    await page.getByRole("link", { name: "Students" }).first().click();
+    await page.getByRole("button", { name: "Add Student" }).click();
+    await page.getByPlaceholder("Enter First Name").click();
+    await page.getByPlaceholder("Enter First Name").fill("Mustafa");
+    await page.getByPlaceholder("Enter Last Name").click();
+    await page.getByPlaceholder("Enter Last Name").fill("Nawaz");
+    await page
+      .locator(".flex > div > .min-w-1 > section > div > div")
+      .first()
+      .click();
+    await page
+      .locator("li")
+      .filter({ hasText: /^male$/ })
+      .click();
+    await page.getByPlaceholder("Email").click();
+    await page.getByPlaceholder("Email").fill("mustafa@gmail.com");
+    await page
+      .locator("div")
+      .filter({ hasText: /^\+92$/ })
+      .click();
+    await page.getByPlaceholder("3012345678").fill("3027834322");
+    await page.getByRole("button", { name: "Select Date" }).click();
+    await page.getByText("January").click();
+    await page.getByText("2025").first().click();
+    await page.locator(".j-calendar-control > button").first().click();
+    await page.getByRole("button", { name: "2013" }).click();
+    await page.getByRole("button", { name: "Mar" }).click();
+    await page.getByText("3", { exact: true }).first().click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page.getByPlaceholder("Religion").click();
+    await page.getByPlaceholder("Religion").fill("islam");
+    await page
+      .locator("div:nth-child(5) > div > .min-w-1 > section > div > div")
+      .first()
+      .click();
+    await page.locator("li").filter({ hasText: "A-" }).click();
+    await page.getByPlaceholder("Address").click();
+    await page.getByPlaceholder("Address").fill("sector a phase 11");
+    await page.getByPlaceholder("Registration Number").click();
+    await page.getByPlaceholder("Registration Number").fill("1");
+    await page
+      .locator("div:nth-child(2) > .min-w-1 > section > div > div > .w-full")
+      .click();
+    await page.getByText("national identity card").click();
+    await page.getByPlaceholder("Enter Identity No").click();
+    await page.getByPlaceholder("Enter Identity No").fill("31243423432");
+    await page.locator("#studentSection").getByText("Select Section").click();
+    await page.locator("li").filter({ hasText: "a section" }).click();
+    await page.getByRole("button", { name: "Add", exact: true }).click();
+    await page.getByRole("button", { name: "Skip" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Attendance$/ })
+      .nth(1)
+      .click();
+    await page.getByRole("link", { name: "Section Attendance" }).click();
+    await page.getByRole("button", { name: "Mark Section Attendance" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.getByText("a section").click();
+    await page.getByPlaceholder("Attendance Title").click();
+    await page.getByPlaceholder("Attendance Title").fill("Morning");
+    await page
+      .getByRole("row", { name: "MN Mustafa Nawaz" })
+      .locator("span")
+      .nth(3)
+      .click();
+    await page.getByRole("button", { name: "Submit" }).click();
+    //Add Subject
+    await page
+      .locator("span")
+      .filter({ hasText: "Select Section" })
+      .first()
+      .click();
+    await page.locator("li").filter({ hasText: "a section" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Syllabus Manager$/ })
+      .nth(1)
+      .click();
+    await page.getByRole("link", { name: "Subjects" }).first().click();
+    await page.getByRole("button", { name: "Add Subjects" }).click();
+    await page.getByPlaceholder("Subject Title").click();
+    await page.getByPlaceholder("Subject Title").fill("English");
+    await page.getByPlaceholder("Concise Name").click();
+    await page.getByPlaceholder("Concise Name").fill("EN");
+    await page.getByRole("button", { name: "Create" }).click();
+    await page
+      .getByRole("row", { name: "English EN N/A" })
+      .getByRole("img")
+      .click();
+    await page.getByText("Assign Teacher").click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "ANali nawaz" }).click();
+    await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    //open Time Table
+    await page
+      .locator("div")
+      .filter({ hasText: /^Time Table$/ })
+      .nth(1)
+      .click();
+    //add time table automator
+    await page.getByText("Time Table Automator").click();
+    await page
+      .getByRole("button", { name: "Add Time Table Automator" })
+      .click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select Subject$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "English" }).click();
+    await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select Teacher$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "ANali nawaz" }).click();
+    await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select Room$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "Room" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select Day$/ })
+      .nth(2)
+      .click();
+    await page
+      .locator("li")
+      .filter({ hasText: /^thursday$/ })
+      .click();
+    await page.locator("#TimeTable_StartTime").click();
+    await page.locator("div").filter({ hasText: /^10$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^00$/ }).click();
+    await page.getByText("AM", { exact: true }).click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page.locator("#TimeTable_EndTime").click();
+    await page.locator("div").filter({ hasText: /^11$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^00$/ }).click();
+    await page.getByText("AM", { exact: true }).click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    //Add Current Time Table
+    await page.getByText("Current Time Table").click();
+    await page.getByRole("button", { name: "Add Current Time Table" }).click();
+    await page
+      .locator("form > div > div > .min-w-1 > section > div > div")
+      .first()
+      .click();
+    await page.locator("li").filter({ hasText: "English" }).click();
+    await page.getByText("Select").first().click();
+    await page.locator("li").filter({ hasText: "ANali nawaz" }).click();
+    await page.getByRole("button", { name: "Select Date" }).first().click();
+    await page.getByRole("button", { name: "Apply" }).click();
     await page.getByRole("button", { name: "Select Date" }).click();
     await page.getByRole("button", { name: "Apply" }).click();
-    await page.getByPlaceholder("Payment Comment").click();
-    await page.getByPlaceholder("Payment Comment").fill("installment");
-    await page.getByPlaceholder("Payment Method").click();
-    await page.getByPlaceholder("Payment Method").fill("Cash");
-    await page.getByRole("button", { name: "Accept" }).click();
-    await page.waitForTimeout(1000);
-
-    await page.getByRole("link", { name: "Receivable" }).click();
-    await page.evaluate(() => {
-      const table = document.getElementById("table-container");
-      if (table) {
-        table.scrollLeft = table.scrollWidth;
-      }
-    });
-
-    await page.locator("td:nth-child(19)").click();
     await page
-      .locator("#table-container li")
-      .filter({ hasText: "Accept Payment" })
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
       .click();
-    await page.getByPlaceholder("Receiving Amount").click();
-    await page.getByPlaceholder("Receiving Amount").fill("400");
-    await page.getByRole("button", { name: "Select Date" }).click();
-    await page.getByRole("button", { name: "Apply" }).click();
-    await page.getByPlaceholder("Payment Comment").click();
-    await page.getByPlaceholder("Payment Comment").fill("installment");
-    await page.getByPlaceholder("Payment Method").click();
-    await page.getByPlaceholder("Payment Method").fill("Cash");
-    await page.getByRole("button", { name: "Accept" }).click();
+    await page.locator("li").filter({ hasText: "Room" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    await page.context().storageState({ path: authFile });
+    await page.close();
   });
 });
