@@ -703,52 +703,55 @@ test.describe("test case for demo video", () => {
     await page.getByText("a section").click();
     await page.getByRole("button", { name: "Save" }).click();
     // Accept Payment fee
-    // await page.getByRole("link", { name: "Receivable" }).click();
-    // await page.evaluate(() => {
-    //   const table = document.getElementById("table-container");
-    //   if (table) {
-    //     table.scrollLeft = table.scrollWidth;
-    //   }
-    // });
+    await page.getByRole("link", { name: "Receivable" }).click();
+    await page.evaluate(() => {
+      const table = document.getElementById("table-container");
+      if (table) {
+        table.scrollLeft = table.scrollWidth;
+      }
+    });
 
-    // await page.locator("td:nth-child(19)").click();
-    // await page
-    //   .locator("#table-container li")
-    //   .filter({ hasText: "Accept Payment" })
-    //   .click();
-    // await page.getByPlaceholder("Receiving Amount").click();
-    // await page.getByPlaceholder("Receiving Amount").fill("2000");
-    // await page.getByRole("button", { name: "Select Date" }).click();
-    // await page.getByRole("button", { name: "Apply" }).click();
-    // await page.getByPlaceholder("Payment Comment").click();
-    // await page.getByPlaceholder("Payment Comment").fill("installment");
-    // await page.getByPlaceholder("Payment Method").click();
-    // await page.getByPlaceholder("Payment Method").fill("Cash");
-    // await page.getByRole("button", { name: "Accept" }).click();
-    // await page.waitForTimeout(1000);sss
+    await page.locator('td:nth-child(19)').first().click();
+    await page
+      .locator("#table-container li")
+      .filter({ hasText: "Accept Payment" })
+      .click();
+    await page.getByPlaceholder("Receiving Amount").click();
+    await page.getByPlaceholder("Receiving Amount").fill("2000");
+    await page.getByRole("button", { name: "Select Date" }).click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page.getByPlaceholder("Payment Comment").click();
+    await page.getByPlaceholder("Payment Comment").fill("installment");
+    await page.getByPlaceholder("Payment Method").click();
+    await page.getByPlaceholder("Payment Method").fill("Cash");
+    await page.getByRole("button", { name: "Accept" }).click();
+    await page.locator('header').filter({ hasText: 'Print Fee Invoice' }).getByRole('img').click();
+    await page.waitForTimeout(1000);
 
-    // await page.getByRole("link", { name: "Receivable" }).click();
-    // await page.evaluate(() => {
-    //   const table = document.getElementById("table-container");
-    //   if (table) {
-    //     table.scrollLeft = table.scrollWidth;
-    //   }
-    // });
+    await page.getByRole("link", { name: "Receivable" }).click();
+    await page.evaluate(() => {
+      const table = document.getElementById("table-container");
+      if (table) {
+        table.scrollLeft = table.scrollWidth;
+      }
+    });
 
-    // await page.locator("td:nth-child(19)").click();
-    // await page
-    //   .locator("#table-container li")
-    //   .filter({ hasText: "Accept Payment" })
-    //   .click();
-    // await page.getByPlaceholder("Receiving Amount").click();
-    // await page.getByPlaceholder("Receiving Amount").fill("400");
-    // await page.getByRole("button", { name: "Select Date" }).click();
-    // await page.getByRole("button", { name: "Apply" }).click();
-    // await page.getByPlaceholder("Payment Comment").click();
-    // await page.getByPlaceholder("Payment Comment").fill("installment");
-    // await page.getByPlaceholder("Payment Method").click();
-    // await page.getByPlaceholder("Payment Method").fill("Cash");sss
-    // await page.getByRole("button", { name: "Accept" }).click();
+    await page.locator("td:nth-child(19)").click();
+    await page
+      .locator("#table-container li")
+      .filter({ hasText: "Accept Payment" })
+      .click();
+    await page.getByPlaceholder("Receiving Amount").click();
+    await page.getByPlaceholder("Receiving Amount").fill("400");
+    await page.getByRole("button", { name: "Select Date" }).click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page.getByPlaceholder("Payment Comment").click();
+    await page.getByPlaceholder("Payment Comment").fill("installment");
+    await page.getByPlaceholder("Payment Method").click();
+    await page.getByPlaceholder("Payment Method").fill("Cash");
+    await page.getByRole("button", { name: "Accept" }).click();
+    await page.locator('header').filter({ hasText: 'Print Fee Invoice' }).getByRole('img').click();
+    await page.waitForTimeout(1000);
     // Add Student in class
     await page
       .locator("div")
