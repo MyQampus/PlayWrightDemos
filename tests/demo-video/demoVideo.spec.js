@@ -1089,6 +1089,49 @@ test.describe("test case for demo video", () => {
       .locator("label span")
       .click();
     await page.getByRole("button", { name: "Mark", exact: true }).click();
+    // add exam type
+    await page
+      .locator("div")
+      .filter({ hasText: /^Exam Planner$/ })
+      .nth(1)
+      .click();
+    await page.getByRole("link", { name: "Exam Types" }).click();
+    await page.getByRole("button", { name: "Add Exam Type" }).click();
+    await page.getByPlaceholder("Exam Type").click();
+    await page.getByPlaceholder("Exam Type").fill("Annual");
+    await page.getByPlaceholder("Description").click();
+    await page
+      .getByPlaceholder("Description")
+      .fill("Held Annual Exam in December");
+    await page.getByRole("button", { name: "Save" }).click();
+
+    // add one more subject at class level
+    await page
+      .locator("div")
+      .filter({ hasText: /^Syllabus Manager$/ })
+      .nth(1)
+      .click();
+    await page.getByRole("link", { name: "Subjects" }).click();
+    await page.getByRole("button", { name: "Add Subjects" }).click();
+    await page.getByPlaceholder("Subject Title").click();
+    await page.getByPlaceholder("Subject Title").fill("Chemistry");
+    await page.getByPlaceholder("Concise Name").click();
+    await page.getByPlaceholder("Concise Name").fill("che");
+    await page.getByRole("button", { name: "Create" }).click();
+    await page
+      .getByRole("row", { name: "Chemistry che N/A" })
+      .getByRole("cell")
+      .nth(4)
+      .click();
+    await page.locator("li").filter({ hasText: "Assign Teacher" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "ANali nawaz" }).click();
+    await page.locator(".w-full > section > div > div").first().click();
+    await page.getByRole("button", { name: "Save" }).click();
     await page.context().storageState({ path: authFile });
   });
 });
