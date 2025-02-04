@@ -864,6 +864,117 @@ test.describe("test case for demo video", () => {
     await page.locator("li").filter({ hasText: "ANali nawaz" }).click();
     await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
     await page.getByRole("button", { name: "Save" }).click();
+    //add chapter
+    await page.getByRole("link", { name: "Chapters" }).click();
+    await page.getByRole("button", { name: "Add New Chapter" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "English" }).click();
+    await page.getByPlaceholder("Chapter Title").click();
+    await page.getByPlaceholder("Chapter Title").fill("Greetings & Essentials");
+    await page.getByPlaceholder("Description").click();
+    await page
+      .getByPlaceholder("Description")
+      .fill("Foundational language building blocks for everyday interactions");
+    await page.getByPlaceholder("Chapter Number").click();
+    await page.getByPlaceholder("Chapter Number").fill("1");
+    await page.getByRole("button", { name: "Create" }).click();
+    //add topic
+    await page.getByRole("link", { name: "Topics" }).click();
+    await page.getByRole("button", { name: "Add Topic" }).click();
+    await page.getByText("Select Subject", { exact: true }).click();
+    await page.locator("li").filter({ hasText: "English" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page
+      .locator("li")
+      .filter({ hasText: "Greetings & Essentials" })
+      .click();
+    await page.getByPlaceholder("Topic Title").click();
+    await page.getByPlaceholder("Topic Title").fill("Daily Conversations");
+    await page.getByPlaceholder("Topic Number").click();
+    await page.getByPlaceholder("Topic Number").fill("1");
+    await page.getByRole("button", { name: "Create" }).click();
+    //add lesson
+    await page.getByRole("link", { name: "Lessons" }).click();
+    await page.getByRole("button", { name: "Add New Lesson" }).click();
+    await page.getByPlaceholder("Lesson Name").click();
+    await page.getByPlaceholder("Lesson Name").fill("Pronunciation Basics");
+    await page
+      .locator(
+        ".modal-content__body > div:nth-child(2) > div > .min-w-1 > section > div > div"
+      )
+      .first()
+      .click();
+    await page.locator("li").filter({ hasText: "English" }).click();
+    await page
+      .locator(
+        "div:nth-child(2) > div:nth-child(2) > .min-w-1 > section > div > div"
+      )
+      .first()
+      .click();
+    await page
+      .locator("li")
+      .filter({ hasText: "Greetings & Essentials" })
+      .click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "Daily Conversations" }).click();
+    await page.getByPlaceholder("Lesson Number").click();
+    await page.getByPlaceholder("Lesson Number").fill("1");
+    await page.locator("textarea").click();
+    await page
+      .locator("textarea")
+      .fill(
+        "Master clear articulation with phonetics exercises. Practice vowel sounds and common diphthongs through interactive tongue-twisters and listening drills. Develop native-like rhythm and intonation patterns."
+      );
+    await page.getByRole("button", { name: "Create" }).click();
+    //add lesson planner
+    await page.getByRole("link", { name: "Lesson Planner" }).click();
+    await page.getByRole("button", { name: "Add New Lesson" }).click();
+    await page.getByPlaceholder("Lesson Name").click();
+    await page.getByPlaceholder("Lesson Name").fill("Cultural Communication");
+    await page
+      .locator(
+        ".modal-content__body > div:nth-child(2) > div > .min-w-1 > section > div > div"
+      )
+      .first()
+      .click();
+    await page.getByText("English").nth(1).click();
+    await page
+      .locator(
+        "div:nth-child(2) > div:nth-child(2) > .min-w-1 > section > div > div"
+      )
+      .first()
+      .click();
+    await page
+      .locator("li")
+      .filter({ hasText: "Greetings & Essentials" })
+      .click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select$/ })
+      .nth(2)
+      .click();
+    await page.locator("li").filter({ hasText: "Daily Conversations" }).click();
+    await page.getByPlaceholder("Lesson Number").click();
+    await page.getByPlaceholder("Lesson Number").fill("2");
+    await page.locator("textarea").click();
+    await page
+      .locator("textarea")
+      .fill(
+        "Explore cultural context in language use. Understand formal vs informal registers, regional idioms, and non-verbal communication cues. Role-play scenarios including business meetings, social gatherings, and customer service interactions."
+      );
+    await page.getByRole("button", { name: "Create" }).click();
     //open Time Table
     await page
       .locator("div")
@@ -925,18 +1036,59 @@ test.describe("test case for demo video", () => {
     await page.locator("li").filter({ hasText: "English" }).click();
     await page.getByText("Select").first().click();
     await page.locator("li").filter({ hasText: "ANali nawaz" }).click();
-    await page.getByRole("button", { name: "Select Date" }).first().click();
+    await page.locator(".flex-1 > div > div > .h-11").first().click();
     await page.getByRole("button", { name: "Apply" }).click();
-    await page.getByRole("button", { name: "Select Date" }).click();
+    await page
+      .locator(
+        "div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
+      )
+      .first()
+      .click();
+    await page.locator("div").filter({ hasText: /^03$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^46$/ }).click();
+    await page.getByText("PM", { exact: true }).click();
     await page.getByRole("button", { name: "Apply" }).click();
+    await page
+      .locator("div")
+      .filter({ hasText: /^Select Date$/ })
+      .nth(2)
+      .click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page
+      .locator(
+        ".flex > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
+      )
+      .first()
+      .click();
+    await page.locator("div").filter({ hasText: /^04$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^46$/ }).click();
+    await page.getByText("PM", { exact: true }).click();
+    await page.getByRole("button", { name: "Apply" }).click();
+    await page
+      .locator("div:nth-child(3) > div > .min-w-1 > section > div > div")
+      .first()
+      .click();
+    await page.locator("li").filter({ hasText: "Room 1" }).click();
+    await page.getByRole("button", { name: "Save" }).click();
+    //add period attendance
+    await page
+      .locator("div")
+      .filter({ hasText: /^Attendance$/ })
+      .nth(1)
+      .click();
+    await page.getByText("Period Attendance").click();
+    await page.getByRole("button", { name: "Mark Attendance" }).click();
     await page
       .locator("div")
       .filter({ hasText: /^Select$/ })
       .nth(2)
       .click();
-    await page.locator("li").filter({ hasText: "Room" }).click();
-    await page.getByRole("button", { name: "Save" }).click();
+    await page.locator(".absolute > .relative").click();
+    await page
+      .getByRole("cell", { name: "Present" })
+      .locator("label span")
+      .click();
+    await page.getByRole("button", { name: "Mark", exact: true }).click();
     await page.context().storageState({ path: authFile });
-    await page.close();
   });
 });
