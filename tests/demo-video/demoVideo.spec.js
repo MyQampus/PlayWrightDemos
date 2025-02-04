@@ -107,14 +107,13 @@ test.describe("test case for demo video", () => {
     await page.getByPlaceholder("3012345678").click();
     await page.getByPlaceholder("3012345678").fill("3214567890");
     await page.getByRole("button", { name: "Select Date" }).click();
-    await page.getByText("January").click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.getByText("2024").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.getByRole("button", { name: "1976" }).click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
+    await page.getByRole("button", { name: "1978" }).click();
     await page.getByRole("button", { name: "Oct" }).click();
     await page.getByText("20").click();
     await page.getByRole("button", { name: "Apply" }).click();
@@ -145,6 +144,7 @@ test.describe("test case for demo video", () => {
       .click();
     await page.getByText("Qatar (‫قطر‬‎)", { exact: true }).click();
     await page.getByRole("button", { name: "Save" }).click();
+    // add staff
     await page.getByRole("link", { name: "Staff", exact: true }).click();
     await page.getByRole("button", { name: "Add Staff" }).click();
     await page.getByPlaceholder("Enter First Name").click();
@@ -165,10 +165,10 @@ test.describe("test case for demo video", () => {
       .filter({ hasText: /^Select Date$/ })
       .first()
       .click();
-    await page.getByText("January").first().click();
-    await page.getByText("2025").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
     await page.getByRole("button", { name: "2001" }).click();
     await page.getByRole("button", { name: "Jan" }).click();
     await page.getByText("1", { exact: true }).first().click();
@@ -231,45 +231,20 @@ test.describe("test case for demo video", () => {
     await page.getByPlaceholder("Email").fill("talha@gmail.com");
     await page.getByPlaceholder("3012345678").click();
     await page.getByPlaceholder("3012345678").fill("3456789234");
-    await page
-      .locator("div")
-      .filter({ hasText: /^Select Date$/ })
-      .first()
-      .click();
-    await page
-      .locator("div")
-      .filter({ hasText: /^Join Date$/ })
-      .click();
-    await page
-      .locator("div")
-      .filter({ hasText: /^Select Date$/ })
-      .first()
-      .click();
-    await page.getByText("January").first().click();
-    await page.getByText("2025").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
-    await page.getByRole("button", { name: "1989" }).click();
+    await page.getByText("Date Of BirthSelect Date").click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
+    await page.getByRole("button", { name: "2018" }).click();
     await page.getByRole("button", { name: "Feb" }).click();
     await page.getByText("8", { exact: true }).first().click();
     await page.getByRole("button", { name: "Apply" }).click();
-    await page
-      .locator("div")
-      .filter({ hasText: /^Select Date$/ })
-      .first()
-      .click();
-    await page.getByText("January").click();
-    await page.getByText("2025").first().click();
-    await page
-      .locator(
-        "div:nth-child(2) > .flex-1 > .absolute > div > .j-calendar-control > button"
-      )
-      .first()
-      .click();
-    await page.getByRole("button", { name: "2018" }).click();
-    await page.getByRole("button", { name: "Mar" }).click();
-    await page.getByText("9", { exact: true }).nth(2).click();
+    await page.getByText("Join DateSelect Date").click();
+    await page.locator("#datePickerYearSelector").nth(1).click();
+    await page.locator("#datePickerYearSelector").nth(1).click();
+    await page.getByRole("button", { name: "2025" }).click();
+    await page.getByRole("button", { name: "Jan" }).click();
+    await page.getByText("2", { exact: true }).nth(2).click();
     await page.getByRole("button", { name: "Apply" }).click();
     await page
       .locator("div:nth-child(5) > div > .min-w-1 > section > div > div")
@@ -309,9 +284,9 @@ test.describe("test case for demo video", () => {
       .filter({ hasText: /^Select Date$/ })
       .first()
       .click();
-    await page.getByText("January").click();
-    await page.getByText("2025").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
     await page.getByRole("button", { name: "2013" }).click();
     await page.getByRole("button", { name: "Feb" }).click();
     await page.getByText("2", { exact: true }).first().click();
@@ -379,9 +354,9 @@ test.describe("test case for demo video", () => {
       .filter({ hasText: /^Select Date$/ })
       .first()
       .click();
-    await page.getByText("January").click();
-    await page.getByText("2025").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
     await page.getByRole("button", { name: "2013" }).click();
     await page.getByRole("button", { name: "Feb" }).click();
     await page.getByText("2", { exact: true }).first().click();
@@ -433,8 +408,8 @@ test.describe("test case for demo video", () => {
       .filter({ hasText: /^Select Date$/ })
       .first()
       .click();
-    await page.getByText("January").click();
-    await page.getByText("2025").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
     await page.getByRole("button", { name: "2036" }).click();
     await page.getByRole("button", { name: "Feb" }).click();
     await page.getByText("2", { exact: true }).first().click();
@@ -808,9 +783,9 @@ test.describe("test case for demo video", () => {
       .click();
     await page.getByPlaceholder("3012345678").fill("3027834322");
     await page.getByRole("button", { name: "Select Date" }).click();
-    await page.getByText("January").click();
-    await page.getByText("2025").first().click();
-    await page.locator(".j-calendar-control > button").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector").first().click();
+    await page.locator("#datePickerYearSelector > button").first().click();
     await page.getByRole("button", { name: "2013" }).click();
     await page.getByRole("button", { name: "Mar" }).click();
     await page.getByText("3", { exact: true }).first().click();
@@ -929,12 +904,12 @@ test.describe("test case for demo video", () => {
       .locator("li")
       .filter({ hasText: /^thursday$/ })
       .click();
-    await page.locator("#TimeTable_StartTime").click();
+    await page.locator("#TimeTableStartTimeId").click();
     await page.locator("div").filter({ hasText: /^10$/ }).first().click();
     await page.locator("div").filter({ hasText: /^00$/ }).click();
     await page.getByText("AM", { exact: true }).click();
     await page.getByRole("button", { name: "Apply" }).click();
-    await page.locator("#TimeTable_EndTime").click();
+    await page.locator("#TimeTableEndTimeId").click();
     await page.locator("div").filter({ hasText: /^11$/ }).first().click();
     await page.locator("div").filter({ hasText: /^00$/ }).click();
     await page.getByText("AM", { exact: true }).click();
