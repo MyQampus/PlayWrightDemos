@@ -27,19 +27,14 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
     const dynamicEmail = `testing${Math.floor(Date.now() / 1000)}@gmail.com`;
     await page.fill("[placeholder='Email']", dynamicEmail);
     await page.click("button:has-text('Next')");
-    await page.waitForTimeout(1000);
-
     await page.fill("[placeholder='Campus Name']", "pioneer");
     await page.click("button:has-text('Next')");
-    await page.waitForTimeout(1000);
-
     await page.fill(
       "[placeholder='Class Name']",
       SETUP_CONSTANTS.DEFAULT_CLASS
     );
     await page.fill("[placeholder='Section']", SETUP_CONSTANTS.DEFAULT_SECTION);
-    await page.waitForTimeout(1000);
-    await page.click("button:has-text('Confirm')");
+    await page.click("button:has-text('Confirm')", { timeout: 50000 });
   } else {
     await expect(page).toHaveURL(`${baseUrl}/quick-actions`);
   }

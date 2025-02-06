@@ -62,9 +62,7 @@ export async function AddStudentFee(page) {
 export async function AcceptStudentFee(page) {
   // Accept Payment fee
   async function acceptPayment(amount) {
-    const receivableAction = await page.locator("#receivableAction0");
-    await receivableAction.click();
- 
+    await page.getByRole('cell', { name: 'a section' }).click();
     await page.locator("#receivableAction0").click();
  
 
