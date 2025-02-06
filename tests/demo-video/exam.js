@@ -163,4 +163,71 @@ export async function AddExamType(page) {
     .locator("div")
     .nth(3)
     .click();
+
+  // add subject exam result
+
+  await page
+    .locator("div")
+    .filter({ hasText: /^Exam Result$/ })
+    .nth(1)
+    .click();
+  await page.getByRole("link", { name: "Subject Result" }).click();
+  await page.getByRole("button", { name: "Add Subject Result" }).click();
+  await page.getByPlaceholder("Title").click();
+  await page.getByPlaceholder("Title").fill("Subject result for Chemistry");
+  await page.getByPlaceholder("Description").click();
+  await page
+    .getByPlaceholder("Description")
+    .fill("Chemistry subject result added");
+  await page
+    .locator(".flex > div > .min-w-1 > section > div > div")
+    .first()
+    .click();
+  await page.locator("li").filter({ hasText: "Chemistry" }).click();
+  await page
+    .locator("div:nth-child(2) > .min-w-1 > section > div > div")
+    .first()
+    .click();
+  await page.locator("li").filter({ hasText: "PassAndFail Grading" }).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Select$/ })
+    .nth(2)
+    .click();
+  await page.getByText("final year exam date").click();
+  await page.getByPlaceholder("Weightage").click();
+  await page.getByPlaceholder("Weightage").fill("30");
+  await page.getByRole("button", { name: "Save" }).click();
+
+  // generate subject result
+
+  await page.waitForTimeout(1000);
+  await page.evaluate(() => {
+    const table = document.getElementById("table-container");
+    if (table) {
+      table.scrollLeft = table.scrollWidth;
+    }
+  });
+  await page
+    .getByRole("row", { name: "Subject result for Chemistry" })
+    .locator("div")
+    .click();
+  await page.getByText("Generate Result").click();
+  await page.getByRole("button", { name: "Confirm" }).click();
+
+  // publish subject result
+  await page.waitForTimeout(1000);
+  await page.evaluate(() => {
+    const table = document.getElementById("table-container");
+    if (table) {
+      table.scrollLeft = table.scrollWidth;
+    }
+  });
+  await page
+    .getByRole("row", { name: "Subject result for Chemistry" })
+    .locator("div")
+    .click();
+  await page.locator("li").filter({ hasText: "View Marks" }).click();
+  await page.getByRole("button", { name: "Published Result" }).click();
+  await page.getByRole("button", { name: "Published", exact: true }).click();
 }
