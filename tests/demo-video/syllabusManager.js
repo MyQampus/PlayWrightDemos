@@ -268,10 +268,10 @@ export async function AddSubjectInClass(page) {
        table.scrollLeft = table.scrollWidth;
      }
    });
-   const subjectAction = await page.locator("td#subjectAction0 div.icon");
+   const subjectAction = await page.locator("#subjectAction0");
    await subjectAction.click();
 
-   await page.locator("td#subjectAction0").click();
+   await page.locator("#subjectAction0").click();
 
    // await page.locator("td#subjectAction0 div.icon").click();
    await page.locator("li").filter({ hasText: "Assign Teacher" }).click();

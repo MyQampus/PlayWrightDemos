@@ -77,8 +77,8 @@ test.describe("test case for demo video", () => {
     await AddTimeTableAutomator(page);
     await AddCurrentTimeTable(page);
     await AddPeriodAttendance(page);
-    await AddExamType(page);
     await AddSubjectInClass(page);
+    await AddExamType(page);
     await page.context().storageState({ path: authFile });
   });
 });
