@@ -29,11 +29,7 @@ import {
   AddSectionAttendance,
   AddPeriodAttendance,
 } from "./Attendance.js";
-import {
-  AddFeeType,
-  AddStudentFee,
-  AcceptStudentFee,
-} from "./FeeManager.js";
+import { AddFeeType, AddStudentFee, AcceptStudentFee } from "./FeeManager.js";
 import {
   AddSubject,
   AddChapter,
@@ -42,7 +38,7 @@ import {
   AddLessonPlanner,
   AddTimeTableAutomator,
   AddCurrentTimeTable,
-  AddSubjectInClass
+  AddSubjectInClass,
 } from "./syllabusManager.js";
 import { AddExamType } from "./exam.js";
 
@@ -50,7 +46,7 @@ const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
   test("test", async ({ page }) => {
     await loginSetup(page, baseUrl, email, domain, password);
-    //  await page.goto(`${baseUrl}/quick-actions`);
+    await page.goto(`${baseUrl}/quick-actions`);
     await AddCampus(page);
     await AddClass(page);
     await AddSection(page);
@@ -82,7 +78,7 @@ test.describe("test case for demo video", () => {
     await AddCurrentTimeTable(page);
     await AddPeriodAttendance(page);
     await AddExamType(page);
-   await AddSubjectInClass(page);
+    await AddSubjectInClass(page);
     await page.context().storageState({ path: authFile });
   });
 });
