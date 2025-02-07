@@ -14,7 +14,10 @@ export async function AddCampusAdmin(page) {
     .locator(".flex > div > .min-w-1 > section > div > div > .w-full")
     .first()
     .click();
-  await page.getByText("male").nth(1).click();
+  await page
+    .locator("li")
+    .filter({ hasText: /^male$/ })
+    .click();
   await page.getByPlaceholder("Email").click();
   await page.getByPlaceholder("Email").fill("ahmed@gmail.com");
   await page.getByPlaceholder("3012345678").click();
@@ -67,7 +70,10 @@ export async function AddStaff(page) {
     .locator(".flex > div > .min-w-1 > section > div > div")
     .first()
     .click();
-  await page.getByText("male").nth(1).click();
+  await page
+    .locator("li")
+    .filter({ hasText: /^male$/ })
+    .click();
   await page.getByPlaceholder("Email").click();
   await page.getByPlaceholder("Email").fill("alinawaz@gmail.com");
   await page.getByPlaceholder("3012345678").click();
@@ -304,8 +310,8 @@ export async function AddGuardian(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page.getByRole('cell', { name: 'Login Enabled' }).click();
-  await page.locator('#guardianAction0').click();
+  await page.getByRole("cell", { name: "Login Enabled" }).click();
+  await page.locator("#guardianAction0").click();
   await page.locator("li").filter({ hasText: "Associate Student" }).click();
   await page
     .locator("div")
