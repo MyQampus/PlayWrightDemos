@@ -114,3 +114,26 @@ export async function AcceptStudentFee(page) {
   // Process payments
   await acceptPayment("2000");
 }
+export async function ReceivedAndAcceptPayment(page) {
+  await page.getByRole('link', { name: 'Received' }).click();
+  await page.evaluate(() => {
+    const table = document.getElementById("table-container");
+    if (table) {
+      table.scrollLeft = table.scrollWidth;
+    }
+  });
+  await page.waitForTimeout(1000);
+  await page.getByRole('link', { name: 'Accept Payment' }).click();
+  await page.locator('.w-\\[250px\\] > div > .min-w-1 > section > div > div').first().click();
+  await page.locator('li').filter({ hasText: 'danish rasheed' }).click();
+  await page.locator('.w-full > section > div > .h-11').click();
+  await page.locator('li').filter({ hasText: 'monthly tuition fee' }).click();
+  await page.locator('.w-full > section > div > div').first().click();
+  await page.getByPlaceholder('Receiving Amount').click();
+  await page.getByPlaceholder('Receiving Amount').fill('100');
+  await page.locator('div').filter({ hasText: /^Select Date$/ }).nth(2).click();
+  await page.getByRole('button', { name: 'Apply' }).click();
+  await page.getByRole('button', { name: 'Accept' }).click();
+  await page.getByRole('button', { name: 'Print' }).click();
+  await page.locator('header').filter({ hasText: 'Print Fee Invoice' }).getByRole('img').click();
+}

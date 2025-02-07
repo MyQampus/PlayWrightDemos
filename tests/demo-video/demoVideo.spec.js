@@ -29,7 +29,7 @@ import {
   AddSectionAttendance,
   AddPeriodAttendance,
 } from "./Attendance.js";
-import { AddFeeType, AddStudentFee, AcceptStudentFee } from "./FeeManager.js";
+import { AddFeeType, AddStudentFee, AcceptStudentFee,ReceivedAndAcceptPayment } from "./FeeManager.js";
 import {
   AddSubject,
   AddChapter,
@@ -67,6 +67,7 @@ test.describe("test case for demo video", () => {
     await AddFeeType(page);
     await AddStudentFee(page);
     await AcceptStudentFee(page);
+    await ReceivedAndAcceptPayment(page);
     await AddStudentInClass(page);
     await AddSectionAttendance(page);
     await AddSubject(page);
