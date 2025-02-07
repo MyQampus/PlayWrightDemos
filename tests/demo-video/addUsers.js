@@ -297,6 +297,26 @@ export async function AddGuardian(page) {
   await page.getByPlaceholder("Enter Identity No").click();
   await page.getByPlaceholder("Enter Identity No").fill("322487789037478");
   await page.getByRole("button", { name: "Save" }).click();
+  //Associate Student to Guardian
+  await page.evaluate(() => {
+    const table = document.getElementById("table-container");
+    if (table) {
+      table.scrollLeft = table.scrollWidth;
+    }
+  });
+  await page.getByRole('cell', { name: 'Login Enabled' }).click();
+  await page.locator('#guardianAction0').click();
+  await page.locator("li").filter({ hasText: "Associate Student" }).click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Select$/ })
+    .nth(2)
+    .click();
+  await page.locator("li").filter({ hasText: "DRdanish rasheed" }).click();
+  await page.getByPlaceholder("Relation").click();
+  await page.getByPlaceholder("Relation").fill("Father");
+  await page.locator(".slider").click();
+  await page.getByRole("button", { name: "Associate" }).click();
 }
 export async function AddStudentPickupPerson(page) {
   // Add student pickup person

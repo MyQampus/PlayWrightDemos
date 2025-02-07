@@ -136,10 +136,7 @@ export async function AddExamType(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-    .getByRole("row", { name: "Chemistry 2025-02-15 01:00 PM" })
-    .locator("div")
-    .click();
+  await page.getByRole('row', { name: 'Chemistry 2025-02-15 01:00 PM' }).locator('div').click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("90");
@@ -153,16 +150,8 @@ export async function AddExamType(page) {
 
   // view student added marks
   await page.waitForTimeout(1000);
-  await page
-    .getByRole("row", { name: "Chemistry 2025-02-15 01:00 PM" })
-    .locator("div")
-    .click();
+  await page.getByRole('row', { name: 'Chemistry 2025-02-15 01:00 PM' }).locator('div').click();
   await page.getByText("View Marks").click();
-  await page
-    .getByRole("row", { name: "DR danish rasheed 90 pass" })
-    .locator("div")
-    .nth(3)
-    .click();
 
   // add subject exam result
 

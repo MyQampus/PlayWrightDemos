@@ -13,7 +13,7 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
   await page.fill("[placeholder='Password']", password);
   await page.click("button:has-text('Log in')");
 
-  await page.waitForTimeout(1000);
+  await page.waitForTimeout(500);
 
   // Check local storage for signUpSlider flag
   const signUpSlider = await page.evaluate(() =>
@@ -34,7 +34,8 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
       SETUP_CONSTANTS.DEFAULT_CLASS
     );
     await page.fill("[placeholder='Section']", SETUP_CONSTANTS.DEFAULT_SECTION);
-    await page.click("button:has-text('Confirm')", { timeout: 50000 });
+    await page.click("button:has-text('Confirm')", { timeout: 500 });
+    await page.waitForTimeout(500);
   } else {
     await expect(page).toHaveURL(`${baseUrl}/quick-actions`);
   }
