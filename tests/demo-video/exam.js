@@ -593,6 +593,7 @@ export async function ExamTestCases(page) {
 
   // publish section result
   await page.getByRole("link", { name: "view" }).click();
+  await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Published Result" }).click();
   await page.getByRole("button", { name: "Published", exact: true }).click();
   await page.getByRole("link", { name: "section-result" }).click();

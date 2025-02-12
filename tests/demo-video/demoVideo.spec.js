@@ -34,6 +34,10 @@ import {
   AddStudentFee,
   AcceptStudentFee,
   ReceivedAndAcceptPayment,
+  AddSectionFeeTestCase,
+  AddMonthlyFeeGeneratorTestCase,
+  AddFeeDiscountTypeTestCase,
+  AddFeeDiscountAndViewTestCase,
 } from "./FeeManager.js";
 import {
   AddSubject,
@@ -77,6 +81,10 @@ test.describe("test case for demo video", () => {
     await AddStudentFee(page);
     await AcceptStudentFee(page);
     await ReceivedAndAcceptPayment(page);
+    await AddSectionFeeTestCase(page);
+    await AddMonthlyFeeGeneratorTestCase(page);
+    await AddFeeDiscountTypeTestCase(page);
+    await AddFeeDiscountAndViewTestCase(page);
     await AddStudentInClass(page);
     await AddSectionAttendance(page);
     await AddSubject(page);
