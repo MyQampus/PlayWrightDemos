@@ -29,7 +29,12 @@ import {
   AddSectionAttendance,
   AddPeriodAttendance,
 } from "./Attendance.js";
-import { AddFeeType, AddStudentFee, AcceptStudentFee,ReceivedAndAcceptPayment } from "./FeeManager.js";
+import {
+  AddFeeType,
+  AddStudentFee,
+  AcceptStudentFee,
+  ReceivedAndAcceptPayment,
+} from "./FeeManager.js";
 import {
   AddSubject,
   AddChapter,
@@ -40,13 +45,17 @@ import {
   AddCurrentTimeTable,
   AddSubjectInClass,
 } from "./syllabusManager.js";
-import { AddExamType } from "./exam.js";
+import { ExamTestCases } from "./exam.js";
 import { AddSupportQuery } from "./SupportQuery.js";
 const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
-  test("test", async ({ page }) => {
+  let page;
+  test.beforeAll(async ({ browser }) => {
+    page = await browser.newPage();
     await loginSetup(page, baseUrl, email, domain, password);
     await page.goto(`${baseUrl}/quick-actions`);
+  });
+  test("test", async () => {
     await AddCampus(page);
     await AddClass(page);
     await AddSection(page);
@@ -79,8 +88,8 @@ test.describe("test case for demo video", () => {
     await AddCurrentTimeTable(page);
     await AddPeriodAttendance(page);
     await AddSubjectInClass(page);
-    await AddExamType(page);
-   await AddSupportQuery(page);
+    await ExamTestCases(page);
+    await AddSupportQuery(page);
     await page.context().storageState({ path: authFile });
   });
 });
