@@ -21,7 +21,17 @@ export async function fillInputAfterLabel(
         await input.fill(inputText);
       }
     } else if (fieldType === "singleSelect") {
-      await page.getByText(inputText).click();
+      await page.waitForTimeout(500);
+      const listItems = await page.locator("li").all();
+      for (const item of listItems) {
+        const text = await item.textContent();
+        if (text && text.trim().toLowerCase() === inputText.toLowerCase()) {
+          await item.scrollIntoViewIfNeeded();
+          await item.waitFor({ state: "visible" });
+          await item.click();
+          break;
+        }
+      }
     }
   }
 }

@@ -27,7 +27,12 @@ export async function AddSection(page) {
   await page.getByRole("link", { name: "Sections" }).click();
   await page.getByRole("button", { name: "Add Section" }).click();
   await fillInputAfterLabel(page, "Section Name", "a section", "text");
-  await fillInputAfterLabel(page, "Section Description", "section for boys", "text");
+  await fillInputAfterLabel(
+    page,
+    "Section Description",
+    "section for boys",
+    "text"
+  );
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
 }
@@ -58,11 +63,11 @@ export async function AddGradingStructure(page) {
     .fill(
       "A simple grading structure where students are evaluated based on whether they meet the required criteria."
     );
-  await page.locator('input[name="GRADE_TITLE \\+ 0"]').click();
-  await page.locator('input[name="GRADE_TITLE \\+ 0"]').fill("A");
+
+  await fillInputAfterLabel(page, "Grade Title *", "A", "text");
+
   await page.getByRole("button", { name: "Add New Grade" }).click();
-  await page.locator('input[name="GRADE_TITLE \\+ 1"]').click();
-  await page.locator('input[name="GRADE_TITLE \\+ 1"]').fill("B");
+  await fillInputAfterLabel(page, "Grade Title *", "B", "text");
   await page.locator('input[name="GRADE_VAL \\+ 1"]').click();
   await page.locator('input[name="GRADE_VAL \\+ 1"]').fill("80");
   await page.getByRole("button", { name: "Add New Grade" }).click();

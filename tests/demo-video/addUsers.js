@@ -1,3 +1,5 @@
+import { fillInputAfterLabel } from "./utils.js";
+
 export async function AddCampusAdmin(page) {
   await page
     .locator("div")
@@ -10,14 +12,8 @@ export async function AddCampusAdmin(page) {
   await page.getByPlaceholder("Enter First Name").fill("Ahmed");
   await page.getByPlaceholder("Enter Last Name").click();
   await page.getByPlaceholder("Enter Last Name").fill("hassan");
-  await page
-    .locator(".flex > div > .min-w-1 > section > div > div > .w-full")
-    .first()
-    .click();
-  await page
-    .locator("li")
-    .filter({ hasText: /^male$/ })
-    .click();
+
+  await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
   await page.getByPlaceholder("Email").click();
   await page.getByPlaceholder("Email").fill("ahmed@gmail.com");
   await page.getByPlaceholder("3012345678").click();
