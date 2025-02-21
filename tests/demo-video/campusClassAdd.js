@@ -40,8 +40,7 @@ export async function AddRoom(page) {
   //add room
   await page.getByRole("link", { name: "Rooms" }).click();
   await page.getByRole("button", { name: "Add Room" }).click();
-  await page.getByPlaceholder("Room Title").click();
-  await page.getByPlaceholder("Room Title").fill("Room 1");
+  await fillInputAfterLabel(page, "Room Title *", "Room 1", "text");
   await page.getByRole("button", { name: "Save" }).click();
 }
 export async function AddGradingStructure(page) {
@@ -53,30 +52,16 @@ export async function AddGradingStructure(page) {
     .click();
   await page.getByRole("link", { name: "Non GPA Grading" }).click();
   await page.getByRole("button", { name: "Add Structure" }).click();
-  await page.getByPlaceholder("Title", { exact: true }).click();
-  await page
-    .getByPlaceholder("Title", { exact: true })
-    .fill("PassAndFail Grading");
-  await page.getByPlaceholder("Description").click();
-  await page
-    .getByPlaceholder("Description")
-    .fill(
-      "A simple grading structure where students are evaluated based on whether they meet the required criteria."
-    );
-
-  await fillInputAfterLabel(page, "Grade Title *", "A", "text");
-
+  await fillInputAfterLabel(page, "Title *", "PassAndFail Grading", "text");
+  await fillInputAfterLabel(page, "Description ", "A simple grading structure where students are evaluated based on whether they meet the required criteria.", "text");
+  await fillInputAfterLabel(page, "Grade Title *", "A", "text", 0);
   await page.getByRole("button", { name: "Add New Grade" }).click();
-  await fillInputAfterLabel(page, "Grade Title *", "B", "text");
-  await page.locator('input[name="GRADE_VAL \\+ 1"]').click();
-  await page.locator('input[name="GRADE_VAL \\+ 1"]').fill("80");
+  await fillInputAfterLabel(page, "Grade Title *", "B", "text", 1);
+  await fillInputAfterLabel(page, "Grade Value *", "80", "text", 1);
   await page.getByRole("button", { name: "Add New Grade" }).click();
-  await page.locator('input[name="GRADE_TITLE \\+ 2"]').click();
-  await page.locator('input[name="GRADE_TITLE \\+ 2"]').fill("C");
-  await page.locator('input[name="GRADE_VAL \\+ 2"]').click();
-  await page.locator('input[name="GRADE_VAL \\+ 2"]').fill("60");
-  await page.locator('input[name="GRADE_TITLE \\+ 3"]').click();
-  await page.locator('input[name="GRADE_TITLE \\+ 3"]').fill("F");
+  await fillInputAfterLabel(page, "Grade Title *", "C", "text", 2);
+  await fillInputAfterLabel(page, "Grade Value *", "60", "text", 2);
+  await fillInputAfterLabel(page, "Grade Title *", "F", "text", 3);
   await page.getByRole("button", { name: "Save" }).click();
   await page.waitForTimeout(1000);
   await page.locator(".w-full > div > div > .w-full").first().click();

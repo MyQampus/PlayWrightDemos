@@ -1,3 +1,5 @@
+import { fillInputAfterLabel } from "./utils";
+
 export async function AddSupportQuery(page) {
   await page.waitForTimeout(2000);
   await page.locator('.min-w-1 > section > div > div').first().click();
@@ -10,41 +12,18 @@ export async function AddSupportQuery(page) {
   //Add Support Query Type
   await page.getByRole("link", { name: "Support Query Types" }).click();
   await page.getByRole("button", { name: "Add Support Query Type" }).click();
-  await page.getByPlaceholder("Query Type").click();
-  await page.getByPlaceholder("Query Type").fill("Late Arrival");
-  await page.getByPlaceholder("Description").click();
-  await page
-    .getByPlaceholder("Description")
-    .fill("Students are not coming to school ");
+  await fillInputAfterLabel(page, "Query Type *", "Late Arrival", "text");
+  await fillInputAfterLabel(page, "Description", "Students are late to school", "text");
   await page.getByRole("button", { name: "Save" }).click();
   //Add Support Query
   await page.getByRole("link", { name: "Support Query", exact: true }).click();
   await page.getByRole("button", { name: "Add Support Query" }).click();
-  await page.getByPlaceholder("Title").click();
-  await page.getByPlaceholder("Title").fill("Report");
-  await page.getByPlaceholder("Description").click();
-  await page.getByPlaceholder("Description").fill("Student arrival report");
-  await page
-    .locator(".flex > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "Late Arrival" }).click();
-  await page
-    .locator("div:nth-child(2) > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "ANali nawaz" }).click();
-  await page
-    .locator("div:nth-child(3) > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "ZAzaeem Ali" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
-  await page.locator("li").filter({ hasText: "DRdanish rasheed" }).click();
+  await fillInputAfterLabel(page, "Title *", "Report", "text");
+  await fillInputAfterLabel(page, "Description", "Student arrival report", "text");
+  await fillInputAfterLabel(page, "Support Query *", "Late Arrival", "singleSelect");
+  await fillInputAfterLabel(page, "Teacher *", "JDjohn doe", "singleSelect");
+  await fillInputAfterLabel(page, "Guardian *", "EJemily Johnson", "singleSelect");
+  await fillInputAfterLabel(page, "Student", "DLdavid lodge", "singleSelect");
   await page.locator("textarea").click();
   await page
     .locator("textarea")
