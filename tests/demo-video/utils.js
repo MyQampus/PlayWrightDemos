@@ -6,17 +6,18 @@ export async function fillInputAfterLabel(
   index = 0 // Default to first occurrence
 ) {
   labelText = labelText.trim();
-  const labels = await page.locator(`label:text("${labelText}")`).all(); // Get all matching labels
+  const labels = await page.locator(`label:text(\"${labelText}\")`).all(); // Get all matching labels
   if (labels.length > index) {
     const label = labels[index]; // Select specific label instance
     const labelSiblingDiv = await label
       .locator("xpath=following-sibling::div")
       .first();
     await labelSiblingDiv.click();
-    if (fieldType === "text") {
-      const input = labelSiblingDiv.locator("input","textarea");
+    if (fieldType === "text" || fieldType === "textarea") {
+      const input = labelSiblingDiv.locator("input, textarea"); // Handle both input and textarea
       const existingValue = await input.evaluate((el) => el.value.trim());
       if (!existingValue) {
+        await page.waitForTimeout(500); // Wait for 1 second before filling
         await input.fill(inputText);
       }
     } else if (fieldType === "singleSelect") {

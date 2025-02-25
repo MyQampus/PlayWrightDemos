@@ -285,7 +285,6 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page.waitForTimeout(1000);
   await page
   .getByRole("row", { name: "Chemistry 2025-02-14 01:00 PM" })
   .locator("div")

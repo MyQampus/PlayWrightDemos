@@ -50,6 +50,7 @@ import {
   AddSubjectInClass,
 } from "./syllabusManager.js";
 import { ExamTestCases } from "./exam.js";
+import { AddAnnouncemnetType, AddStaffAnnouncemnets, AddGuardianAnnouncement, AddStudentAnnouncement, AddTeacherAnnouncement } from "./Announcements.js";
 import { AddSupportQuery } from "./SupportQuery.js";
 const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
@@ -97,6 +98,11 @@ test.describe("test case for demo video", () => {
     await AddPeriodAttendance(page);
     await AddSubjectInClass(page);
     await ExamTestCases(page);
+    await AddAnnouncemnetType(page);
+    await AddStaffAnnouncemnets(page);
+    await AddStudentAnnouncement(page);
+    await AddGuardianAnnouncement(page);
+    await AddTeacherAnnouncement(page);
     await AddSupportQuery(page);
     await page.context().storageState({ path: authFile });
   });

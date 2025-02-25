@@ -57,12 +57,7 @@ export async function AddLesson(page) {
   await fillInputAfterLabel(page, "Chapter *", "Greetings & Essentials", "singleSelect");
   await fillInputAfterLabel(page, "Topic *", "Daily Conversations", "singleSelect");
   await fillInputAfterLabel(page, "Lesson Number *", "1", "text");
-  await fillInputAfterLabel(
-    page,
-    "Description",
-    "Master clear articulation with phonetics exercises. Practice vowel sounds and common diphthongs through interactive tongue-twisters and listening drills. Develop native-like rhythm and intonation patterns.",
-    "textarea"
-  );
+  await fillInputAfterLabel(page, "Description", "Master clear articulation with phonetics exercises. Practice vowel sounds and common diphthongs through interactive tongue-twisters and listening drills. Develop native-like rhythm and intonation patterns.", "textarea");
   await page.getByRole("button", { name: "Create" }).click();
 }
 export async function AddLessonPlanner(page) {
