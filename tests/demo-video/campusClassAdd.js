@@ -63,19 +63,4 @@ export async function AddGradingStructure(page) {
   await fillInputAfterLabel(page, "Grade Value *", "60", "text", 2);
   await fillInputAfterLabel(page, "Grade Title *", "F", "text", 3);
   await page.getByRole("button", { name: "Save" }).click();
-  await page.waitForTimeout(1000);
-  await page.locator(".w-full > div > div > .w-full").first().click();
-  await page.locator("li").filter({ hasText: "9th class" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Exam Result$/ })
-    .nth(1)
-    .click();
-  await page.getByRole("link", { name: "Subject Result" }).click();
-  await page.getByRole("button", { name: "Add Subject Result" }).click();
-  await page
-    .locator("div:nth-child(2) > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.getByRole("button", { name: "Cancel" }).click();
 }

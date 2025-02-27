@@ -18,10 +18,7 @@ export async function AddSubject(page) {
   await fillInputAfterLabel(page, "Subject Title *", "English", "text");
   await fillInputAfterLabel(page, "Concise Name *", "EN", "text");
   await page.getByRole("button", { name: "Create" }).click();
-  await page
-    .getByRole("row", { name: "English EN N/A" })
-    .getByRole("img")
-    .click();
+  await page.locator('#subjectActionEN').click();
   await page.getByText("Assign Teacher").click();
   await fillInputAfterLabel(page, "Teachers", "JDjohn doe", "singleSelect");
   await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
@@ -133,12 +130,7 @@ export async function AddCurrentTimeTable(page) {
     .nth(2)
     .click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator(
-      ".flex > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
-    )
-    .first()
-    .click();
+  await page.locator('.grid > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div').first().click();
   await page.locator("div").filter({ hasText: /^04$/ }).first().click();
   await page.locator("div").filter({ hasText: /^46$/ }).click();
   await page.getByText("PM", { exact: true }).click();
@@ -166,10 +158,10 @@ export async function AddSubjectInClass(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  const subjectAction = await page.locator("#subjectAction0");
+  
+  const subjectAction = await page.locator("#subjectActionche");
   await subjectAction.click();
-  await page.locator("#subjectAction0").click();
-  // await page.locator("td#subjectAction0 div.icon").click();
+  await page.locator('#subjectActionche').click();
   await page.locator("li").filter({ hasText: "Assign Teacher" }).click();
   await page
     .locator("div")

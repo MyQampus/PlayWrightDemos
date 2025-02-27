@@ -100,8 +100,8 @@ test.describe("test case for demo video", () => {
     await ExamTestCases(page);
     await AddAnnouncemnetType(page);
     await AddStaffAnnouncemnets(page);
-    await AddStudentAnnouncement(page);
     await AddGuardianAnnouncement(page);
+    await AddStudentAnnouncement(page);
     await AddTeacherAnnouncement(page);
     await AddSupportQuery(page);
     await page.context().storageState({ path: authFile });

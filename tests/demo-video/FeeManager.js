@@ -36,7 +36,7 @@ export async function AcceptStudentFee(page) {
   // Accept Payment fee
   async function acceptPayment(amount) {
     await page.getByRole("cell", { name: "a section" }).click();
-    await page.locator("#receivableAction0").click();
+    await page.locator('#receivableActionDavidLodge0').click();
     await page
       .locator("#table-container li")
       .filter({ hasText: "Accept Payment" })
@@ -154,7 +154,7 @@ export async function AddFeeDiscountAndViewTestCase(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page.locator("#receivableAction0 div").click();
+  await page.locator('#receivableActionDavidLodge1').click();
   await page.locator("li").filter({ hasText: "Add Discount" }).click();
   await fillInputAfterLabel(page, "Discount Type *", "Merit-Based Discounts", "singleSelect");
   await fillInputAfterLabel(page, "Discount Amount", "200", "text");

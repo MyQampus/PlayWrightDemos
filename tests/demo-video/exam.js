@@ -28,11 +28,8 @@ export async function ExamTestCases(page) {
   await page.getByRole("button", { name: "Add New Exam" }).click();
   await fillInputAfterLabel(page, "Title *", "MidTerm exam date sheet", "text");
   await fillInputAfterLabel(page, "Description", "MidTerm exam date sheet announce", "text");
-  await page
-    .locator(".flex > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "MidTerm" }).click();
+  await page.locator('div').filter({ hasText: /^Select Exam Type$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'MidTerm' }).click();
   await page
     .locator(".border > div > div > .min-w-1 > section > div > div")
     .first()
@@ -60,19 +57,12 @@ export async function ExamTestCases(page) {
   await page.locator("div").filter({ hasText: /^01$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator("div:nth-child(3) > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "john doe" }).click();
+  await page.locator('div').filter({ hasText: /^Select Invigilator$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'John Doe' }).click();
+  await page.locator('div').filter({ hasText: /^Select Room$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'Room' }).click();
   await page.getByPlaceholder("Total Marks").click();
   await page.getByPlaceholder("Total Marks").fill("40");
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
-  await page.getByText("Room 1").click();
   await page.getByRole("button", { name: "Add New Subject" }).click();
   await page
     .locator("div:nth-child(4) > div > div > .min-w-1 > section > div > div")
@@ -96,30 +86,17 @@ export async function ExamTestCases(page) {
 
 
 
-  await page
-    .locator(
-      "div:nth-child(4) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
-    )
-    .first()
-    .click();
+  await page.locator('div:nth-child(4) > .grid > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div').first().click();
+
   await page.locator("div").filter({ hasText: /^02$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator(
-      "div:nth-child(4) > div:nth-child(3) > div > .min-w-1 > section > div > div"
-    )
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "john doe" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
-  await page.getByText("Room").nth(3).click();
+  await page.locator('div').filter({ hasText: /^Select Invigilator$/ }).nth(3).click();
+  await page.locator('li').filter({ hasText: 'John Doe' }).click();
+  await page.locator('div').filter({ hasText: /^Select Room$/ }).nth(3).click();
+  await page.locator('li').filter({ hasText: 'Room' }).click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').click();
-  await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill("40");
+  await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill('40');
   await page.getByRole("button", { name: "Save" }).click();
 
 
@@ -133,11 +110,8 @@ export async function ExamTestCases(page) {
   await page
     .getByPlaceholder("Description")
     .fill("final year exam date sheet announce");
-  await page
-    .locator(".flex > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "Annual" }).click();
+  await page.locator('div').filter({ hasText: /^Select Exam Type$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'Annual' }).click();
   await page
     .locator(".border > div > div > .min-w-1 > section > div > div")
     .first()
@@ -165,19 +139,12 @@ export async function ExamTestCases(page) {
   await page.locator("div").filter({ hasText: /^01$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator("div:nth-child(3) > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "john doe" }).click();
+  await page.locator('div').filter({ hasText: /^Select Invigilator$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'John Doe' }).click();
+  await page.locator('div').filter({ hasText: /^Select Room$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'Room' }).click();
   await page.getByPlaceholder("Total Marks").click();
   await page.getByPlaceholder("Total Marks").fill("60");
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
-  await page.getByText("Room 1").click();
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Add New Subject" }).click();
   await page
@@ -202,28 +169,14 @@ export async function ExamTestCases(page) {
 
 
 
-  await page
-    .locator(
-      "div:nth-child(4) > div:nth-child(2) > div > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
-    )
-    .first()
-    .click();
+  await page.locator('div:nth-child(4) > .grid > div:nth-child(3) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div').first().click();
   await page.locator("div").filter({ hasText: /^02$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator(
-      "div:nth-child(4) > div:nth-child(3) > div > .min-w-1 > section > div > div"
-    )
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "john doe" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
-  await page.getByText("Room").nth(3).click();
+  await page.locator('div').filter({ hasText: /^Select Invigilator$/ }).nth(3).click();
+  await page.locator('li').filter({ hasText: 'John Doe' }).click();
+  await page.locator('div').filter({ hasText: /^Select Room$/ }).nth(3).click();
+  await page.locator('li').filter({ hasText: 'Room' }).click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill("60");
   await page.getByRole("button", { name: "Save" }).click();
@@ -285,11 +238,8 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-  .getByRole("row", { name: "Chemistry 2025-02-14 01:00 PM" })
-  .locator("div")
-  .click();
-  await page.locator("li").filter({ hasText: "Add Marks" }).click();
+  await page.getByRole('row', { name: 'Chemistry 2025-02-14 01:00 AM' }).locator('div').click();
+  await page.locator('li').filter({ hasText: 'Add Marks' }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");
   await page.locator('input[name="Comments 0"]').click();
@@ -311,11 +261,8 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-    .getByRole("row", { name: "English 2025-02-14 02:00 PM" })
-    .locator("div")
-    .click();
-  await page.locator("li").filter({ hasText: "Add Marks" }).click();
+  await page.getByRole('row', { name: 'English 2025-02-14 02:00 AM' }).locator('div').click();
+  await page.locator('li').filter({ hasText: 'Add Marks' }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");
   await page.locator('input[name="Comments 0"]').click();
@@ -339,10 +286,7 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-    .getByRole("row", { name: "Chemistry 2025-02-15 01:00 PM" })
-    .locator("div")
-    .click();
+  await page.locator('#examDetailsActionChemistry').click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("50");
@@ -365,10 +309,7 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-    .getByRole("row", { name: "English 2025-02-15 02:00 PM" })
-    .locator("div")
-    .click();
+  await page.locator('#examDetailsActionEnglish').click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("50");
@@ -391,10 +332,8 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-    .getByRole("row", { name: "Chemistry 2025-02-15 01:00 PM" })
-    .locator("div")
-    .click();
+  await page.locator('#examDetailsActionChemistry').click();
+
   await page.getByText("View Marks").click();
 
 
@@ -414,28 +353,18 @@ export async function ExamTestCases(page) {
   await page
     .getByPlaceholder("Description")
     .fill("Chemistry subject result added");
-  await page
-    .locator(".flex > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "Chemistry" }).click();
-  await page
-    .locator("div:nth-child(2) > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "PassAndFail Grading" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
-  await page.getByText("MidTerm exam date sheet").click();
+  await page.locator('div').filter({ hasText: /^Select Subject$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'Chemistry' }).click();
+  await page.locator('div').filter({ hasText: /^Select Grading Structure$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'PassAndFail Grading' }).click();
+  await page.locator('div').filter({ hasText: /^Select Exam$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'MidTerm exam date sheet' }).click();
   await page.getByPlaceholder("Weightage").click();
   await page.getByPlaceholder("Weightage").fill("40");
   await page.getByRole("button", { name: "Add New Exams" }).click();
   await page
     .locator("div")
-    .filter({ hasText: /^Select$/ })
+    .filter({ hasText: /^Select Exam$/ })
     .nth(2)
     .click();
   await page.getByText("final year exam date").click();
@@ -492,28 +421,18 @@ export async function ExamTestCases(page) {
   await page
     .getByPlaceholder("Description")
     .fill("English subject result added");
-  await page
-    .locator(".flex > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "English" }).click();
-  await page
-    .locator("div:nth-child(2) > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "PassAndFail Grading" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
+  await page.locator('div').filter({ hasText: /^Select Subject$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'English' }).click();
+  await page.locator('div').filter({ hasText: /^Select Grading Structure$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'PassAndFail Grading' }).click();
+  await page.locator('div').filter({ hasText: /^Select Exam$/ }).nth(2).click();
   await page.getByText("MidTerm exam date sheet").click();
   await page.getByPlaceholder("Weightage").click();
   await page.getByPlaceholder("Weightage").fill("40");
   await page.getByRole("button", { name: "Add New Exams" }).click();
   await page
     .locator("div")
-    .filter({ hasText: /^Select$/ })
+    .filter({ hasText: /^Select Exam$/ })
     .nth(2)
     .click();
   await page.getByText("final year exam date").click();
@@ -574,41 +493,18 @@ export async function ExamTestCases(page) {
 
 
   await page.getByPlaceholder("Description").fill("Section Result added");
-  await page
-    .locator(".flex > div > .min-w-1 > section > div > div")
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "PassAndFail Grading" }).click();
-  await page
-    .locator(
-      "div:nth-child(4) > div:nth-child(2) > div > div > div > div > .min-w-1 > section > div > div"
-    )
-    .first()
-    .click();
-  await page
-    .locator("li")
-    .filter({ hasText: "Subject Exam Result for" })
-    .click();
+  await page.locator('div').filter({ hasText: /^Select Grading Structure$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'PassAndFail Grading' }).click();
+  await page.locator('div').filter({ hasText: /^Select Exam$/ }).nth(2).click();
+  await page.getByText('Subject Exam Result for').click();
   await page.getByRole("button", { name: "Add New" }).click();
-  await page
-    .locator(
-      "div:nth-child(2) > div:nth-child(2) > div > div > div > .min-w-1 > section > div > div"
-    )
-    .first()
-    .click();
-  await page
-    .locator("li")
-    .filter({ hasText: "Subject result for Chemistry" })
-    .click();
+  await page.locator('div').filter({ hasText: /^Select Exam$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'Subject result for Chemistry' }).click();
   await page
     .locator("div:nth-child(2) > div > div:nth-child(3) > .success > .flex")
     .click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select$/ })
-    .nth(2)
-    .click();
-  await page.locator("li").filter({ hasText: "1" }).click();
+    await page.locator('div').filter({ hasText: /^Select Subject$/ }).nth(2).click();
+    await page.locator('li').filter({ hasText: '1' }).click();
   await page.getByRole("button", { name: "Save" }).click();
 
 
