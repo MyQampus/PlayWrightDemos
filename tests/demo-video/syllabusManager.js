@@ -80,11 +80,8 @@ export async function AddTimeTableAutomator(page) {
   await page.getByText("Time Table Automator").click();
   await page.getByRole("button", { name: "Add Time Table Automator" }).click();
   await fillInputAfterLabel(page, "Subject *", "English", "singleSelect");
-  // await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await fillInputAfterLabel(page, "Teacher", "JDjohn doe", "singleSelect");
-  // await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await fillInputAfterLabel(page, "Room", "Room 1", "singleSelect");
-  // await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await page
     .locator("div")
     .filter({ hasText: /^Select Day$/ })

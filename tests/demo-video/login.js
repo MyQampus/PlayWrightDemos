@@ -9,7 +9,6 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
   await page
     .getByPlaceholder("Institute sub-domain")
     .fill(domain, { force: true });
-  //   await page.fill("[placeholder='Institute sub-domain']", domain);
   await page.fill("[placeholder='Password']", password);
   await page.click("button:has-text('Log in')");
 

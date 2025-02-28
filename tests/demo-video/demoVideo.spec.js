@@ -58,7 +58,6 @@ test.describe("test case for demo video", () => {
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     await loginSetup(page, baseUrl, email, domain, password);
-    // await page.goto(`${baseUrl}/quick-actions`);
   });
   test("test", async () => {
     await AddCampus(page);

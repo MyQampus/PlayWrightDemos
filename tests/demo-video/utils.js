@@ -17,7 +17,7 @@ export async function fillInputAfterLabel(
       const input = labelSiblingDiv.locator("input, textarea"); // Handle both input and textarea
       const existingValue = await input.evaluate((el) => el.value.trim());
       if (!existingValue) {
-        await page.waitForTimeout(500); // Wait for 1 second before filling
+        await page.waitForTimeout(500); 
         await input.fill(inputText);
       }
     } else if (fieldType === "singleSelect") {

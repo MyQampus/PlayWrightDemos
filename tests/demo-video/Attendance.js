@@ -45,12 +45,6 @@ export async function AddSectionAttendance(page) {
   await page.getByRole("link", { name: "Section Attendance" }).click();
   await page.getByRole("button", { name: "Mark Section Attendance" }).click();
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
-  // await page
-  //   .locator("div")
-  //   .filter({ hasText: /^Select$/ })
-  //   .nth(2)
-  //   .click();
-  // await page.getByText("a section").click();
   await fillInputAfterLabel(page, "Attendance Title *", "Morning", "text");
   await page
     .getByRole("row", { name: "JS James Smith" })

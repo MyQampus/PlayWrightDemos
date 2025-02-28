@@ -41,12 +41,6 @@ export async function AddStaff(page) {
   await page.getByPlaceholder("2015550123").click();
   await page.getByPlaceholder("2015550123").fill("2014567899");
   await page.getByRole('button', { name: 'Select Date' }).first().click();
-
-  // await page
-  //   .locator("div")
-  //   .filter({ hasText: /^Select Date$/ })
-  //   .first()
-  //   .click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector > button").first().click();
@@ -179,7 +173,6 @@ export async function AddGuardian(page) {
   await fillInputAfterLabel(page, "Blood Group", "A+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "564 Elm Street, London", "text");
   await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  // await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await fillInputAfterLabel(page, "Identity Number *", "AB123456", "text");
   await page.getByRole("button", { name: "Save" }).click();
   //Associate Student to Guardian
@@ -200,9 +193,7 @@ export async function AddGuardian(page) {
 export async function AddStudentPickupPerson(page) {
   // Add student pickup person
   await page.getByRole("link", { name: "Student Pickup Person" }).click();
-  // await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await page.getByRole("button", { name: "Add Student Pickup Person" }).click();
-  // await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await fillInputAfterLabel(page, "First Name *", "Sophia", "text");
   await fillInputAfterLabel(page, "Last Name *", "Williams", "text");
   await fillInputAfterLabel(page, "Gender", "female", "singleSelect");
@@ -240,15 +231,12 @@ export async function AddExistingUserAsTeacher(page) {
     .click();
   await page.getByRole("link", { name: "Teachers" }).click();
   await page.getByRole("button", { name: "Add Existing User" }).click();
-  //  await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await fillInputAfterLabel(page, "Users *", "JDjohn doe", "singleSelect");
-  // await fillInputAfterLabel(page, "Class ", "9th class", "singleSelect");
   await page
     .locator("div:nth-child(2) > .min-w-1 > section > div > div")
     .first()
     .click();
   await page.locator("li").filter({ hasText: "9th class" }).click();
-  //  await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
   await fillInputAfterLabel(page, "Sections *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
 }
