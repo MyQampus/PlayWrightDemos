@@ -267,10 +267,7 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-    .getByRole("row", { name: "Chemistry 2025-02-14 01:00 AM" })
-    .locator("div")
-    .click();
+  await page.locator("#examDetailsActionChemistry").click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");
@@ -290,10 +287,7 @@ export async function ExamTestCases(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page
-    .getByRole("row", { name: "English 2025-02-14 02:00 AM" })
-    .locator("div")
-    .click();
+  await page.locator("#examDetailsActionEnglish").click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");

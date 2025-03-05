@@ -1,10 +1,7 @@
 // @ts-check
-const { defineConfig, devices, test } = require('@playwright/test');
-const dotenv = require('dotenv')
-dotenv.config({ path: './.env' })
-
-
-
+const { defineConfig, devices, test } = require("@playwright/test");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./.env" });
 
 /**
  * Read environment variables from file.
@@ -16,7 +13,7 @@ dotenv.config({ path: './.env' })
  * @see https://playwright.dev/docs/test-configuration
  */
 module.exports = defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -26,15 +23,15 @@ module.exports = defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
-  timeout: 600000,
+  reporter: "html",
+  timeout: 3600000,
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: "on-first-retry",
     ignoreHTTPSErrors: true,
   },
 
@@ -43,17 +40,17 @@ module.exports = defineConfig({
     // Setup project
     // { name: 'setup', testMatch: "demoVideo.spec.js" },
     {
-      name: 'chromium',
+      name: "chromium",
       use: {
-        ...devices['Desktop Chrome'],
-        // viewport: { width: 1324, height: 768 },
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1280, height: 720 },
         launchOptions: {
           headless: false,
-          args: ['--ignore-certificate-errors']
+          args: ["--ignore-certificate-errors"],
+          // slowMo: 500,
         },
-         // Use prepared auth state.
+        // Use prepared auth state.
         //  storageState: './authenticated_user.json'
-
       },
       // dependencies: ['setup'],
     },
@@ -90,9 +87,5 @@ module.exports = defineConfig({
     //   },
     //   channel: 'chrome' },
     // },
-
   ],
-
-
 });
-

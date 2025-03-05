@@ -134,7 +134,6 @@ export async function AddStudentEnrollment(page) {
       table.scrollLeft = table.scrollWidth;
     }
   });
-  await page.waitForTimeout(1000);
   await page.locator('#studentDavidLodge').click();
   await page.locator("li").filter({ hasText: "Enrollment" }).click();
   await page
