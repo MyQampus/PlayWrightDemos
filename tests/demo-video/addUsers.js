@@ -28,8 +28,8 @@ export async function AddCampusAdmin(page) {
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "AB+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "320 Main St, Springfield", "text");
-  await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Number *", "A12345678", "text");
+  // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
+  // await fillInputAfterLabel(page, "Identity Number *", "A12345678", "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -61,8 +61,8 @@ export async function AddStaff(page) {
   await fillInputAfterLabel(page, "Blood Group", "A+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "123 Main St, Springfield", "text");
   await fillInputAfterLabel(page, "Major Responsibility", "Teaching", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Number *", "52776778876", "text");
+  // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
+  // await fillInputAfterLabel(page, "Identity Number *", "52776778876", "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -94,8 +94,8 @@ export async function AddTeacher(page) {
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "AB+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "456 Elm St, Metropolis", "text");
-  await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Number *", "3434567897647", "text");
+  // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
+  // await fillInputAfterLabel(page, "Identity Number *", "3434567897647", "text");
   await page.getByRole("button", { name: "Next" }).click();
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
@@ -125,20 +125,21 @@ export async function AddStudent(page) {
   await fillInputAfterLabel(page, "Blood Group", "A-", "singleSelect");
   await fillInputAfterLabel(page, "Address", "123 University Ave, Birmingham", "text");
   await fillInputAfterLabel(page, "Registration Number", "673", "text");
-  await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Number *", "AB1234567", "text");
+  // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
+  // await fillInputAfterLabel(page, "Identity Number *", "AB1234567", "text");
   await page.getByRole("button", { name: "Add", exact: true }).click();
   await page.getByRole("button", { name: "Skip" }).click();
   await closeToastMessage(page);
 }
 export async function AddStudentEnrollment(page) {
   // Student Enrollment
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
   await page.locator('#studentDavidLodge').click();
   await page.locator("li").filter({ hasText: "Enrollment" }).click();
   await page
@@ -177,17 +178,17 @@ export async function AddGuardian(page) {
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "A+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "564 Elm Street, London", "text");
-  await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Number *", "AB123456", "text");
+  // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
+  // await fillInputAfterLabel(page, "Identity Number *", "AB123456", "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
   //Associate Student to Guardian
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
   await page.getByRole("cell", { name: "Login Enabled" }).click();
   await page.locator("#guardianActionEmilyJohnson").click();
   await page.locator("li").filter({ hasText: "Associate Student" }).click();
@@ -220,8 +221,8 @@ export async function AddStudentPickupPerson(page) {
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "B+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "123 Main Street, Springfield", "text");
-  await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Number *", "D1233456", "text");
+  // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
+  // await fillInputAfterLabel(page, "Identity Number *", "D1233456", "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -281,8 +282,8 @@ export async function AddStudentInClass(page) {
   await fillInputAfterLabel(page, "Blood Group", "A-", "singleSelect");
   await fillInputAfterLabel(page, "Address", "75 Consett Rd, Hillingdon", "text")
   await fillInputAfterLabel(page, "Registration Number", "1", "text")
-  await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
-  await fillInputAfterLabel(page, "Identity Number *", "32278783", "text")
+  // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
+  // await fillInputAfterLabel(page, "Identity Number *", "32278783", "text")
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Add", exact: true }).click();
   await page.getByRole("button", { name: "Skip" }).click();

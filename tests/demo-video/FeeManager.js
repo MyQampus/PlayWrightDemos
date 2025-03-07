@@ -68,24 +68,24 @@ export async function AcceptStudentFee(page) {
   // Main execution flow
   await page.getByRole("link", { name: "Receivable" }).click();
   // Scroll table horizontally
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
   // Process payments
   await acceptPayment("2000");
 }
 export async function ReceivedAndAcceptPayment(page) {
   await page.getByRole("link", { name: "Received" }).click();
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  // await page.waitForTimeout(1000);
   await page.getByRole("link", { name: "Accept Payment" }).click();
   await page
     .locator(".w-\\[250px\\] > div > .min-w-1 > section > div > div")
@@ -154,14 +154,15 @@ export async function AddFeeDiscountTypeTestCase(page) {
 }
 export async function AddFeeDiscountAndViewTestCase(page) {
   await page.getByRole("link", { name: "Receivable" }).click();
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page.locator('#receivableActionDavidLodge1').click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Due', exact: true }).click();
+  await page.locator('#receivableActionDavidLodge0').click();
   await page.locator("li").filter({ hasText: "Add Discount" }).click();
   await fillInputAfterLabel(page, "Discount Type *", "Merit-Based Discounts", "singleSelect");
   await fillInputAfterLabel(page, "Discount Amount", "200", "text");

@@ -18,12 +18,12 @@ export async function AddSubject(page) {
   await fillInputAfterLabel(page, "Subject Title *", "English", "text");
   await fillInputAfterLabel(page, "Concise Name *", "EN", "text");
   await page.getByRole("button", { name: "Create" }).click();
+  await closeToastMessage(page);
   await page.locator("#subjectActionEN").click();
   await page.getByText("Assign Teacher").click();
   await fillInputAfterLabel(page, "Teachers", "JDjohn doe", "singleSelect");
   await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
   await page.getByRole("button", { name: "Save" }).click();
-  await closeToastMessage(page);
 }
 export async function AddChapter(page) {
   //add chapter
@@ -231,12 +231,12 @@ export async function AddSubjectInClass(page) {
 
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
   const subjectAction = await page.locator("#subjectActionche");
   await subjectAction.click();
   await page.locator("#subjectActionche").click();

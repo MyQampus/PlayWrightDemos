@@ -227,38 +227,31 @@ export async function ExamTestCases(page) {
   await closeToastMessage(page);
 
   // Published exam
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page.waitForTimeout(1000);
-
-  await page
-    .getByRole("row", { name: "MidTerm exam date sheet" })
-    .getByRole("cell")
-    .nth(4)
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  // await page.waitForTimeout(1000);
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator('#examActionMidTermexamdatesheet').click();
   await page.locator("li").filter({ hasText: "Publish" }).click();
   await page.getByRole("button", { name: "Published" }).click();
   await closeToastMessage(page);
 
   // second data publish
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page.waitForTimeout(1000);
-  await page
-    .getByRole("row", { name: "final year exam date Annual" })
-    .getByRole("cell")
-    .nth(4)
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  // await page.waitForTimeout(1000);
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator('#examActionfinalyearexamdate').click();
   await page.locator("li").filter({ hasText: "Publish" }).click();
   await page.getByRole("button", { name: "Published" }).click();
   await closeToastMessage(page);
@@ -266,13 +259,14 @@ export async function ExamTestCases(page) {
   // add marks after published exam
   // add marks for chemistry
   await page.getByRole("cell", { name: "MidTerm exam date sheet" }).click();
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
   await page.locator("#examDetailsActionChemistry").click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
@@ -287,13 +281,14 @@ export async function ExamTestCases(page) {
   await closeToastMessage(page);
 
   // add subject marks for English
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
   await page.locator("#examDetailsActionEnglish").click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
@@ -310,13 +305,14 @@ export async function ExamTestCases(page) {
   // second exam add marks after publish
   await page.getByRole("link", { name: "Exam", exact: true }).click();
   await page.getByRole("cell", { name: "final year exam date" }).click();
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
   await page.locator("#examDetailsActionChemistry").click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
@@ -331,13 +327,14 @@ export async function ExamTestCases(page) {
   await closeToastMessage(page);
 
   // add subject marks for English
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
   await page.locator("#examDetailsActionEnglish").click();
   await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
@@ -352,17 +349,16 @@ export async function ExamTestCases(page) {
   await closeToastMessage(page);
 
   // view student added marks
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
   await page.locator("#examDetailsActionChemistry").click();
-
   await page.getByText("View Marks").click();
-
   // add subject exam result for Chemistry
   await page
     .locator("div")
@@ -412,33 +408,29 @@ export async function ExamTestCases(page) {
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate subject result
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page
-    .getByRole("row", { name: "Subject result for Chemistry" })
-    .locator("div")
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator("#SubjectResultActionSubjectresultforChemistry").click();
   await page.getByText("Generate Result").click();
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
   // publish subject result
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page
-    .getByRole("row", { name: "Subject result for Chemistry" })
-    .locator("div")
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator("#SubjectResultActionSubjectresultforChemistry").click();
   await page.locator("li").filter({ hasText: "View Marks" }).click();
   await page.getByRole("button", { name: "Published Result" }).click();
   await page.getByRole("button", { name: "Published", exact: true }).click();
@@ -484,33 +476,29 @@ export async function ExamTestCases(page) {
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate subject result for english
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page
-    .getByRole("row", { name: "Subject Exam Result for" })
-    .locator("div")
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'English', exact: true }).click();
+  await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
   await page.locator("li").filter({ hasText: "Generate Result" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
   // publish subject result for english
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page
-    .getByRole("row", { name: "Subject Exam Result for" })
-    .locator("div")
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
   await page.locator("li").filter({ hasText: "View Marks" }).click();
   await page.getByRole("button", { name: "Published Result" }).click();
   await page.getByRole("button", { name: "Published", exact: true }).click();
@@ -559,44 +547,40 @@ export async function ExamTestCases(page) {
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate section result
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page
-    .getByRole("row", { name: "Section Result for English" })
-    .locator("div")
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
   await page.locator("li").filter({ hasText: "Generate Result" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
   // view section result
-  await page.waitForTimeout(1000);
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
-  await page
-    .getByRole("row", { name: "Section Result for English and Chemistry" })
-    .locator("div")
-    .click();
+  // await page.waitForTimeout(1000);
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
   await page.locator("li").filter({ hasText: "View Marks" }).click();
   await page
     .locator(".w-44 > div > .min-w-1 > section > div > div")
     .first()
     .click();
   await page.locator("li").filter({ hasText: "Student Summary" }).click();
-  await page.evaluate(() => {
-    const table = document.getElementById("table-container");
-    if (table) {
-      table.scrollLeft = table.scrollWidth;
-    }
-  });
+  // await page.evaluate(() => {
+  //   const table = document.getElementById("table-container");
+  //   if (table) {
+  //     table.scrollLeft = table.scrollWidth;
+  //   }
+  // });
   await page.getByRole("cell", { name: "View Result" }).first().click();
 }
