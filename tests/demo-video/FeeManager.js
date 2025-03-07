@@ -1,4 +1,4 @@
-import { fillInputAfterLabel } from "./utils";
+import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
 
 export async function AddFeeType(page) {
   // add fee type
@@ -12,6 +12,7 @@ export async function AddFeeType(page) {
   await fillInputAfterLabel(page, "Fee Type *", "monthly fee", "text");
   await fillInputAfterLabel(page, "Description", "student monthly tuition fee", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
   await page
     .getByRole("row", { name: "monthly fee student monthly" })
     .getByRole("img")
@@ -31,6 +32,7 @@ export async function AddStudentFee(page) {
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AcceptStudentFee(page) {
   // Accept Payment fee
@@ -53,6 +55,7 @@ export async function AcceptStudentFee(page) {
     await fillInputAfterLabel(page, "Payment Method", "Cash", "text");
     // Submit payment
     await page.getByRole("button", { name: "Accept" }).click();
+    await closeToastMessage(page);
     // Close invoice dialog
     await page
       .locator("header")
@@ -100,6 +103,7 @@ export async function ReceivedAndAcceptPayment(page) {
     .click();
   await page.getByRole("button", { name: "Apply" }).click();
   await page.getByRole("button", { name: "Accept" }).click();
+  await closeToastMessage(page);
   await page.getByRole("button", { name: "Print" }).click();
   await page
     .locator("header")
@@ -122,6 +126,7 @@ export async function AddSectionFeeTestCase(page) {
   await fillInputAfterLabel(page, "CLass *", "9th class", "singleSelect");
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddMonthlyFeeGeneratorTestCase(page) {
   await page.getByRole("link", { name: "Monthly Fee Generator" }).click();
@@ -137,6 +142,7 @@ export async function AddMonthlyFeeGeneratorTestCase(page) {
   await fillInputAfterLabel(page, "Fee Amount", "3000", "text");
   await fillInputAfterLabel(page, "Reason", "Attend one more subject", "text");
   await page.getByRole("button", { name: "Add", exact: true }).click();
+  await closeToastMessage(page);
 }
 export async function AddFeeDiscountTypeTestCase(page) {
   await page.getByRole("link", { name: "Discount Types" }).click();
@@ -144,6 +150,7 @@ export async function AddFeeDiscountTypeTestCase(page) {
   await fillInputAfterLabel(page, "Discount Title *", "Merit-Based Discounts", "text");
   await fillInputAfterLabel(page, "Discount Description", "Awarded to students based on academic performance or achievements.", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddFeeDiscountAndViewTestCase(page) {
   await page.getByRole("link", { name: "Receivable" }).click();
@@ -160,5 +167,6 @@ export async function AddFeeDiscountAndViewTestCase(page) {
   await fillInputAfterLabel(page, "Discount Amount", "200", "text");
   await fillInputAfterLabel(page, "Discount Comment", "For current month", "text");
   await page.getByRole("button", { name: "Add", exact: true }).click();
+  await closeToastMessage(page);
   await page.getByRole("link", { name: "Student Discount List" }).click();
 }

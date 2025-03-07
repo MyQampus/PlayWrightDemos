@@ -1,4 +1,4 @@
-import { fillInputAfterLabel } from "./utils.js";
+import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
 
 export async function AddCampus(page) {
   //add campus
@@ -21,6 +21,7 @@ export async function AddClass(page) {
     "text"
   );
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddSection(page) {
   //add section
@@ -35,6 +36,7 @@ export async function AddSection(page) {
   );
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddRoom(page) {
   //add room
@@ -42,6 +44,7 @@ export async function AddRoom(page) {
   await page.getByRole("button", { name: "Add Room" }).click();
   await fillInputAfterLabel(page, "Room Title *", "Room 1", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddGradingStructure(page) {
   // add grading structure flow
@@ -53,7 +56,12 @@ export async function AddGradingStructure(page) {
   await page.getByRole("link", { name: "Non GPA Grading" }).click();
   await page.getByRole("button", { name: "Add Structure" }).click();
   await fillInputAfterLabel(page, "Title *", "PassAndFail Grading", "text");
-  await fillInputAfterLabel(page, "Description ", "A simple grading structure where students are evaluated based on whether they meet the required criteria.", "text");
+  await fillInputAfterLabel(
+    page,
+    "Description ",
+    "A simple grading structure where students are evaluated based on whether they meet the required criteria.",
+    "text"
+  );
   await fillInputAfterLabel(page, "Grade Title *", "A", "text", 0);
   await page.getByRole("button", { name: "Add New Grade" }).click();
   await fillInputAfterLabel(page, "Grade Title *", "B", "text", 1);

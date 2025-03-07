@@ -1,4 +1,5 @@
-import { fillInputAfterLabel } from "./utils.js";
+import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
+
 
 export async function AddCampusAdmin(page) {
   await page
@@ -30,6 +31,7 @@ export async function AddCampusAdmin(page) {
   await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
   await fillInputAfterLabel(page, "Identity Number *", "A12345678", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddStaff(page) {
   await page.getByRole("link", { name: "Staff", exact: true }).click();
@@ -62,6 +64,7 @@ export async function AddStaff(page) {
   await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
   await fillInputAfterLabel(page, "Identity Number *", "52776778876", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddTeacher(page) {
   await page.getByRole("link", { name: "Teachers" }).first().click();
@@ -95,6 +98,7 @@ export async function AddTeacher(page) {
   await fillInputAfterLabel(page, "Identity Number *", "3434567897647", "text");
   await page.getByRole("button", { name: "Next" }).click();
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddStudent(page) {
   // Add student
@@ -125,6 +129,7 @@ export async function AddStudent(page) {
   await fillInputAfterLabel(page, "Identity Number *", "AB1234567", "text");
   await page.getByRole("button", { name: "Add", exact: true }).click();
   await page.getByRole("button", { name: "Skip" }).click();
+  await closeToastMessage(page);
 }
 export async function AddStudentEnrollment(page) {
   // Student Enrollment
@@ -144,6 +149,7 @@ export async function AddStudentEnrollment(page) {
   await page.locator('li').filter({ hasText: 'a section' }).click();
   await fillInputAfterLabel(page, "Roll Number", "1", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddGuardian(page) {
   // Add guardian
@@ -174,6 +180,7 @@ export async function AddGuardian(page) {
   await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
   await fillInputAfterLabel(page, "Identity Number *", "AB123456", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
   //Associate Student to Guardian
   await page.evaluate(() => {
     const table = document.getElementById("table-container");
@@ -188,6 +195,7 @@ export async function AddGuardian(page) {
   await fillInputAfterLabel(page, "Relation", "Father", "text");
   await page.locator(".slider").click();
   await page.getByRole("button", { name: "Associate" }).click();
+  await closeToastMessage(page);
 }
 export async function AddStudentPickupPerson(page) {
   // Add student pickup person
@@ -215,6 +223,7 @@ export async function AddStudentPickupPerson(page) {
   await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
   await fillInputAfterLabel(page, "Identity Number *", "D1233456", "text");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function OpenAllUserPage(page) {
   // all users page
@@ -238,6 +247,7 @@ export async function AddExistingUserAsTeacher(page) {
   await page.locator("li").filter({ hasText: "9th class" }).click();
   await fillInputAfterLabel(page, "Sections *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 }
 export async function AddStudentInClass(page) {
   // Add Student in class
@@ -276,4 +286,5 @@ export async function AddStudentInClass(page) {
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Add", exact: true }).click();
   await page.getByRole("button", { name: "Skip" }).click();
+  await closeToastMessage(page);
 }

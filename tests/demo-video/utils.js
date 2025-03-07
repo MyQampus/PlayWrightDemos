@@ -1,3 +1,4 @@
+import { expect } from "@playwright/test";
 export async function fillInputAfterLabel(
   page,
   labelText,
@@ -17,7 +18,7 @@ export async function fillInputAfterLabel(
       const input = labelSiblingDiv.locator("input, textarea"); // Handle both input and textarea
       const existingValue = await input.evaluate((el) => el.value.trim());
       if (!existingValue) {
-        await page.waitForTimeout(500); 
+        await page.waitForTimeout(500);
         await input.fill(inputText);
       }
     } else if (fieldType === "singleSelect") {
@@ -34,4 +35,11 @@ export async function fillInputAfterLabel(
       }
     }
   }
+}
+
+export async function closeToastMessage(page) {
+  const toast = page.locator(".ui-toast__actions");
+  await expect(toast).toBeVisible();
+  await toast.first().click();
+  await expect(toast).not.toBeVisible();
 }

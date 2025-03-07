@@ -1,4 +1,4 @@
-import { fillInputAfterLabel } from "./utils";
+import { fillInputAfterLabel, closeToastMessage } from "./utils";
 
 export async function ExamTestCases(page) {
   // add exam type
@@ -17,6 +17,7 @@ export async function ExamTestCases(page) {
     "text"
   );
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
   await page.waitForTimeout(1000);
 
   // add second exam type
@@ -29,6 +30,7 @@ export async function ExamTestCases(page) {
     "text"
   );
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 
   // Add new exam
   await page.getByRole("link", { name: "Exam", exact: true }).click();
@@ -126,6 +128,7 @@ export async function ExamTestCases(page) {
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill("40");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 
   // add second exam
   await page.getByRole("button", { name: "Add New Exam" }).click();
@@ -221,6 +224,7 @@ export async function ExamTestCases(page) {
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill("60");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
 
   // Published exam
   await page.waitForTimeout(1000);
@@ -239,6 +243,7 @@ export async function ExamTestCases(page) {
     .click();
   await page.locator("li").filter({ hasText: "Publish" }).click();
   await page.getByRole("button", { name: "Published" }).click();
+  await closeToastMessage(page);
 
   // second data publish
   await page.waitForTimeout(1000);
@@ -256,6 +261,7 @@ export async function ExamTestCases(page) {
     .click();
   await page.locator("li").filter({ hasText: "Publish" }).click();
   await page.getByRole("button", { name: "Published" }).click();
+  await closeToastMessage(page);
 
   // add marks after published exam
   // add marks for chemistry
@@ -278,6 +284,7 @@ export async function ExamTestCases(page) {
   await page.locator('input[name="Comments 1"]').click();
   await page.locator('input[name="Comments 1"]').fill("fail");
   await page.getByRole("button", { name: "Submit" }).click();
+  await closeToastMessage(page);
 
   // add subject marks for English
   await page.waitForTimeout(1000);
@@ -298,6 +305,7 @@ export async function ExamTestCases(page) {
   await page.locator('input[name="Comments 1"]').click();
   await page.locator('input[name="Comments 1"]').fill("fail");
   await page.getByRole("button", { name: "Submit" }).click();
+  await closeToastMessage(page);
 
   // second exam add marks after publish
   await page.getByRole("link", { name: "Exam", exact: true }).click();
@@ -320,6 +328,7 @@ export async function ExamTestCases(page) {
   await page.locator('input[name="Comments 1"]').click();
   await page.locator('input[name="Comments 1"]').fill("fail");
   await page.getByRole("button", { name: "Submit" }).click();
+  await closeToastMessage(page);
 
   // add subject marks for English
   await page.waitForTimeout(1000);
@@ -340,6 +349,7 @@ export async function ExamTestCases(page) {
   await page.locator('input[name="Comments 1"]').click();
   await page.locator('input[name="Comments 1"]').fill("fail");
   await page.getByRole("button", { name: "Submit" }).click();
+  await closeToastMessage(page);
 
   // view student added marks
   await page.waitForTimeout(1000);
@@ -415,6 +425,7 @@ export async function ExamTestCases(page) {
     .click();
   await page.getByText("Generate Result").click();
   await page.getByRole("button", { name: "Confirm" }).click();
+  await closeToastMessage(page);
 
   // publish subject result
   await page.waitForTimeout(1000);
@@ -486,6 +497,7 @@ export async function ExamTestCases(page) {
     .click();
   await page.locator("li").filter({ hasText: "Generate Result" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();
+  await closeToastMessage(page);
 
   // publish subject result for english
   await page.waitForTimeout(1000);
@@ -560,6 +572,7 @@ export async function ExamTestCases(page) {
     .click();
   await page.locator("li").filter({ hasText: "Generate Result" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();
+  await closeToastMessage(page);
 
   // view section result
   await page.waitForTimeout(1000);
