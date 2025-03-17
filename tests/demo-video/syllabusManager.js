@@ -194,7 +194,7 @@ export async function AddCurrentTimeTable(page) {
     .first()
     .click();
   await page.locator("div").filter({ hasText: /^03$/ }).first().click();
-  await page.locator("div").filter({ hasText: /^46$/ }).click();
+  await page.locator("div").filter({ hasText: /^45$/ }).click();
   await page.getByText("PM", { exact: true }).click();
   await page.getByRole("button", { name: "Apply" }).click();
   await page
@@ -203,18 +203,22 @@ export async function AddCurrentTimeTable(page) {
     .nth(2)
     .click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator(
-      ".grid > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
-    )
-    .first()
-    .click();
+  await page.locator('div:nth-child(4) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div').first().click();
   await page.locator("div").filter({ hasText: /^04$/ }).first().click();
-  await page.locator("div").filter({ hasText: /^46$/ }).click();
+  await page.locator("div").filter({ hasText: /^45$/ }).click();
   await page.getByText("PM", { exact: true }).click();
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Room", "Room 1", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
+  await page
+  .locator("div")
+  .filter({ hasText: /^Syllabus Manager$/ })
+  .nth(1)
+  .click();
+  await page.getByRole("link", { name: "Lesson Planner" }).click();
+  await page.getByText('Add lesson').first().click();
+  await page.getByText('Pronunciation Basics0English').click();
   await closeToastMessage(page);
 }
 export async function AddSubjectInClass(page) {
@@ -237,9 +241,8 @@ export async function AddSubjectInClass(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  const subjectAction = await page.locator("#subjectActionche");
-  await subjectAction.click();
-  await page.locator("#subjectActionche").click();
+  await page.getByRole('cell', { name: 'Actions' }).click();
+  await page.locator('#subjectActionche').click();
   await page.locator("li").filter({ hasText: "Assign Teacher" }).click();
   await page
     .locator("div")

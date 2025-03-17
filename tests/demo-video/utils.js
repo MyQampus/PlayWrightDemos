@@ -40,6 +40,6 @@ export async function fillInputAfterLabel(
 export async function closeToastMessage(page) {
   const toast = page.locator(".ui-toast__actions");
   await expect(toast).toBeVisible();
-  await toast.first().click();
+  if(toast) await toast.first().click();
   await expect(toast).not.toBeVisible();
 }

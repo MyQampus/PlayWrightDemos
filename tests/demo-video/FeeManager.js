@@ -161,7 +161,7 @@ export async function AddFeeDiscountAndViewTestCase(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Due', exact: true }).click();
+  await page.getByRole('cell', { name: 'Actions' }).click();
   await page.locator('#receivableActionDavidLodge0').click();
   await page.locator("li").filter({ hasText: "Add Discount" }).click();
   await fillInputAfterLabel(page, "Discount Type *", "Merit-Based Discounts", "singleSelect");

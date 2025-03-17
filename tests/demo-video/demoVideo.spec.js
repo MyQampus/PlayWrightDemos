@@ -52,6 +52,7 @@ import {
 import { ExamTestCases } from "./exam.js";
 import { AddAnnouncemnetType, AddStaffAnnouncemnets, AddGuardianAnnouncement, AddStudentAnnouncement, AddTeacherAnnouncement } from "./Announcements.js";
 import { AddSupportQuery } from "./SupportQuery.js";
+import { AddAppoinment } from "./appoinment.js";
 const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
   let page;
@@ -103,6 +104,7 @@ test.describe("test case for demo video", () => {
     await AddStudentAnnouncement(page);
     await AddTeacherAnnouncement(page);
     await AddSupportQuery(page);
+    await AddAppoinment(page);
     await page.context().storageState({ path: authFile });
   });
 });

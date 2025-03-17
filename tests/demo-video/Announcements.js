@@ -39,7 +39,7 @@ export async function AddStaffAnnouncemnets(page) {
     .click();
   await page
     .locator("div")
-    .filter({ hasText: /^Select Announcement Type$/ })
+    .filter({ hasText: /^Select Announcement Types$/ })
     .nth(3)
     .click();
   await page.locator("li").filter({ hasText: "Exam" }).click();
@@ -65,7 +65,7 @@ export async function AddStudentAnnouncement(page) {
     .click();
   await page
     .locator("div")
-    .filter({ hasText: /^Select Announcement Type$/ })
+    .filter({ hasText: /^Select Announcement Types$/ })
     .nth(2)
     .click();
   await page.locator("li").filter({ hasText: "Exam" }).click();
@@ -87,9 +87,10 @@ export async function AddGuardianAnnouncement(page) {
     .locator("span")
     .nth(1)
     .click();
-  await page
-    .locator("div:nth-child(7) > div > .min-w-1 > section > div > div")
-    .first()
+    await page
+    .locator("div")
+    .filter({ hasText: /^Select Announcement Types$/ })
+    .nth(2)
     .click();
   await page.locator("li").filter({ hasText: "Exam" }).click();
   await page.getByPlaceholder("Write").click();
@@ -110,9 +111,10 @@ export async function AddTeacherAnnouncement(page) {
     .locator("span")
     .nth(1)
     .click();
-  await page
-    .locator("div:nth-child(7) > div > .min-w-1 > section > div > div")
-    .first()
+    await page
+    .locator("div")
+    .filter({ hasText: /^Select Announcement Types$/ })
+    .nth(2)
     .click();
   await page.locator("li").filter({ hasText: "Exam" }).click();
   await page.getByPlaceholder("Write").click();

@@ -30,6 +30,7 @@ export async function AddCampusAdmin(page) {
   await fillInputAfterLabel(page, "Address", "320 Main St, Springfield", "text");
   // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
   // await fillInputAfterLabel(page, "Identity Number *", "A12345678", "text");
+  await page.waitForLoadState('domcontentloaded');
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }

@@ -47,7 +47,7 @@ module.exports = defineConfig({
         launchOptions: {
           headless: false,
           args: ["--ignore-certificate-errors"],
-          // slowMo: 500,
+          slowMo: 500,
         },
         // Use prepared auth state.
         //  storageState: './authenticated_user.json'
