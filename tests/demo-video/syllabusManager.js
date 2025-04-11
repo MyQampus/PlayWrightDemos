@@ -1,7 +1,9 @@
-import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
+import { fillInputAfterLabel, closeToastMessage, clickUntilTargetVisible } from "./utils.js";
 
 export async function AddSubject(page) {
   //Add Subject
+  await page.locator('.min-w-1 > section > div > div').first().click();
+  await page.locator('li').filter({ hasText: '9th class' }).click();
   await page
     .locator("span")
     .filter({ hasText: "Select Section" })
@@ -19,8 +21,9 @@ export async function AddSubject(page) {
   await fillInputAfterLabel(page, "Concise Name *", "EN", "text");
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
-  await page.locator("#subjectActionEN").click();
-  await page.getByText("Assign Teacher").click();
+  await clickUntilTargetVisible(page,'#subjectActionEN',"Assign Teacher");
+  // await page.locator("#subjectActionEN").click();
+  // await page.getByText("Assign Teacher").click();
   await fillInputAfterLabel(page, "Teachers", "JDjohn doe", "singleSelect");
   await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
   await page.getByRole("button", { name: "Save" }).click();
@@ -241,9 +244,10 @@ export async function AddSubjectInClass(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator('#subjectActionche').click();
-  await page.locator("li").filter({ hasText: "Assign Teacher" }).click();
+  await clickUntilTargetVisible(page, '#subjectActionche', 'Assign Teacher');
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator('#subjectActionche').click();
+  // await page.locator("li").filter({ hasText: "Assign Teacher" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select$/ })

@@ -49,10 +49,10 @@ import {
   AddCurrentTimeTable,
   AddSubjectInClass,
 } from "./syllabusManager.js";
-import { ExamTestCases } from "./exam.js";
+import { AddExams, AddExamTypes, AddExamsMarks, AddSubjectResult, AddSectionResult } from "./exam.js";
 import { AddAnnouncemnetType, AddStaffAnnouncemnets, AddGuardianAnnouncement, AddStudentAnnouncement, AddTeacherAnnouncement } from "./Announcements.js";
 import { AddSupportQuery } from "./SupportQuery.js";
-import { AddAppoinment } from "./appoinment.js";
+import { AddAppointmentCategories, AddAppoinmentAvailability } from "./appointment.js";
 const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
   let page;
@@ -74,10 +74,8 @@ test.describe("test case for demo video", () => {
     await OpenAllUserPage(page);
     await AddRoom(page);
     await AddExistingUserAsTeacher(page);
-    await AddSyllabusAutomater(page);
-    await AddSubjectSyllabusTemplate(page);
+    await AddStudentInClass(page);
     await AddGradingStructure(page);
-    await AddCampusAttendance(page);
     await AddFeeType(page);
     await AddStudentFee(page);
     await AcceptStudentFee(page);
@@ -86,8 +84,8 @@ test.describe("test case for demo video", () => {
     await AddMonthlyFeeGeneratorTestCase(page);
     await AddFeeDiscountTypeTestCase(page);
     await AddFeeDiscountAndViewTestCase(page);
-    await AddStudentInClass(page);
-    await AddSectionAttendance(page);
+    await AddSyllabusAutomater(page);
+    await AddSubjectSyllabusTemplate(page);
     await AddSubject(page);
     await AddChapter(page);
     await AddTopic(page);
@@ -95,16 +93,23 @@ test.describe("test case for demo video", () => {
     await AddLessonPlanner(page);
     await AddTimeTableAutomator(page);
     await AddCurrentTimeTable(page);
+    await AddCampusAttendance(page);
     await AddPeriodAttendance(page);
+    await AddSectionAttendance(page);
     await AddSubjectInClass(page);
-    await ExamTestCases(page);
+    await AddExamTypes(page);
+    await AddExams(page);
+    await AddExamsMarks(page);
+    await AddSubjectResult(page);
+    await AddSectionResult(page);
     await AddAnnouncemnetType(page);
     await AddStaffAnnouncemnets(page);
-    await AddGuardianAnnouncement(page);
     await AddStudentAnnouncement(page);
+    await AddGuardianAnnouncement(page);
     await AddTeacherAnnouncement(page);
     await AddSupportQuery(page);
-    await AddAppoinment(page);
+    await AddAppointmentCategories(page);
+    await AddAppoinmentAvailability(page);
     await page.context().storageState({ path: authFile });
   });
 });

@@ -37,11 +37,6 @@ export async function AddCampusAttendance(page) {
 }
 export async function AddSectionAttendance(page) {
   //Add Section Attendance
-  await page
-    .locator("div")
-    .filter({ hasText: /^Attendance$/ })
-    .nth(1)
-    .click();
   await page.getByRole("link", { name: "Section Attendance" }).click();
   await page.getByRole("button", { name: "Mark Section Attendance" }).click();
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
@@ -55,11 +50,6 @@ export async function AddSectionAttendance(page) {
 }
 export async function AddPeriodAttendance(page) {
   //add period attendance
-  await page
-    .locator("div")
-    .filter({ hasText: /^Attendance$/ })
-    .nth(1)
-    .click();
   await page.getByText("Period Attendance").click();
   await page.getByRole("button", { name: "Mark Attendance" }).click();
   await page.locator('div').filter({ hasText: /^Select Current Time Table$/ }).nth(2).click();

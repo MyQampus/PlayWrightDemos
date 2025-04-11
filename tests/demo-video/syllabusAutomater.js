@@ -42,8 +42,8 @@ export async function AddSubjectSyllabusTemplate(page) {
   await fillInputAfterLabel(page, "Grade *", "Tenth", "text");
   await fillInputAfterLabel(page, "Year/Edition *", "2023", "text");
   await page.getByRole("button", { name: "Create" }).click();
+  await closeToastMessage(page);
   await page.getByRole("cell", { name: "Algebra 1" }).click();
-  await page.getByText("Algebra 1").click();
   await page.getByRole("button", { name: "Add Chapters" }).click();
   await fillInputAfterLabel(
     page,

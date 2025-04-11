@@ -1,4 +1,4 @@
-import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
+import { fillInputAfterLabel, closeToastMessage, clickUntilTargetVisible } from "./utils.js";
 
 export async function AddFeeType(page) {
   // add fee type
@@ -37,12 +37,13 @@ export async function AddStudentFee(page) {
 export async function AcceptStudentFee(page) {
   // Accept Payment fee
   async function acceptPayment(amount) {
-    await page.getByRole("cell", { name: "a section" }).click();
-    await page.locator('#receivableActionDavidLodge0').click();
-    await page
-      .locator("#table-container li")
-      .filter({ hasText: "Accept Payment" })
-      .click();
+  await clickUntilTargetVisible(page, "#receivableActionDavidLodge0","Accept Payment");
+    // await page.getByRole("cell", { name: "a section" }).click();
+    // await page.locator('#receivableActionDavidLodge0').click();
+    // await page
+    //   .locator("#table-container li")
+    //   .filter({ hasText: "Accept Payment" })
+    //   .click();
     // Fill payment details
     const amountField = page.getByPlaceholder("Receiving Amount");
     await amountField.click();
@@ -161,9 +162,10 @@ export async function AddFeeDiscountAndViewTestCase(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator('#receivableActionDavidLodge0').click();
-  await page.locator("li").filter({ hasText: "Add Discount" }).click();
+  await clickUntilTargetVisible(page, "#receivableActionDavidLodge2",'Add Discount');
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator('#receivableActionDavidLodge2').click();
+  // await page.locator("li").filter({ hasText: "Add Discount" }).click();
   await fillInputAfterLabel(page, "Discount Type *", "Merit-Based Discounts", "singleSelect");
   await fillInputAfterLabel(page, "Discount Amount", "200", "text");
   await fillInputAfterLabel(page, "Discount Comment", "For current month", "text");

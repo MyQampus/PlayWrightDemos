@@ -35,7 +35,7 @@ export async function AddSupportQuery(page) {
     "Late Arrival",
     "singleSelect"
   );
-  await fillInputAfterLabel(page, "Teacher *", "JDjohn doe", "singleSelect");
+  await fillInputAfterLabel(page, "Teacher *", "MJmichael johnson", "singleSelect");
   await fillInputAfterLabel(
     page,
     "Guardian *",

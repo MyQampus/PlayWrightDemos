@@ -48,6 +48,8 @@ export async function AddRoom(page) {
 }
 export async function AddGradingStructure(page) {
   // add grading structure flow
+  await page.locator('.min-w-1 > section > div > div > div').first().click();
+  await page.locator('section').filter({ hasText: /^9th class9th class10 Class$/ }).getByRole('img').nth(2).click();
   await page
     .locator("div")
     .filter({ hasText: /^Grading Structures$/ })

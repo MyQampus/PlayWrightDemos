@@ -43,3 +43,24 @@ export async function closeToastMessage(page) {
   if(toast) await toast.first().click();
   await expect(toast).not.toBeVisible();
 }
+export async function clickUntilTargetVisible(
+  page,
+  triggerSelector,
+  targetText,
+) {
+  const trigger = page.locator(triggerSelector);
+  for (let attempt = 1; attempt <= 10; attempt++) {
+    await trigger.click();
+    const target = page.locator(`${triggerSelector} li`).filter({ hasText: targetText });
+    try {
+      await target.waitFor({ state: 'visible', timeout: 500 });
+      await target.click();
+      return; // success
+    } catch (err) {
+      if (attempt === 10) {
+        throw new Error(`Failed to find and click "${targetText}" after ${10} attempts.`);
+      }
+      await page.waitForTimeout(300); // optional delay before next retry
+    }
+  }
+}

@@ -1,6 +1,6 @@
-import { fillInputAfterLabel, closeToastMessage } from "./utils";
+import { fillInputAfterLabel, closeToastMessage,clickUntilTargetVisible } from "./utils";
 
-export async function ExamTestCases(page) {
+export async function AddExamTypes(page) {
   // add exam type
   await page
     .locator("div")
@@ -31,7 +31,8 @@ export async function ExamTestCases(page) {
   );
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
-
+}
+export async function AddExams(page) {
   // Add new exam
   await page.getByRole("link", { name: "Exam", exact: true }).click();
   await page.getByRole("button", { name: "Add New Exam" }).click();
@@ -156,7 +157,6 @@ export async function ExamTestCases(page) {
     .filter({ hasText: /^Select Date$/ })
     .nth(2)
     .click();
-  await page.getByText("15").click();
   await page.getByRole("button", { name: "Apply" }).click();
 
   await page
@@ -165,7 +165,7 @@ export async function ExamTestCases(page) {
     )
     .first()
     .click();
-  await page.locator("div").filter({ hasText: /^01$/ }).first().click();
+  await page.locator("div").filter({ hasText: /^03$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
   await page.getByRole("button", { name: "Apply" }).click();
   await page
@@ -196,8 +196,6 @@ export async function ExamTestCases(page) {
     .filter({ hasText: /^Select Date$/ })
     .nth(2)
     .click();
-  await page.getByText("15").nth(3).click();
-
   await page.getByRole("button", { name: "Apply" }).click();
 
   await page
@@ -206,7 +204,7 @@ export async function ExamTestCases(page) {
     )
     .first()
     .click();
-  await page.locator("div").filter({ hasText: /^02$/ }).first().click();
+  await page.locator("div").filter({ hasText: /^04$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
   await page.getByRole("button", { name: "Apply" }).click();
   await page
@@ -225,7 +223,6 @@ export async function ExamTestCases(page) {
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill("60");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
-
   // Published exam
   // await page.waitForTimeout(1000);
   // await page.evaluate(() => {
@@ -235,9 +232,10 @@ export async function ExamTestCases(page) {
   //   }
   // });
   // await page.waitForTimeout(1000);
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator('#examActionMidTermexamdatesheet').click();
-  await page.locator("li").filter({ hasText: "Publish" }).click();
+  await clickUntilTargetVisible(page, "#examActionMidTermexamdatesheet","Publish");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator('#examActionMidTermexamdatesheet').click();
+  // await page.locator("li").filter({ hasText: "Publish" }).click();
   await page.getByRole("button", { name: "Published" }).click();
   await closeToastMessage(page);
 
@@ -250,13 +248,16 @@ export async function ExamTestCases(page) {
   //   }
   // });
   // await page.waitForTimeout(1000);
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator('#examActionfinalyearexamdate').click();
-  await page.locator("li").filter({ hasText: "Publish" }).click();
+  await clickUntilTargetVisible(page, "#examActionfinalyearexamdate","Publish");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator('#examActionfinalyearexamdate').click();
+  // await page.locator("li").filter({ hasText: "Publish" }).click();
   await page.getByRole("button", { name: "Published" }).click();
   await closeToastMessage(page);
+}
+export async function AddExamsMarks(page) {
 
-  // add marks after published exam
+// add marks after published exam
   // add marks for chemistry
   await page.getByRole("cell", { name: "MidTerm exam date sheet" }).click();
   // await page.waitForTimeout(1000);
@@ -266,9 +267,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator("#examDetailsActionEnglish").click();
-  await page.locator("li").filter({ hasText: "Add Marks" }).click();
+  await clickUntilTargetVisible(page, "#examDetailsActionEnglish","Add Marks");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator("#examDetailsActionEnglish").click();
+  // await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");
   await page.locator('input[name="Comments 0"]').click();
@@ -288,9 +290,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator("#examDetailsActionChemistry").click();
-  await page.locator("li").filter({ hasText: "Add Marks" }).click();
+  await clickUntilTargetVisible(page, "#examDetailsActionChemistry","Add Marks");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator("#examDetailsActionChemistry").click();
+  // await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");
   await page.locator('input[name="Comments 0"]').click();
@@ -312,9 +315,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator("#examDetailsActionChemistry").click();
-  await page.locator("li").filter({ hasText: "Add Marks" }).click();
+  await clickUntilTargetVisible(page, "#examDetailsActionChemistry","Add Marks");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator("#examDetailsActionChemistry").click();
+  // await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("50");
   await page.locator('input[name="Comments 0"]').click();
@@ -334,9 +338,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator("#examDetailsActionEnglish").click();
-  await page.locator("li").filter({ hasText: "Add Marks" }).click();
+  await clickUntilTargetVisible(page, "#examDetailsActionEnglish","Add Marks");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator("#examDetailsActionEnglish").click();
+  // await page.locator("li").filter({ hasText: "Add Marks" }).click();
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("50");
   await page.locator('input[name="Comments 0"]').click();
@@ -356,9 +361,13 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator("#examDetailsActionChemistry").click();
-  await page.getByText("View Marks").click();
+  await clickUntilTargetVisible(page, "#examDetailsActionChemistry","View Marks");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator("#examDetailsActionChemistry").click();
+  // await page.getByText("View Marks").click();
+}
+export async function AddSubjectResult(page) {
+
   // add subject exam result for Chemistry
   await page
     .locator("div")
@@ -415,9 +424,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.getByRole('row', { name: 'Subject result for Chemistry' }).getByRole('button').click();
-  await page.getByText("Generate Result").click();
+  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectresultforChemistry","Generate Result");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.getByRole('row', { name: 'Subject result for Chemistry' }).getByRole('button').click();
+  // await page.getByText("Generate Result").click();
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
@@ -429,9 +439,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator("#SubjectResultActionSubjectresultforChemistry").click();
-  await page.locator("li").filter({ hasText: "View Marks" }).click();
+  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectresultforChemistry","View Marks");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator("#SubjectResultActionSubjectresultforChemistry").click();
+  // await page.locator("li").filter({ hasText: "View Marks" }).click();
   await page.getByRole("button", { name: "Published Result" }).click();
   await page.getByRole("button", { name: "Published", exact: true }).click();
 
@@ -483,9 +494,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
-  await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
-  await page.locator("li").filter({ hasText: "Generate Result" }).click();
+  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectExamResultforEnglish","Generate Result");
+  // await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
+  // await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
+  // await page.locator("li").filter({ hasText: "Generate Result" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
@@ -497,12 +509,14 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
-  await page.locator("li").filter({ hasText: "View Marks" }).click();
+  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectExamResultforEnglish","View Marks");
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator("#SubjectResultActionSubjectExamResultforEnglish").click();
+  // await page.locator("li").filter({ hasText: "View Marks" }).click();
   await page.getByRole("button", { name: "Published Result" }).click();
   await page.getByRole("button", { name: "Published", exact: true }).click();
-
+}
+export async function AddSectionResult(page) {
   // Add Section Result
   await page.getByRole("link", { name: "Section Result" }).click();
   await page.getByRole("button", { name: "Add Section Result" }).click();
@@ -554,9 +568,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
-  await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
-  await page.locator("li").filter({ hasText: "Generate Result" }).click();
+  await clickUntilTargetVisible(page, "#SectionResultActionSectionResultforEnglishandChemistry","Generate Result");
+  // await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
+  // await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
+  // await page.locator("li").filter({ hasText: "Generate Result" }).click();
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
@@ -568,9 +583,10 @@ export async function ExamTestCases(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
-  await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
-  await page.locator("li").filter({ hasText: "View Marks" }).click();
+  await clickUntilTargetVisible(page, "#SectionResultActionSectionResultforEnglishandChemistry","View Marks");
+  // await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
+  // await page.locator("#SectionResultActionSectionResultforEnglishandChemistry").click();
+  // await page.locator("li").filter({ hasText: "View Marks" }).click();
   await page
     .locator(".w-44 > div > .min-w-1 > section > div > div")
     .first()

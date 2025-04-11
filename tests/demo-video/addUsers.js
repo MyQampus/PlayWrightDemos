@@ -1,4 +1,4 @@
-import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
+import { fillInputAfterLabel, closeToastMessage, clickUntilTargetVisible } from "./utils.js";
 
 
 export async function AddCampusAdmin(page) {
@@ -140,9 +140,10 @@ export async function AddStudentEnrollment(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole('cell', { name: 'Actions' }).click();
-  await page.locator('#studentDavidLodge').click();
-  await page.locator("li").filter({ hasText: "Enrollment" }).click();
+  await clickUntilTargetVisible(page, '#studentDavidLodge', 'Enrollment');
+  // await page.getByRole('cell', { name: 'Actions' }).click();
+  // await page.locator('#studentDavidLodge').click();
+  // await page.locator("li").filter({ hasText: "Enrollment" }).click();
   await page
     .locator("div:nth-child(2) > .min-w-1 > section > div > div > .w-full")
     .click();
@@ -190,9 +191,10 @@ export async function AddGuardian(page) {
   //     table.scrollLeft = table.scrollWidth;
   //   }
   // });
-  await page.getByRole("cell", { name: "Login Enabled" }).click();
-  await page.locator("#guardianActionEmilyJohnson").click();
-  await page.locator("li").filter({ hasText: "Associate Student" }).click();
+  await clickUntilTargetVisible(page, '#guardianActionEmilyJohnson', 'Associate Student');
+  // await page.getByRole("cell", { name: "Login Enabled" }).click();
+  // await page.locator("#guardianActionEmilyJohnson").click();
+  // await page.locator("li").filter({ hasText: "Associate Student" }).click();
   await fillInputAfterLabel(page, "Student", "DLdavid lodge", "singleSelect");
   await fillInputAfterLabel(page, "Relation", "Father", "text");
   await page.locator(".slider").click();
@@ -259,11 +261,6 @@ export async function AddStudentInClass(page) {
     .nth(2)
     .click();
   await page.locator("li").filter({ hasText: "9th class" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Users$/ })
-    .nth(1)
-    .click();
   await page.getByRole("link", { name: "Students" }).first().click();
   await page.getByRole("button", { name: "Add Student" }).click();
   await fillInputAfterLabel(page, "First Name *", "James", "text");
