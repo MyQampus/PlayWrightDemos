@@ -53,6 +53,7 @@ import { AddExams, AddExamTypes, AddExamsMarks, AddSubjectResult, AddSectionResu
 import { AddAnnouncemnetType, AddStaffAnnouncemnets, AddGuardianAnnouncement, AddStudentAnnouncement, AddTeacherAnnouncement } from "./Announcements.js";
 import { AddSupportQuery } from "./SupportQuery.js";
 import { AddAppointmentCategories, AddAppoinmentAvailability } from "./appointment.js";
+import { Dashboard } from "./Dashboard.js";
 const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
   let page;
@@ -110,6 +111,7 @@ test.describe("test case for demo video", () => {
     await AddSupportQuery(page);
     await AddAppointmentCategories(page);
     await AddAppoinmentAvailability(page);
+    await Dashboard(page);
     await page.context().storageState({ path: authFile });
   });
 });

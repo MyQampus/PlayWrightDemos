@@ -134,16 +134,7 @@ export async function AddStudent(page) {
 }
 export async function AddStudentEnrollment(page) {
   // Student Enrollment
-  // await page.evaluate(() => {
-  //   const table = document.getElementById("table-container");
-  //   if (table) {
-  //     table.scrollLeft = table.scrollWidth;
-  //   }
-  // });
   await clickUntilTargetVisible(page, '#studentDavidLodge', 'Enrollment');
-  // await page.getByRole('cell', { name: 'Actions' }).click();
-  // await page.locator('#studentDavidLodge').click();
-  // await page.locator("li").filter({ hasText: "Enrollment" }).click();
   await page
     .locator("div:nth-child(2) > .min-w-1 > section > div > div > .w-full")
     .click();
@@ -185,16 +176,7 @@ export async function AddGuardian(page) {
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
   //Associate Student to Guardian
-  // await page.evaluate(() => {
-  //   const table = document.getElementById("table-container");
-  //   if (table) {
-  //     table.scrollLeft = table.scrollWidth;
-  //   }
-  // });
   await clickUntilTargetVisible(page, '#guardianActionEmilyJohnson', 'Associate Student');
-  // await page.getByRole("cell", { name: "Login Enabled" }).click();
-  // await page.locator("#guardianActionEmilyJohnson").click();
-  // await page.locator("li").filter({ hasText: "Associate Student" }).click();
   await fillInputAfterLabel(page, "Student", "DLdavid lodge", "singleSelect");
   await fillInputAfterLabel(page, "Relation", "Father", "text");
   await page.locator(".slider").click();

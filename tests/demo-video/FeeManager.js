@@ -38,20 +38,12 @@ export async function AcceptStudentFee(page) {
   // Accept Payment fee
   async function acceptPayment(amount) {
   await clickUntilTargetVisible(page, "#receivableActionDavidLodge0","Accept Payment");
-    // await page.getByRole("cell", { name: "a section" }).click();
-    // await page.locator('#receivableActionDavidLodge0').click();
-    // await page
-    //   .locator("#table-container li")
-    //   .filter({ hasText: "Accept Payment" })
-    //   .click();
     // Fill payment details
     const amountField = page.getByPlaceholder("Receiving Amount");
     await amountField.click();
     await amountField.fill(amount);
-    // Handle date selection
     await page.getByRole("button", { name: "Select Date" }).click();
     await page.getByRole("button", { name: "Apply" }).click();
-    // Fill other fields
     await fillInputAfterLabel(page, "Payment Comment", "installment", "text");
     await fillInputAfterLabel(page, "Payment Method", "Cash", "text");
     // Submit payment
@@ -68,25 +60,11 @@ export async function AcceptStudentFee(page) {
   }
   // Main execution flow
   await page.getByRole("link", { name: "Receivable" }).click();
-  // Scroll table horizontally
-  // await page.evaluate(() => {
-  //   const table = document.getElementById("table-container");
-  //   if (table) {
-  //     table.scrollLeft = table.scrollWidth;
-  //   }
-  // });
   // Process payments
   await acceptPayment("2000");
 }
 export async function ReceivedAndAcceptPayment(page) {
   await page.getByRole("link", { name: "Received" }).click();
-  // await page.evaluate(() => {
-  //   const table = document.getElementById("table-container");
-  //   if (table) {
-  //     table.scrollLeft = table.scrollWidth;
-  //   }
-  // });
-  // await page.waitForTimeout(1000);
   await page.getByRole("link", { name: "Accept Payment" }).click();
   await page
     .locator(".w-\\[250px\\] > div > .min-w-1 > section > div > div")
@@ -155,17 +133,7 @@ export async function AddFeeDiscountTypeTestCase(page) {
 }
 export async function AddFeeDiscountAndViewTestCase(page) {
   await page.getByRole("link", { name: "Receivable" }).click();
-  // await page.waitForTimeout(1000);
-  // await page.evaluate(() => {
-  //   const table = document.getElementById("table-container");
-  //   if (table) {
-  //     table.scrollLeft = table.scrollWidth;
-  //   }
-  // });
   await clickUntilTargetVisible(page, "#receivableActionDavidLodge2",'Add Discount');
-  // await page.getByRole('cell', { name: 'Actions' }).click();
-  // await page.locator('#receivableActionDavidLodge2').click();
-  // await page.locator("li").filter({ hasText: "Add Discount" }).click();
   await fillInputAfterLabel(page, "Discount Type *", "Merit-Based Discounts", "singleSelect");
   await fillInputAfterLabel(page, "Discount Amount", "200", "text");
   await fillInputAfterLabel(page, "Discount Comment", "For current month", "text");

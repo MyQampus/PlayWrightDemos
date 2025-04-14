@@ -22,8 +22,6 @@ export async function AddSubject(page) {
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
   await clickUntilTargetVisible(page,'#subjectActionEN',"Assign Teacher");
-  // await page.locator("#subjectActionEN").click();
-  // await page.getByText("Assign Teacher").click();
   await fillInputAfterLabel(page, "Teachers", "JDjohn doe", "singleSelect");
   await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
   await page.getByRole("button", { name: "Save" }).click();
@@ -238,16 +236,7 @@ export async function AddSubjectInClass(page) {
 
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
-  // await page.evaluate(() => {
-  //   const table = document.getElementById("table-container");
-  //   if (table) {
-  //     table.scrollLeft = table.scrollWidth;
-  //   }
-  // });
   await clickUntilTargetVisible(page, '#subjectActionche', 'Assign Teacher');
-  // await page.getByRole('cell', { name: 'Actions' }).click();
-  // await page.locator('#subjectActionche').click();
-  // await page.locator("li").filter({ hasText: "Assign Teacher" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select$/ })
