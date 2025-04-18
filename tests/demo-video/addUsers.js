@@ -21,10 +21,9 @@ export async function AddCampusAdmin(page) {
   await page.locator("#datePickerYearSelector > button").first().click();
   await page.locator("#datePickerYearSelector > button").first().click();
   await page.locator("#datePickerYearSelector > button").first().click();
-  await page.locator("#datePickerYearSelector > button").first().click();
-  await page.getByRole("button", { name: "1978" }).click();
+  await page.getByRole("button", { name: "1996" }).click();
   await page.getByRole("button", { name: "Oct" }).click();
-  await page.getByText("20").click();
+  await page.getByText("15").click();
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "AB+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "320 Main St, Springfield", "text");
@@ -50,7 +49,7 @@ export async function AddStaff(page) {
   await page.locator("#datePickerYearSelector > button").first().click();
   await page.getByRole("button", { name: "2001" }).click();
   await page.getByRole("button", { name: "Jan" }).click();
-  await page.getByText("1", { exact: true }).first().click();
+  await page.getByText("8", { exact: true }).first().click();
   await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
@@ -82,7 +81,8 @@ export async function AddTeacher(page) {
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector > button").first().click();
-  await page.getByRole("button", { name: "2018" }).click();
+  await page.locator("#datePickerYearSelector > button").first().click();
+  await page.getByRole("button", { name: "2001" }).click();
   await page.getByRole("button", { name: "Feb" }).click();
   await page.getByText("8", { exact: true }).first().click();
   await page.getByRole("button", { name: "Apply" }).click();
@@ -91,7 +91,7 @@ export async function AddTeacher(page) {
   await page.locator("#datePickerYearSelector").nth(1).click();
   await page.getByRole("button", { name: "2025" }).click();
   await page.getByRole("button", { name: "Jan" }).click();
-  await page.getByText("2", { exact: true }).nth(2).click();
+  await page.getByText("4", { exact: true }).nth(2).click();
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "AB+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "456 Elm St, Metropolis", "text");
@@ -121,7 +121,7 @@ export async function AddStudent(page) {
   await page.locator("#datePickerYearSelector > button").first().click();
   await page.getByRole("button", { name: "2013" }).click();
   await page.getByRole("button", { name: "Feb" }).click();
-  await page.getByText("2", { exact: true }).first().click();
+  await page.getByText("13", { exact: true }).first().click();
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "A-", "singleSelect");
   await fillInputAfterLabel(page, "Address", "123 University Ave, Birmingham", "text");
@@ -165,9 +165,11 @@ export async function AddGuardian(page) {
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector > button").first().click();
-  await page.getByRole("button", { name: "2013" }).click();
-  await page.getByRole("button", { name: "Feb" }).click();
-  await page.getByText("2", { exact: true }).first().click();
+  await page.locator("#datePickerYearSelector > button").first().click();
+  await page.locator("#datePickerYearSelector > button").first().click();
+  await page.getByRole("button", { name: "1995" }).click();
+  await page.getByRole("button", { name: "May" }).click();
+  await page.getByText("18", { exact: true }).first().click();
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "A+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "564 Elm Street, London", "text");
@@ -200,9 +202,11 @@ export async function AddStudentPickupPerson(page) {
     .click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
-  await page.getByRole("button", { name: "2036" }).click();
-  await page.getByRole("button", { name: "Feb" }).click();
-  await page.getByText("2", { exact: true }).first().click();
+  await page.locator("#datePickerYearSelector > button").first().click();
+  await page.locator("#datePickerYearSelector > button").first().click();
+  await page.getByRole("button", { name: "2003" }).click();
+  await page.getByRole("button", { name: "Mar" }).click();
+  await page.getByText("22", { exact: true }).first().click();
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "B+", "singleSelect");
   await fillInputAfterLabel(page, "Address", "123 Main Street, Springfield", "text");
@@ -257,7 +261,7 @@ export async function AddStudentInClass(page) {
   await page.locator("#datePickerYearSelector > button").first().click();
   await page.getByRole("button", { name: "2013" }).click();
   await page.getByRole("button", { name: "Mar" }).click();
-  await page.getByText("3", { exact: true }).first().click();
+  await page.getByText("16", { exact: true }).first().click();
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Blood Group", "A-", "singleSelect");
   await fillInputAfterLabel(page, "Address", "75 Consett Rd, Hillingdon", "text")

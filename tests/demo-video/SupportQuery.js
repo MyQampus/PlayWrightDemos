@@ -9,11 +9,11 @@ export async function AddSupportQuery(page) {
   //Add Support Query Type
   await page.getByRole("link", { name: "Support Query Types" }).click();
   await page.getByRole("button", { name: "Add Support Query Type" }).click();
-  await fillInputAfterLabel(page, "Query Type *", "Late Arrival", "text");
+  await fillInputAfterLabel(page, "Query Type *", "Performance", "text");
   await fillInputAfterLabel(
     page,
     "Description",
-    "Students are late to school",
+    "Discuss the performance of the student",
     "text"
   );
   await page.getByRole("button", { name: "Save" }).click();
@@ -22,17 +22,17 @@ export async function AddSupportQuery(page) {
   //Add Support Query
   await page.getByRole("link", { name: "Support Query", exact: true }).click();
   await page.getByRole("button", { name: "Add Support Query" }).click();
-  await fillInputAfterLabel(page, "Title *", "Report", "text");
+  await fillInputAfterLabel(page, "Title *", "Performance Report", "text");
   await fillInputAfterLabel(
     page,
     "Description",
-    "Student arrival report",
+    "Student Report",
     "text"
   );
   await fillInputAfterLabel(
     page,
     "Support Query *",
-    "Late Arrival",
+    "Performance",
     "singleSelect"
   );
   await fillInputAfterLabel(page, "Teacher *", "MJmichael johnson", "singleSelect");
@@ -46,11 +46,11 @@ export async function AddSupportQuery(page) {
   await page.locator("textarea").click();
   await page
     .locator("textarea")
-    .fill("Hi this is query about the student late arrival.");
+    .fill("Hi! We'd love to connect and share valuable insights about David's progress.");
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
 
   await page.getByPlaceholder("Type your message..").click();
-  await page.getByPlaceholder("Type your message..").fill("ok");
+  await page.getByPlaceholder("Type your message..").fill("Let’s build their brighter future—together.");
   await page.getByRole("button", { name: "Send" }).click();
 }

@@ -21,7 +21,7 @@ export async function Dashboard(page) {
   await page.waitForTimeout(1000);
   await page
     .locator("#timetable div")
-    .filter({ hasText: "Timetable Filters pioneer8 -" })
+    .filter({ hasText: "Timetable Filters pioneer" })
     .first()
     .click();
   await page.waitForTimeout(1000);

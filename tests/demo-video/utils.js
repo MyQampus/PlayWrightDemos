@@ -39,9 +39,9 @@ export async function fillInputAfterLabel(
 
 export async function closeToastMessage(page) {
   const toast = page.locator(".ui-toast__actions");
-  await expect(toast).toBeVisible();
+  await expect(toast).toBeVisible({timeout: 2000});
   if(toast) await toast.first().click();
-  await expect(toast).not.toBeVisible();
+  await expect(toast).not.toBeVisible({timeout: 2000});
 }
 export async function clickUntilTargetVisible(
   page,
@@ -55,12 +55,12 @@ export async function clickUntilTargetVisible(
     try {
       await target.waitFor({ state: 'visible', timeout: 500 });
       await target.click();
-      return; // success
+      return;
     } catch (err) {
       if (attempt === 10) {
         throw new Error(`Failed to find and click "${targetText}" after ${10} attempts.`);
       }
-      await page.waitForTimeout(300); // optional delay before next retry
+      await page.waitForTimeout(300);
     }
   }
 }
