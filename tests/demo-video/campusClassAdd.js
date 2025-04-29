@@ -17,7 +17,7 @@ export async function AddClass(page) {
   await fillInputAfterLabel(
     page,
     "Class Description",
-    "boys 9th class",
+    "Science",
     "text"
   );
   await page.getByRole("button", { name: "Save" }).click();
@@ -31,7 +31,7 @@ export async function AddSection(page) {
   await fillInputAfterLabel(
     page,
     "Section Description",
-    "section for boys",
+    "particle",
     "text"
   );
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");

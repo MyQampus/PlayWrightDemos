@@ -25,7 +25,7 @@ export async function AddStudentFee(page) {
   await fillInputAfterLabel(page, "Fee Title *", "monthly tuition fee", "text");
   await fillInputAfterLabel(page, "Student Name *", "DLdavid lodge", "singleSelect");
   await fillInputAfterLabel(page, "Fee Type *", "monthly fee", "singleSelect");
-  await fillInputAfterLabel(page, "Amount *", "5000", "text");
+  await fillInputAfterLabel(page, "Amount *", "250", "text");
   await fillInputAfterLabel(page, "Payment Method", "cash", "text");
   await page.getByRole("button", { name: "Select Date" }).click();
   await page.getByRole("button", { name: "Apply" }).click();
@@ -61,7 +61,7 @@ export async function AcceptStudentFee(page) {
   // Main execution flow
   await page.getByRole("link", { name: "Receivable" }).click();
   // Process payments
-  await acceptPayment("2000");
+  await acceptPayment("100");
 }
 export async function ReceivedAndAcceptPayment(page) {
   await page.getByRole("link", { name: "Received" }).click();
@@ -94,7 +94,7 @@ export async function AddSectionFeeTestCase(page) {
   await page.getByRole("link", { name: "Section Fee" }).click();
   await page.getByRole("button", { name: "Add Section Fee" }).click();
   await fillInputAfterLabel(page, "Fee Type *", "monthly fee", "singleSelect");
-  await fillInputAfterLabel(page, "Amount", "1000", "text");
+  await fillInputAfterLabel(page, "Amount", "300", "text");
   await fillInputAfterLabel(page, "Payment Method", "cash", "text");
   await page
     .locator("div")
@@ -111,14 +111,14 @@ export async function AddMonthlyFeeGeneratorTestCase(page) {
   await page.getByRole("link", { name: "Monthly Fee Generator" }).click();
   await page.getByRole("button", { name: "Add Monthly Fee Generator" }).click();
   await fillInputAfterLabel(page, "Fee Types *", "monthly fee", "singleSelect");
-  await fillInputAfterLabel(page, "Amount", "2000", "text");
+  await fillInputAfterLabel(page, "Amount", "250", "text");
   await fillInputAfterLabel(page, "Fee Generation Date *", "2", "text");
   await fillInputAfterLabel(page, "Due Date of Fee Payment *", "10", "text");
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Add Custom Fee" }).click();
   await fillInputAfterLabel(page,"Student ","david lodge","singleSelect");
-  await fillInputAfterLabel(page, "Fee Amount", "3000", "text");
+  await fillInputAfterLabel(page, "Fee Amount", "100", "text");
   await fillInputAfterLabel(page, "Reason", "Attend one more subject", "text");
   await page.getByRole("button", { name: "Add", exact: true }).click();
   await closeToastMessage(page);
@@ -135,7 +135,7 @@ export async function AddFeeDiscountAndViewTestCase(page) {
   await page.getByRole("link", { name: "Receivable" }).click();
   await clickUntilTargetVisible(page, "#receivableActionDavidLodge2",'Add Discount');
   await fillInputAfterLabel(page, "Discount Type *", "Merit-Based Discounts", "singleSelect");
-  await fillInputAfterLabel(page, "Discount Amount", "200", "text");
+  await fillInputAfterLabel(page, "Discount Amount", "50", "text");
   await fillInputAfterLabel(page, "Discount Comment", "For current month", "text");
   await page.getByRole("button", { name: "Add", exact: true }).click();
   await closeToastMessage(page);

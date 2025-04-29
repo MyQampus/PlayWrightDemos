@@ -19,7 +19,7 @@ export async function fillInputAfterLabel(
       const existingValue = await input.evaluate((el) => el.value.trim());
       if (!existingValue) {
         await page.waitForTimeout(500);
-        await input.fill(inputText);
+        await input.type(inputText, { delay: 100 });
       }
     } else if (fieldType === "singleSelect") {
       await page.waitForTimeout(500);

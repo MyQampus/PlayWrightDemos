@@ -14,7 +14,7 @@ export async function AddCampusAdmin(page) {
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "john.smith@gmail.com", "text");
   await page.getByPlaceholder('2015550123').click();
-  await page.getByPlaceholder('2015550123').fill('2098765455');
+  await page.getByPlaceholder('2015550123').type('2098765455',{ delay: 100 });
   await page.getByRole("button", { name: "Select Date" }).click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
@@ -41,7 +41,7 @@ export async function AddStaff(page) {
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "john.doe@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
-  await page.getByPlaceholder("2015550123").fill("2014567899");
+  await page.getByPlaceholder("2015550123").type("2014567899",{ delay: 100 });
   await page.getByRole('button', { name: 'Select Date' }).first().click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
@@ -76,7 +76,7 @@ export async function AddTeacher(page) {
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "michael.johnson@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
-  await page.getByPlaceholder("2015550123").fill("2056789234");
+  await page.getByPlaceholder("2015550123").type("2056789234",{ delay: 100 });
   await page.getByText("Date Of BirthSelect Date").click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
@@ -110,7 +110,7 @@ export async function AddStudent(page) {
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "david.lodge@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
-  await page.getByPlaceholder("2015550123").fill("2019653471");
+  await page.getByPlaceholder("2015550123").type("2019653471",{ delay: 100 });
   await page
     .locator("div")
     .filter({ hasText: /^Select Date$/ })
@@ -156,7 +156,7 @@ export async function AddGuardian(page) {
   await fillInputAfterLabel(page, "Gender", "female", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "emily.johnson@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
-  await page.getByPlaceholder("2015550123").fill("2023456784");
+  await page.getByPlaceholder("2015550123").type("2023456784",{ delay: 100 });
   await page
     .locator("div")
     .filter({ hasText: /^Select Date$/ })
@@ -194,7 +194,7 @@ export async function AddStudentPickupPerson(page) {
   await fillInputAfterLabel(page, "Gender", "female", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "sophia.williams@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
-  await page.getByPlaceholder("2015550123").fill("2098765457");
+  await page.getByPlaceholder("2015550123").type("2098765457",{ delay: 100 });
   await page
     .locator("div")
     .filter({ hasText: /^Select Date$/ })
@@ -254,7 +254,7 @@ export async function AddStudentInClass(page) {
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "james.smith@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
-  await page.getByPlaceholder("2015550123").fill("2027834322");
+  await page.getByPlaceholder("2015550123").type("2027834322",{ delay: 100 });
   await page.getByRole("button", { name: "Select Date" }).click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();

@@ -5,11 +5,11 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
   await page.goto(`${baseUrl}/signin`);
 
   // Fill in login details
-  await page.fill("[placeholder='Email']", email);
+  await page.type("[placeholder='Email']", email,{delay : 100});
   await page
     .getByPlaceholder("Institute sub-domain")
-    .fill(domain, { force: true });
-  await page.fill("[placeholder='Password']", password);
+    .type(domain,{delay : 100}, { force: true });
+  await page.type("[placeholder='Password']", password,{delay : 100});
   await page.click("button:has-text('Log in')");
 
   await page.waitForTimeout(500);
