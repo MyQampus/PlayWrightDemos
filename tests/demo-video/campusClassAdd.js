@@ -31,7 +31,7 @@ export async function AddSection(page) {
   await fillInputAfterLabel(
     page,
     "Section Description",
-    "particle",
+    "practical",
     "text"
   );
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");

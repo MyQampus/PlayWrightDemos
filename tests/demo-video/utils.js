@@ -64,3 +64,13 @@ export async function clickUntilTargetVisible(
     }
   }
 }
+
+export async function timeClick(page,time) {
+  const timeElement = await page.locator(`div.meridiem >> text=${time}`);
+  const isSelected = await timeElement.evaluate((el) => {
+    return el.classList.contains('bg-primary-purple-100') && el.classList.contains('text-primary-purple-600');
+  });
+  if (!isSelected) {
+    await timeElement.click();
+  }
+}
