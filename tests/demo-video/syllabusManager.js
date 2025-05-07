@@ -1,9 +1,14 @@
-import { fillInputAfterLabel, closeToastMessage, clickUntilTargetVisible } from "./utils.js";
+import {
+  fillInputAfterLabel,
+  closeToastMessage,
+  clickUntilTargetVisible,
+  timeClick,
+} from "./utils.js";
 
 export async function AddSubject(page) {
   //Add Subject
-  await page.locator('.min-w-1 > section > div > div').first().click();
-  await page.locator('li').filter({ hasText: '9th class' }).click();
+  await page.locator(".min-w-1 > section > div > div").first().click();
+  await page.locator("li").filter({ hasText: "9th class" }).click();
   await page
     .locator("span")
     .filter({ hasText: "Select Section" })
@@ -21,7 +26,7 @@ export async function AddSubject(page) {
   await fillInputAfterLabel(page, "Concise Name *", "EN", "text");
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
-  await clickUntilTargetVisible(page,'#subjectActionEN',"Assign Teacher");
+  await clickUntilTargetVisible(page, "#subjectActionEN", "Assign Teacher");
   await fillInputAfterLabel(page, "Teachers", "JDjohn doe", "singleSelect");
   await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
   await page.getByRole("button", { name: "Save" }).click();
@@ -170,12 +175,12 @@ export async function AddTimeTableAutomator(page) {
   await page.locator("#TimeTableStartTimeId").click();
   await page.locator("div").filter({ hasText: /^10$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await page.getByText("AM", { exact: true }).click();
+  await timeClick(page, "AM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page.locator("#TimeTableEndTimeId").click();
   await page.locator("div").filter({ hasText: /^11$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await page.getByText("AM", { exact: true }).click();
+  await timeClick(page, "AM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
@@ -196,7 +201,7 @@ export async function AddCurrentTimeTable(page) {
     .click();
   await page.locator("div").filter({ hasText: /^03$/ }).first().click();
   await page.locator("div").filter({ hasText: /^45$/ }).click();
-  await page.getByText("PM", { exact: true }).click();
+  await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
@@ -204,22 +209,27 @@ export async function AddCurrentTimeTable(page) {
     .nth(2)
     .click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await page.locator('div:nth-child(4) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div').first().click();
+  await page
+    .locator(
+      "div:nth-child(4) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
+    )
+    .first()
+    .click();
   await page.locator("div").filter({ hasText: /^04$/ }).first().click();
   await page.locator("div").filter({ hasText: /^45$/ }).click();
-  await page.getByText("PM", { exact: true }).click();
+  await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await fillInputAfterLabel(page, "Room", "Room 1", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
   await page
-  .locator("div")
-  .filter({ hasText: /^Syllabus Manager$/ })
-  .nth(1)
-  .click();
+    .locator("div")
+    .filter({ hasText: /^Syllabus Manager$/ })
+    .nth(1)
+    .click();
   await page.getByRole("link", { name: "Lesson Planner" }).click();
-  await page.getByText('Add lesson').first().click();
-  await page.getByText('Pronunciation Basics0English').click();
+  await page.getByText("Add lesson").first().click();
+  await page.getByText("Pronunciation Basics0English").click();
   await closeToastMessage(page);
 }
 export async function AddSubjectInClass(page) {
@@ -236,7 +246,7 @@ export async function AddSubjectInClass(page) {
 
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
-  await clickUntilTargetVisible(page, '#subjectActionche', 'Assign Teacher');
+  await clickUntilTargetVisible(page, "#subjectActionche", "Assign Teacher");
   await page
     .locator("div")
     .filter({ hasText: /^Select$/ })

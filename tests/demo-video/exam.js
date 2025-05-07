@@ -1,4 +1,9 @@
-import { fillInputAfterLabel, closeToastMessage,clickUntilTargetVisible } from "./utils";
+import {
+  fillInputAfterLabel,
+  closeToastMessage,
+  clickUntilTargetVisible,
+  timeClick,
+} from "./utils";
 
 export async function AddExamTypes(page) {
   // add exam type
@@ -71,7 +76,7 @@ export async function AddExams(page) {
     .click();
   await page.locator("div").filter({ hasText: /^01$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await page.getByText("PM", { exact: true }).click();
+  await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
@@ -111,7 +116,7 @@ export async function AddExams(page) {
 
   await page.locator("div").filter({ hasText: /^02$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await page.getByText("PM", { exact: true }).click();
+  await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
@@ -166,7 +171,7 @@ export async function AddExams(page) {
     .click();
   await page.locator("div").filter({ hasText: /^03$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await page.getByText("PM", { exact: true }).click();
+  await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
@@ -206,7 +211,7 @@ export async function AddExams(page) {
     .click();
   await page.locator("div").filter({ hasText: /^04$/ }).first().click();
   await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await page.getByText("PM", { exact: true }).click();
+  await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
@@ -225,21 +230,28 @@ export async function AddExams(page) {
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
   // Published exam
-  await clickUntilTargetVisible(page, "#examActionMidTermexamdatesheet","Publish");
+  await clickUntilTargetVisible(
+    page,
+    "#examActionMidTermexamdatesheet",
+    "Publish"
+  );
   await page.getByRole("button", { name: "Published" }).click();
   await closeToastMessage(page);
 
   // second data publish
-  await clickUntilTargetVisible(page, "#examActionfinalyearexamdate","Publish");
+  await clickUntilTargetVisible(
+    page,
+    "#examActionfinalyearexamdate",
+    "Publish"
+  );
   await page.getByRole("button", { name: "Published" }).click();
   await closeToastMessage(page);
 }
 export async function AddExamsMarks(page) {
-
-// add marks after published exam
+  // add marks after published exam
   // add marks for chemistry
   await page.getByRole("cell", { name: "MidTerm exam date sheet" }).click();
-  await clickUntilTargetVisible(page, "#examDetailsActionEnglish","Add Marks");
+  await clickUntilTargetVisible(page, "#examDetailsActionEnglish", "Add Marks");
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");
   await page.locator('input[name="Comments 0"]').click();
@@ -252,7 +264,11 @@ export async function AddExamsMarks(page) {
   await closeToastMessage(page);
 
   // add subject marks for English
-  await clickUntilTargetVisible(page, "#examDetailsActionChemistry","Add Marks");
+  await clickUntilTargetVisible(
+    page,
+    "#examDetailsActionChemistry",
+    "Add Marks"
+  );
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("40");
   await page.locator('input[name="Comments 0"]').click();
@@ -267,7 +283,11 @@ export async function AddExamsMarks(page) {
   // second exam add marks after publish
   await page.getByRole("link", { name: "Exam", exact: true }).click();
   await page.getByRole("cell", { name: "final year exam date" }).click();
-  await clickUntilTargetVisible(page, "#examDetailsActionChemistry","Add Marks");
+  await clickUntilTargetVisible(
+    page,
+    "#examDetailsActionChemistry",
+    "Add Marks"
+  );
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("50");
   await page.locator('input[name="Comments 0"]').click();
@@ -280,7 +300,7 @@ export async function AddExamsMarks(page) {
   await closeToastMessage(page);
 
   // add subject marks for English
-  await clickUntilTargetVisible(page, "#examDetailsActionEnglish","Add Marks");
+  await clickUntilTargetVisible(page, "#examDetailsActionEnglish", "Add Marks");
   await page.locator('input[name="MARKS 0"]').click();
   await page.locator('input[name="MARKS 0"]').fill("50");
   await page.locator('input[name="Comments 0"]').click();
@@ -293,10 +313,13 @@ export async function AddExamsMarks(page) {
   await closeToastMessage(page);
 
   // view student added marks
-  await clickUntilTargetVisible(page, "#examDetailsActionChemistry","View Marks");
+  await clickUntilTargetVisible(
+    page,
+    "#examDetailsActionChemistry",
+    "View Marks"
+  );
 }
 export async function AddSubjectResult(page) {
-
   // add subject exam result for Chemistry
   await page
     .locator("div")
@@ -346,12 +369,20 @@ export async function AddSubjectResult(page) {
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate subject result
-  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectresultforChemistry","Generate Result");
+  await clickUntilTargetVisible(
+    page,
+    "#SubjectResultActionSubjectresultforChemistry",
+    "Generate Result"
+  );
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
   // publish subject result
-  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectresultforChemistry","View Marks");
+  await clickUntilTargetVisible(
+    page,
+    "#SubjectResultActionSubjectresultforChemistry",
+    "View Marks"
+  );
   await page.getByRole("button", { name: "Published Result" }).click();
   await page.getByRole("button", { name: "Published", exact: true }).click();
 
@@ -396,12 +427,20 @@ export async function AddSubjectResult(page) {
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate subject result for english
-  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectExamResultforEnglish","Generate Result");
+  await clickUntilTargetVisible(
+    page,
+    "#SubjectResultActionSubjectExamResultforEnglish",
+    "Generate Result"
+  );
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
   // publish subject result for english
-  await clickUntilTargetVisible(page, "#SubjectResultActionSubjectExamResultforEnglish","View Marks");
+  await clickUntilTargetVisible(
+    page,
+    "#SubjectResultActionSubjectExamResultforEnglish",
+    "View Marks"
+  );
   await page.getByRole("button", { name: "Published Result" }).click();
   await page.getByRole("button", { name: "Published", exact: true }).click();
 }
@@ -450,12 +489,20 @@ export async function AddSectionResult(page) {
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate section result
-  await clickUntilTargetVisible(page, "#SectionResultActionSectionResultforEnglishandChemistry","Generate Result");
+  await clickUntilTargetVisible(
+    page,
+    "#SectionResultActionSectionResultforEnglishandChemistry",
+    "Generate Result"
+  );
   await page.getByRole("button", { name: "Confirm" }).click();
   await closeToastMessage(page);
 
   // view section result
-  await clickUntilTargetVisible(page, "#SectionResultActionSectionResultforEnglishandChemistry","View Marks");
+  await clickUntilTargetVisible(
+    page,
+    "#SectionResultActionSectionResultforEnglishandChemistry",
+    "View Marks"
+  );
   await page
     .locator(".w-44 > div > .min-w-1 > section > div > div")
     .first()
