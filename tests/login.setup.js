@@ -62,7 +62,10 @@ setup('login', async ({ page }) => {
     await page.getByPlaceholder('Email').fill(dynamicEmail);
     await page.getByRole('button', { name: 'Next' }).click();
     await page.waitForTimeout(1000)
+    await page.getByPlaceholder('Campus Name').click();
+    await page.getByPlaceholder('Campus Name').fill('pioneer');
     await page.getByRole('button', { name: 'Next' }).click();
+    await page.waitForTimeout(1000)
     await page.getByPlaceholder('Class Name').click();
     await page.getByPlaceholder('Class Name').fill(SETUP_CONSTANTS.DEFAULT_CLASS);
     await page.getByPlaceholder('Section').click();

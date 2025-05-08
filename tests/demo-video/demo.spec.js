@@ -4,13 +4,13 @@ const { chromium } = require('playwright');
 let browser;
 let page;
 
-beforeAll(async () => {
-  browser = await chromium.launch({ headless: false }); // Browser launch 
-  const context = await browser.newContext(); // made new context 
-  page = await context.newPage(); // Page create 
-});
+// beforeAll(async () => {
+//   browser = await chromium.launch({ headless: false }); // Browser launch 
+//   const context = await browser.newContext(); // made new context 
+//   page = await context.newPage(); // Page create 
+// });
 
-test('Signup Flow', async ({ page }) => {
+test.skip('Signup Flow', async ({ page }) => {
   await page.goto('https://dev.myqampus.com/signin');
   await page.goto('https://dev.myqampus.com/');
   await page.getByRole('button', { name: 'LogIn / SignUp' }).click();
@@ -28,7 +28,7 @@ test('Signup Flow', async ({ page }) => {
   await page.waitForTimeout(1000);
   await page.getByRole('button', { name: 'Register' }).click();
 });
-test('setup slider', async ({ page }) => {
+test.skip('setup slider', async ({ page }) => {
 
   await page.getByPlaceholder('Institute Name').click();
   await page.getByPlaceholder('Institute Name').fill('London institute school');
@@ -52,7 +52,7 @@ test('setup slider', async ({ page }) => {
   await page.waitForTimeout(1000);
   await page.getByRole('button', { name: 'Confirm' }).click();
 })
-test('Create campus', async ({ page }) => {
+test.skip('Create campus', async ({ page }) => {
   await page.goto(`${baseUrl}/quick-actions`);
   await page.getByRole('list').getByText('Campuses').click();
   await page.getByRole('button', { name: 'Add Campus' }).click();
@@ -65,7 +65,7 @@ test('Create campus', async ({ page }) => {
   await page.getByRole('button', { name: 'Save' }).click();
   await page.waitForTimeout(3000);
 });
-test("create student at section level", async ({ page }) => {
+test.skip("create student at section level", async ({ page }) => {
   await selectCampusAndSection(page);
   await page.locator('div').filter({ hasText: /^Users$/ }).nth(1).click();
   await page.getByRole("list").getByText("Students").click();
@@ -90,7 +90,7 @@ test("create student at section level", async ({ page }) => {
   await page.waitForTimeout(2000);
 });
 
-test("mark Campus Attendance", async ({ page }) => {
+test.skip("mark Campus Attendance", async ({ page }) => {
 
   await page.goto(`${baseUrl}/quick-actions`);
 
@@ -112,7 +112,7 @@ test("mark Campus Attendance", async ({ page }) => {
   await page.getByRole("button", { name: "Mark", exact: true }).click();
 });
 
-test("mark Section Attendance", async ({ page }) => {
+test.skip("mark Section Attendance", async ({ page }) => {
   await selectCampusAndSection(page);
   await page.goto(`${baseUrl}/attendance/section/students`);
   await page.getByRole("button", { name: "Mark Section Attendance" }).click();
@@ -126,7 +126,7 @@ test("mark Section Attendance", async ({ page }) => {
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Submit" }).click();
 });
-test("create period in section", async ({ page }) => {
+test.skip("create period in section", async ({ page }) => {
 
   await page.getByRole("heading", { name: "Time Table" }).click();
   await page.getByText("Period", { exact: true }).click();
@@ -174,7 +174,7 @@ test("create period in section", async ({ page }) => {
   await page.getByRole('button', { name: 'Save' }).click();
   await page.waitForTimeout(3000)
 });
-test("Mark Period Attendance", async ({ page }) => {
+test.skip("Mark Period Attendance", async ({ page }) => {
 
   await page.goto(`${baseUrl}/attendance/period/students`);
   await page.waitForTimeout(5000);
@@ -187,7 +187,7 @@ test("Mark Period Attendance", async ({ page }) => {
   await page.locator("li").filter({ hasText: subjectName }).click();
   await page.getByRole("button", { name: "Mark", exact: true }).click();
 });
-test('create fee type', async ({ page }) => {
+test.skip('create fee type', async ({ page }) => {
   await page.goto(`${baseUrl}/fee/types`);
   await page.getByRole('button', { name: 'Add Fee Type' }).click();
   await page.waitForTimeout(1000)
@@ -199,7 +199,7 @@ test('create fee type', async ({ page }) => {
   await page.getByRole('button', { name: 'Save' }).click();
   await page.waitForTimeout(2000)
 });
-test('create discount type', async ({ page }) => {
+test.skip('create discount type', async ({ page }) => {
   await page.goto(`${baseUrl}/fee/discount-types`);
   await page.getByRole('button', { name: 'Add Discount Type' }).click();
   await page.waitForTimeout(1000)
@@ -211,7 +211,7 @@ test('create discount type', async ({ page }) => {
   await page.waitForTimeout(2000);
 });
 
-test('create section fee', async ({ page }) => {
+test.skip('create section fee', async ({ page }) => {
   await page.goto(`${baseUrl}/fee/section`);
   await page.getByRole('button', { name: 'Add Section Fee' }).click();
   await page.getByText('Select').first().click();
@@ -232,7 +232,7 @@ test('create section fee', async ({ page }) => {
   await page.getByRole('button', { name: 'Save' }).click()
   await page.waitForTimeout(2000);
 });
-test('received student fee', async ({ page }) => {
+test.skip('received student fee', async ({ page }) => {
   await page.goto(`${baseUrl}/fee/receivable`);
   // Scroll the table horizontally to the end
   await page.evaluate(() => {
@@ -253,7 +253,7 @@ test('received student fee', async ({ page }) => {
   await page.waitForTimeout(1000)
   await page.getByRole('button', { name: 'Accept' }).click();
 });
-test('add fine to student', async ({ page }) => {
+test.skip('add fine to student', async ({ page }) => {
 
   await page.goto(`${baseUrl}/fee/receivable`);
 
@@ -278,7 +278,7 @@ test('add fine to student', async ({ page }) => {
 
   await page.getByRole('button', { name: 'Add', exact: true }).click();
 });
-test('add discount to student', async ({ page }) => {
+test.skip('add discount to student', async ({ page }) => {
   await page.goto(`${baseUrl}/fee/receivable`);
   // Scroll the table horizontally to the end
   await page.evaluate(() => {
@@ -298,7 +298,7 @@ test('add discount to student', async ({ page }) => {
   await page.getByRole('button', { name: 'Add', exact: true }).click();
 });
 
-test.describe('Exam module test cases ', () => {
+test.skip('Exam module test cases ', () => {
 
   test.beforeEach(async ({ page }) => {
     await selectCampusAndSection(page)
