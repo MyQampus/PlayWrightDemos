@@ -29,14 +29,14 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
     await page.click("button:has-text('Next')");
     await page.fill("[placeholder='Campus Name']", "pioneer");
     await page.locator("div:nth-child(2) > div > .border").first().click();
-    await page.locator("div").filter({ hasText: /^08$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^01$/ }).first().click();
     await page.locator("div").filter({ hasText: /^00$/ }).click();
     await timeClick(page, "AM");
     await page.getByRole("button", { name: "Apply" }).click();
     await page
       .locator(".grid > div:nth-child(2) > div > .relative > div > .border")
       .click();
-    await page.locator("div").filter({ hasText: /^01$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^08$/ }).first().click();
     await page.locator("div").filter({ hasText: /^00$/ }).click();
     await timeClick(page, "PM");
     await page.getByRole("button", { name: "Apply" }).click();
