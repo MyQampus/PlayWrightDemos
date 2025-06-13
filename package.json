@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "record:8080": "npx playwright codegen http://localhost:8080/"
   },
   "keywords": [],
   "author": "",
