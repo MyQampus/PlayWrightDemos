@@ -1,0 +1,106 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "http://localhost:8080",
+      "localStorage": [
+        {
+          "name": "theme",
+          "value": "{\"name\":\"green\"}"
+        },
+        {
+          "name": "generalSettingSiteTitle",
+          "value": "Aitchison International School System"
+        },
+        {
+          "name": "currentClassScope",
+          "value": "\"\""
+        },
+        {
+          "name": "auth.currentUser",
+          "value": "{\"id\":\"01e21c90-05c6-43d8-8b63-5f280724185a\",\"profile\":null,\"user_type\":null,\"is_owner\":true,\"image\":null,\"email\":\"superadmin@gmail.com\",\"username\":\"superadmin\",\"last_name\":\"Admin\",\"first_name\":\"Super\",\"phone\":null,\"gender\":\"male\",\"major_role\":null,\"user_roles\":[{\"role_id\":\"super_admin\",\"is_default\":true}],\"full_name\":\"Super Admin\"}"
+        },
+        {
+          "name": "user",
+          "value": "{\"id\":\"01e21c90-05c6-43d8-8b63-5f280724185a\",\"profile\":null,\"user_type\":null,\"is_owner\":true,\"image\":null,\"email\":\"superadmin@gmail.com\",\"username\":\"superadmin\",\"last_name\":\"Admin\",\"first_name\":\"Super\",\"phone\":null,\"gender\":\"male\",\"major_role\":null,\"user_roles\":[{\"role_id\":\"super_admin\",\"is_default\":true}]}"
+        },
+        {
+          "name": "signUpSlider",
+          "value": "false"
+        },
+        {
+          "name": "isAssociatedStudentProfileActive",
+          "value": "false"
+        },
+        {
+          "name": "isStudentDispatcher",
+          "value": "true"
+        },
+        {
+          "name": "setting",
+          "value": "{\"title\":\"Aitchison International School System\"}"
+        },
+        {
+          "name": "generalSettingInstituteName",
+          "value": "Aitchison International School System"
+        },
+        {
+          "name": "permittedCountries",
+          "value": "[{\"title\":\"United States\",\"id\":\"us\"}]"
+        },
+        {
+          "name": "loglevel:webpack-dev-server",
+          "value": "SILENT"
+        },
+        {
+          "name": "jwt",
+          "value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJjYW1wdXNfYXBpIiwiZXhwIjoxNzUwMjQ4Mzk1LCJmY21fdG9rZW4iOm51bGwsImlhdCI6MTc1MDE2MTk5NSwiaXNzIjoiY2FtcHVzX2FwaSIsImp0aSI6IjNmYWMyNjEzLTMwMTQtNDgxMC1iMTVlLTA3ZmY4OWE4N2YyNyIsIm15cWFtcHVzX3NpdGUiOiJodHRwOi8vZTJlX3NjaG9vbC5lMmVxYS5teXFhbXB1cy5jb20iLCJuYmYiOjE3NTAxNjE5OTQsInN1YiI6IjAxZTIxYzkwLTA1YzYtNDNkOC04YjYzLTVmMjgwNzI0MTg1YSIsInRlbmFudF9uYW1lIjpudWxsLCJ0ZW5hbnRfcHJlZml4IjoiZTJlX3NjaG9vbCIsInR5cCI6ImFjY2VzcyJ9.UkHoEF85rG7XegYD-MfOjb5QYQmfFTfW6bQWF10Z4HusqoyXV2qB3MK7HXL8uAzPYpxIpUjObrMKmaV0oH6yFQ"
+        },
+        {
+          "name": "subDomain",
+          "value": "\"e2e_school\""
+        },
+        {
+          "name": "tabRightNav",
+          "value": "true"
+        },
+        {
+          "name": "generalSettingInstituteAddress",
+          "value": "undefined"
+        },
+        {
+          "name": "curLanguage",
+          "value": "{\"short\":\"en\",\"long\":\"English\",\"dir\":\"ltr\"}"
+        },
+        {
+          "name": "pickupAssignee",
+          "value": "true"
+        },
+        {
+          "name": "instituteTitle",
+          "value": "\"Aitchison International School System\""
+        },
+        {
+          "name": "currentCampusScope",
+          "value": "{\"id\":\"c4f42648-9d60-45c6-9dc3-67e7d49162b8\",\"description\":null,\"title\":\"pioneer\",\"location\":null,\"city\":null,\"timezone\":\"-0400\",\"ended_at_time\":\"20:00:00.000000\",\"started_at_time\":\"01:00:00.000000\",\"contact_no\":null}"
+        },
+        {
+          "name": "currentSectionScope",
+          "value": "\"\""
+        },
+        {
+          "name": "tabLeftNav",
+          "value": "true"
+        },
+        {
+          "name": "selectedRoleId",
+          "value": "super_admin"
+        },
+        {
+          "name": "generalSettings",
+          "value": "{\"is_locked_allowed_countries\":false,\"is_locked_up_week_start_day\":false,\"allowed_languages\":[\"en\",\"ur\",\"ar\"],\"is_locked_up_max_file_size\":false,\"is_locked_up_site_title\":false,\"is_locked_up_format_of_date\":false,\"allowed_currencies\":[\"usd\"],\"format_of_date\":\"YYYY-MM-DD\",\"max_file_size\":2048,\"is_locked_default_language\":false,\"is_locked_up_default_timezone\":false,\"is_locked_up_allowed_timezones\":false,\"allowed_countries\":[\"us\"],\"campus_ends_at_time\":\"20:00:00.000000\",\"is_locked_up_format_of_time\":false,\"default_timezone\":\"-0400\",\"campus_starts_at_time\":\"01:00:00.000000\",\"is_locked_max_file_size\":false,\"is_locked_campus_ends_at_time\":false,\"is_student_dispatcher\":true,\"week_start_day\":\"monday\",\"is_locked_default_timezone\":false,\"is_locked_up_default_country\":false,\"site_title\":\"MyQampus\",\"default_language\":\"en\",\"is_locked_campus_starts_at_time\":false,\"is_locked_format_of_time\":false,\"is_locked_week_start_day\":false,\"is_locked_default_currency\":false,\"default_country\":\"us\",\"campus_id\":\"c4f42648-9d60-45c6-9dc3-67e7d49162b8\",\"is_locked_up_default_currency\":false,\"is_locked_format_of_date\":false,\"is_locked_default_country\":false,\"is_locked_allowed_languages\":false,\"allowed_timezones\":[\"-0400\"],\"is_locked_up_allowed_languages\":false,\"default_currency\":\"usd\",\"is_locked_up_campus_starts_at_time\":false,\"format_of_time\":\"HH:MM:SS\",\"is_locked_up_default_language\":false,\"is_locked_allowed_timezones\":false,\"is_locked_allowed_currencies\":false,\"is_locked_site_title\":false,\"is_locked_up_campus_ends_at_time\":false,\"is_locked_up_allowed_currencies\":false,\"is_locked_up_allowed_countries\":false}"
+        }
+      ]
+    }
+  ]
+}

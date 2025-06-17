@@ -85,6 +85,17 @@ export async function AddStaff(page) {
   await closeToastMessage(page);
 }
 export async function AddTeacher(page) {
+  const TeacherFeature = await page
+    .getByRole("link", { name: "Teachers" })
+    .first();
+  if (!(await TeacherFeature.isVisible())) {
+    await page
+      .locator("div")
+      .filter({ hasText: /^Users$/ })
+      .nth(1)
+      .click();
+  }
+
   await page.getByRole("link", { name: "Teachers" }).first().click();
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Add Teacher" }).click();
