@@ -8,12 +8,16 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
   // Fill in login details
   await page.type("[placeholder='Email']", email, { delay: 100 });
   await page
-    .getByPlaceholder("Institute sub-domain")
-    .type(domain, { delay: 100 }, { force: true });
+    .locator("div")
+    .filter({ hasText: /^Institute Sub-Domain$/ })
+    .nth(2)
+    .click();
+  await page.locator("li").filter({ hasText: "E2e school" }).click();
   await page.type("[placeholder='Password']", password, { delay: 100 });
   await page.click("button:has-text('Log in')");
 
   await page.waitForTimeout(500);
+    await page.getByRole("banner").getByRole("img").nth(1).click();
 
   // Check local storage for signUpSlider flag
   const signUpSlider = await page.evaluate(() =>

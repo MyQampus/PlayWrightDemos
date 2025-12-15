@@ -12,34 +12,39 @@ export async function AssignPickupPersonToStudent(page) {
     await page.getByRole("link", { name: "Students" }).first().click();
   }
   await page.getByRole("button", { name: "Add Student" }).click();
-  await page.getByPlaceholder("Enter First Name").click();
-  await page.getByPlaceholder("Enter First Name").press("CapsLock");
-  await page.getByPlaceholder("Enter First Name").fill("Ali");
-  await page.getByPlaceholder("Enter Last Name").click();
-  await page.getByPlaceholder("Enter Last Name").press("CapsLock");
-  await page.getByPlaceholder("Enter Last Name").fill("Hmad");
+  await fillInputAfterLabel(page, "First Name *", "Ali", "text");
+  await fillInputAfterLabel(page, "Last Name *", "Hmad", "text");
   await page.locator(".slider").click();
   await page.getByRole("button", { name: "Add", exact: true }).click();
   await page.getByRole("button", { name: "Skip" }).click();
+  await closeToastMessage(page);
+  await page.getByRole("link", { name: "Guardians" }).first().click();
+  await clickUntilTargetVisible(
+    page,
+    "#guardianActionTomCruise",
+    "Associate Student"
+  );
+  await fillInputAfterLabel(page, "Student *", "AHAli Hmad", "singleSelect");
+  await fillInputAfterLabel(page, "Relation *", "Father", "text");
+  await page.getByRole("button", { name: "Associate" }).click();
+
   await page
     .getByRole("link", { name: "Student Pickup Person" })
     .first()
     .click();
   await page.getByRole("button", { name: "Add Student Pickup Person" }).click();
-  await page.getByPlaceholder("Enter First Name").click();
-  await page.getByPlaceholder("Enter First Name").fill("hmad");
-  await page.getByPlaceholder("Enter Last Name").click();
-  await page.getByPlaceholder("Enter Last Name").fill("naeem");
+  await fillInputAfterLabel(page, "First Name *", "Hmad", "text");
+  await fillInputAfterLabel(page, "Last Name *", "Naeem", "text");
   await page.locator(".slider").click();
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
   await clickUntilTargetVisible(
     page,
-    "#pickupPersonActionhmadnaeem",
+    "#pickupPersonActionHmadNaeem",
     "Associate Student"
   );
   await fillInputAfterLabel(page, "Student *", "AHAli Hmad", "singleSelect");
-  await page.getByPlaceholder("Relation with Student").click();
-  await page.getByPlaceholder("Relation with Student").fill("father");
+  await fillInputAfterLabel(page, "Relation with Student *", "Father", "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -50,21 +55,6 @@ export async function AddPickupAssignee(page) {
     .nth(1)
     .click();
   await page.getByRole("link", { name: "Control Panel" }).locator("a").click();
-  const classSelected = await page.getByText("9th class").first();
-  if (await classSelected.isVisible()) {
-    await classSelected.click();
-    await page
-      .locator("section")
-      .filter({ hasText: /^9th class9th class10 Class$/ })
-      .getByRole("img")
-      .nth(2)
-      .click();
-    await page
-      .locator("div")
-      .filter({ hasText: /^Select Class$/ })
-      .first()
-      .click();
-  }
   await page
     .locator("div")
     .filter({ hasText: /^Features Settings$/ })
@@ -87,41 +77,36 @@ export async function AddPickupAssignee(page) {
   await page.getByText("Select Title").click();
   await page.getByText("Michael Johnson").click();
   await page.getByRole("button", { name: "Save" }).click();
+  await closeToastMessage(page);
   await page.getByText("Exit Control Panel").click();
-  await page.goto("http://localhost:8080/quick-actions");
 }
 
 export async function CreateRequest(page) {
   await page
     .locator("div")
-    .filter({ hasText: /^Pickup Request Centre$/ })
+    .filter({ hasText: /^Pickup Manager$/ })
     .nth(1)
     .click();
   await page.getByText("Active Requests").click();
   await page.getByRole("button", { name: "Create Pickup Request" }).click();
   await page
-    .locator(".lg\\:px-6 > div > .min-w-1 > section > div > div")
-    .first()
+    .locator("div")
+    .filter({ hasText: /^Select Pickup Person$/ })
+    .nth(3)
     .click();
   await page
-    .getByRole("cell", { name: "Select Pickup Person hmad" })
+    .getByRole("cell", { name: "Select Pickup Person Hmad" })
     .getByRole("listitem")
     .click();
-
   await page
-    .getByRole("row", { name: "AH Ali Hmad hmad naeem hmad" })
+    .getByRole("row", { name: "AH Ali Hmad Hmad Naeem N/A N/" })
     .getByRole("button")
     .click();
   await closeToastMessage(page);
 }
 export async function RespondToRequest(page) {
-  await page.getByRole("heading", { name: "Student Dispatcher" }).click();
-  await page.getByText("Active Requests").nth(1).click();
-  await clickUntilTargetVisible(
-    page,
-    "#pickupStudentActionAliHmad",
-    "Respond Request"
-  );
+  await page.locator("#pickupsuper_adminAction").click();
+  await page.locator("text=Respond Request").click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Response$/ })
@@ -132,17 +117,11 @@ export async function RespondToRequest(page) {
   await closeToastMessage(page);
 }
 export async function PickedStudentUp(page) {
-  await page.getByRole("heading", { name: "Pickup Request Centre" }).click();
-  await page.getByText("Active Requests").first().click();
   await page.getByRole("button", { name: "Student Picked Up" }).click();
   await page
     .getByRole("button", { name: "Student Picked up", exact: true })
     .click();
   await closeToastMessage(page);
-}
-export async function CheckForRequests(page) {
   await page.getByText("All Requests").click();
-  await page.getByRole("heading", { name: "Student Dispatcher" }).click();
-  await page.getByRole("link", { name: "All Requests" }).locator("a").click();
-  await page.getByText("Active Requests").click();
+  await page.waitforTimeout(2000);
 }
