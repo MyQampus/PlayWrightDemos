@@ -8,12 +8,16 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
   // Fill in login details
   await page.type("[placeholder='Email']", email, { delay: 100 });
   await page
-    .getByPlaceholder("Institute sub-domain")
-    .type(domain, { delay: 100 }, { force: true });
+    .locator("div")
+    .filter({ hasText: /^Institute Sub-Domain$/ })
+    .nth(2)
+    .click();
+  await page.locator("li").filter({ hasText: "E2e school" }).click();
   await page.type("[placeholder='Password']", password, { delay: 100 });
   await page.click("button:has-text('Log in')");
 
   await page.waitForTimeout(500);
+    await page.getByRole("banner").getByRole("img").nth(1).click();
 
   // Check local storage for signUpSlider flag
   const signUpSlider = await page.evaluate(() =>
@@ -29,14 +33,14 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
     await page.click("button:has-text('Next')");
     await page.fill("[placeholder='Campus Name']", "pioneer");
     await page.locator("div:nth-child(2) > div > .border").first().click();
-    await page.locator("div").filter({ hasText: /^08$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^01$/ }).first().click();
     await page.locator("div").filter({ hasText: /^00$/ }).click();
     await timeClick(page, "AM");
     await page.getByRole("button", { name: "Apply" }).click();
     await page
       .locator(".grid > div:nth-child(2) > div > .relative > div > .border")
       .click();
-    await page.locator("div").filter({ hasText: /^01$/ }).first().click();
+    await page.locator("div").filter({ hasText: /^08$/ }).first().click();
     await page.locator("div").filter({ hasText: /^00$/ }).click();
     await timeClick(page, "PM");
     await page.getByRole("button", { name: "Apply" }).click();

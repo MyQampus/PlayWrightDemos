@@ -49,11 +49,34 @@ import {
   AddCurrentTimeTable,
   AddSubjectInClass,
 } from "./syllabusManager.js";
-import { AddExams, AddExamTypes, AddExamsMarks, AddSubjectResult, AddSectionResult } from "./exam.js";
-import { AddAnnouncemnetType, AddStaffAnnouncemnets, AddGuardianAnnouncement, AddStudentAnnouncement, AddTeacherAnnouncement } from "./Announcements.js";
+import {
+  AddExams,
+  AddExamTypes,
+  AddExamsMarks,
+  AddSubjectResult,
+  AddSectionResult,
+} from "./exam.js";
+import {
+  AddAnnouncemnetType,
+  AddStaffAnnouncemnets,
+  AddGuardianAnnouncement,
+  AddStudentAnnouncement,
+  AddTeacherAnnouncement,
+} from "./Announcements.js";
 import { AddSupportQuery } from "./SupportQuery.js";
-import { AddAppointmentCategories, AddAppoinmentAvailability } from "./appointment.js";
+import {
+  AddAppointmentCategories,
+  AddAppoinmentAvailability,
+} from "./appointment.js";
 import { Dashboard } from "./Dashboard.js";
+import {
+  AddPickupAssignee,
+  AssignPickupPersonToStudent,
+  CreateRequest,
+  RespondToRequest,
+  PickedStudentUp,
+  CheckForRequests,
+} from "./Pickup.js";
 const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
   let page;
@@ -70,12 +93,18 @@ test.describe("test case for demo video", () => {
     await AddTeacher(page);
     await AddStudent(page);
     await AddStudentEnrollment(page);
+    await AssignPickupPersonToStudent(page);
     await AddGuardian(page);
     await AddStudentPickupPerson(page);
     await OpenAllUserPage(page);
     await AddRoom(page);
     await AddExistingUserAsTeacher(page);
     await AddStudentInClass(page);
+    await AddPickupAssignee(page);
+    await CreateRequest(page);
+    await RespondToRequest(page);
+    await PickedStudentUp(page);
+    await CheckForRequests(page);
     await AddGradingStructure(page);
     await AddFeeType(page);
     await AddStudentFee(page);

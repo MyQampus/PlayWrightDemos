@@ -14,12 +14,7 @@ export async function AddClass(page) {
   await page.getByRole("link", { name: "Classes" }).nth(1).click();
   await page.getByRole("button", { name: "Add Class" }).click();
   await fillInputAfterLabel(page, "Class Title *", "9th class", "text");
-  await fillInputAfterLabel(
-    page,
-    "Class Description",
-    "Science",
-    "text"
-  );
+  await fillInputAfterLabel(page, "Class Description", "Science", "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -28,12 +23,7 @@ export async function AddSection(page) {
   await page.getByRole("link", { name: "Sections" }).click();
   await page.getByRole("button", { name: "Add Section" }).click();
   await fillInputAfterLabel(page, "Section Name", "a section", "text");
-  await fillInputAfterLabel(
-    page,
-    "Section Description",
-    "practical",
-    "text"
-  );
+  await fillInputAfterLabel(page, "Section Description", "practical", "text");
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
@@ -47,9 +37,6 @@ export async function AddRoom(page) {
   await closeToastMessage(page);
 }
 export async function AddGradingStructure(page) {
-  // add grading structure flow
-  await page.locator('.min-w-1 > section > div > div > div').first().click();
-  await page.locator('section').filter({ hasText: /^9th class9th class10 Class$/ }).getByRole('img').nth(2).click();
   await page
     .locator("div")
     .filter({ hasText: /^Grading Structures$/ })
