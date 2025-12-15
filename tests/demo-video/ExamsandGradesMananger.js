@@ -9,7 +9,7 @@ export async function AddExamTypes(page) {
   // add exam type
   await page
     .locator("div")
-    .filter({ hasText: /^Exam Planner$/ })
+    .filter({ hasText: /^Exams Manager$/ })
     .nth(1)
     .click();
   await page.getByRole("link", { name: "Exam Types" }).click();
@@ -83,13 +83,13 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "John Doe" }).click();
+  await page.locator("li").filter({ hasText: "James Wilson" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "Room" }).click();
+  await page.locator("li").filter({ hasText: "Room 1" }).click();
   await page.getByPlaceholder("Total Marks").click();
   await page.getByPlaceholder("Total Marks").fill("40");
   await page.getByRole("button", { name: "Add New Subject" }).click();
@@ -123,13 +123,13 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(3)
     .click();
-  await page.locator("li").filter({ hasText: "John Doe" }).click();
+  await page.locator("li").filter({ hasText: "James Wilson" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
     .nth(3)
     .click();
-  await page.locator("li").filter({ hasText: "Room" }).click();
+  await page.locator("li").filter({ hasText: "Room 1" }).click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill("40");
   await page.getByRole("button", { name: "Save" }).click();
@@ -178,13 +178,13 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "John Doe" }).click();
+  await page.locator("li").filter({ hasText: "James Wilson" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "Room" }).click();
+  await page.locator("li").filter({ hasText: "Room 1" }).click();
   await page.getByPlaceholder("Total Marks").click();
   await page.getByPlaceholder("Total Marks").fill("60");
   await page.waitForTimeout(1000);
@@ -218,13 +218,13 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(3)
     .click();
-  await page.locator("li").filter({ hasText: "John Doe" }).click();
+  await page.locator("li").filter({ hasText: "James Wilson" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
     .nth(3)
     .click();
-  await page.locator("li").filter({ hasText: "Room" }).click();
+  await page.locator("li").filter({ hasText: "Room 1" }).click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').click();
   await page.locator('input[name="TOTAL_MARKS \\+ 1"]').fill("60");
   await page.getByRole("button", { name: "Save" }).click();
@@ -319,13 +319,34 @@ export async function AddExamsMarks(page) {
     "View Marks"
   );
 }
-export async function AddSubjectResult(page) {
-  // add subject exam result for Chemistry
-  await page
+export async function AddGradingStructure(page) {
+   await page
     .locator("div")
-    .filter({ hasText: /^Exam Result$/ })
+    .filter({ hasText: /^Grades Manager$/ })
     .nth(1)
     .click();
+  // add Non GPA grading
+  await page.getByRole("link", { name: "Non GPA Grading" }).click();
+  await page.getByRole("button", { name: "Add Structure" }).click();
+  await fillInputAfterLabel(page, "Title *", "PassAndFail Grading", "text");
+  await fillInputAfterLabel(
+    page,
+    "Description ",
+    "A simple grading structure where students are evaluated based on whether they meet the required criteria.",
+    "text"
+  );
+  await fillInputAfterLabel(page, "Grade Title *", "A", "text", 0);
+  await page.getByRole("button", { name: "Add New Grade" }).click();
+  await fillInputAfterLabel(page, "Grade Title *", "B", "text", 1);
+  await fillInputAfterLabel(page, "Grade Value *", "80", "text", 1);
+  await page.getByRole("button", { name: "Add New Grade" }).click();
+  await fillInputAfterLabel(page, "Grade Title *", "C", "text", 2);
+  await fillInputAfterLabel(page, "Grade Value *", "60", "text", 2);
+  await fillInputAfterLabel(page, "Grade Title *", "F", "text", 3);
+  await page.getByRole("button", { name: "Save" }).click();
+}
+export async function AddSubjectResult(page) {
+  // add subject exam result for Chemistry
   await page.getByRole("link", { name: "Subject Result" }).click();
   await page.getByRole("button", { name: "Add Subject Result" }).click();
   await page.getByPlaceholder("Title").click();
@@ -355,8 +376,10 @@ export async function AddSubjectResult(page) {
     .locator("li")
     .filter({ hasText: "MidTerm exam date sheet" })
     .click();
-  await page.getByPlaceholder("Weightage").click();
-  await page.getByPlaceholder("Weightage").fill("40");
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 0"]').click();
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 0"]').fill('40');
+  // await page.getByPlaceholder("Weightage").click();
+  // await page.getByPlaceholder("Weightage").fill("40");
   await page.getByRole("button", { name: "Add New Exams" }).click();
   await page
     .locator("div")
@@ -364,8 +387,8 @@ export async function AddSubjectResult(page) {
     .nth(2)
     .click();
   await page.getByText("final year exam date").click();
-  await page.locator('input[name="WEIGHTAGE \\+ 1"]').click();
-  await page.locator('input[name="WEIGHTAGE \\+ 1"]').fill("60");
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 1"]').click();
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 1"]').fill("60");
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate subject result
@@ -413,8 +436,8 @@ export async function AddSubjectResult(page) {
     .nth(2)
     .click();
   await page.getByText("MidTerm exam date sheet").click();
-  await page.getByPlaceholder("Weightage").click();
-  await page.getByPlaceholder("Weightage").fill("40");
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 0"]').click();
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 0"]').fill('40');
   await page.getByRole("button", { name: "Add New Exams" }).click();
   await page
     .locator("div")
@@ -422,8 +445,8 @@ export async function AddSubjectResult(page) {
     .nth(2)
     .click();
   await page.getByText("final year exam date").click();
-  await page.locator('input[name="WEIGHTAGE \\+ 1"]').click();
-  await page.locator('input[name="WEIGHTAGE \\+ 1"]').fill("60");
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 1"]').click();
+  await page.locator('input[name="EXAM_WEIGHTAGE \\+ 1"]').fill("60");
   await page.getByRole("button", { name: "Save" }).click();
 
   // generate subject result for english
@@ -463,14 +486,14 @@ export async function AddSectionResult(page) {
   await page.locator("li").filter({ hasText: "PassAndFail Grading" }).click();
   await page
     .locator("div")
-    .filter({ hasText: /^Select Exam$/ })
+    .filter({ hasText: /^Select Subject Result$/ })
     .nth(2)
     .click();
   await page.getByText("Subject Exam Result for").click();
   await page.getByRole("button", { name: "Add New" }).click();
   await page
     .locator("div")
-    .filter({ hasText: /^Select Exam$/ })
+    .filter({ hasText: /^Select Subject Result$/ })
     .nth(2)
     .click();
   await page

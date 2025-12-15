@@ -4,30 +4,133 @@ import {
   clickUntilTargetVisible,
   timeClick,
 } from "./utils.js";
-
-export async function AddSubject(page) {
-  //Add Subject
-  await page.locator(".min-w-1 > section > div > div").first().click();
-  await page.locator("li").filter({ hasText: "9th class" }).click();
-  await page
-    .locator("span")
-    .filter({ hasText: "Select Section" })
-    .first()
-    .click();
-  await page.locator("li").filter({ hasText: "a section" }).click();
+export async function AddSyllabusTemplateProvider(page) {
+  // Add Syllabus Automater
   await page
     .locator("div")
     .filter({ hasText: /^Syllabus Manager$/ })
     .nth(1)
     .click();
+  await page.getByText("Syllabus Template Provider").click();
+  await page.getByRole("button", { name: "Add Syllabus Template" }).click();
+  await page.getByPlaceholder("Add Syllabus Template").click();
+  await fillInputAfterLabel(
+    page,
+    "Add Syllabus Template Provider Name *",
+    "Common Core Standards",
+    "text"
+  );
+  await fillInputAfterLabel(
+    page,
+    "Syllabus Template Provider Desctiption",
+    "A course based on US Common Core standards, covering all key subjects.",
+    "text"
+  );
+  await page.getByRole("button", { name: "Create" }).click();
+  await closeToastMessage(page);
+}
+export async function AddSubjectSyllabusTemplate(page) {
+  //Add subject syllabus template
+  await page.getByRole("link", { name: "Subject Syllabus Template" }).click();
+  await page.getByRole("button", { name: "Add New Template" }).click();
+
+  await fillInputAfterLabel(
+    page,
+    "Syllabus Template Provider *",
+    "Common Core Standards",
+    "singleSelect"
+  );
+  await fillInputAfterLabel(page, "Subject Title *", "Mathematics", "text", 0);
+
+  await fillInputAfterLabel(page, "Title *", "Algebra 1", "text", 1);
+
+  await fillInputAfterLabel(page, "Grade *", "Tenth", "text");
+  await fillInputAfterLabel(page, "Year/Edition *", "2023", "text");
+  await page.getByRole("button", { name: "Create" }).click();
+  await closeToastMessage(page);
+  await page.getByRole("cell", { name: "Algebra 1" }).click();
+  await page.getByRole("button", { name: "Add Chapters" }).click();
+  await fillInputAfterLabel(
+    page,
+    "Chapter Title *",
+    "Linear Equations",
+    "text"
+  );
+  await fillInputAfterLabel(
+    page,
+    "Description",
+    "Introduction to solving linear equations.",
+    "text"
+  );
+  await fillInputAfterLabel(page, "Chapter Number *", "1", "text");
+  await page.getByRole("button", { name: "Create" }).click();
+  await closeToastMessage(page);
+
+  await page.getByRole("button", { name: "Add Topics" }).click();
+  await fillInputAfterLabel(
+    page,
+    "Chapter *",
+    "Linear Equations",
+    "singleSelect"
+  );
+  await fillInputAfterLabel(
+    page,
+    "Title *",
+    "Solving Single Variable Equations",
+    "text"
+  );
+  await fillInputAfterLabel(
+    page,
+    "Description",
+    "Learn how to solve for x in linear equations.",
+    "text"
+  );
+  await fillInputAfterLabel(page, "Topic Number *", "1", "text");
+  await page.getByRole("button", { name: "Create" }).click();
+  await closeToastMessage(page);
+
+  await page.getByRole("button", { name: "Add Lesson" }).click();
+  await fillInputAfterLabel(page, "Lesson Type *", "Theory", "singleSelect");
+  await fillInputAfterLabel(
+    page,
+    "Chapter *",
+    "Linear Equations",
+    "singleSelect"
+  );
+  await fillInputAfterLabel(
+    page,
+    "Topic *",
+    "Solving Single Variable Equations",
+    "singleSelect"
+  );
+  await fillInputAfterLabel(page, "Title *", "Basic Equation Solving", "text");
+  await fillInputAfterLabel(
+    page,
+    "Description",
+    "Understand basic steps in solving simple algebraic equations.",
+    "text"
+  );
+  await fillInputAfterLabel(page, "Lesson Number *", "1", "text");
+  await page.getByRole("button", { name: "Create" }).click();
+  await closeToastMessage(page);
+}
+export async function AddSubject(page) {
+  //Add Subject
   await page.getByRole("link", { name: "Subjects" }).first().click();
+  await page
+    .getByRole("navigation")
+    .locator("div")
+    .filter({ hasText: /^Select Section$/ })
+    .nth(2)
+    .click();
+  await page.locator("li").filter({ hasText: "a section" }).click();
   await page.getByRole("button", { name: "Add Subjects" }).click();
   await fillInputAfterLabel(page, "Subject Title *", "English", "text");
   await fillInputAfterLabel(page, "Concise Name *", "EN", "text");
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
   await clickUntilTargetVisible(page, "#subjectActionEN", "Assign Teacher");
-  await fillInputAfterLabel(page, "Teachers", "JDjohn doe", "singleSelect");
+  await fillInputAfterLabel(page, "Teachers", "JWjames wilson", "singleSelect");
   await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
   await page.getByRole("button", { name: "Save" }).click();
 }
@@ -117,121 +220,6 @@ export async function AddLesson(page) {
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
 }
-export async function AddLessonPlanner(page) {
-  //add lesson planner
-  await page.getByRole("link", { name: "Lesson Planner" }).click();
-  await page.getByRole("button", { name: "Add New Lesson" }).click();
-  await fillInputAfterLabel(
-    page,
-    "Lesson Name *",
-    "Cultural Communication",
-    "text"
-  );
-  await fillInputAfterLabel(page, "Subject *", "English", "singleSelect");
-  await fillInputAfterLabel(
-    page,
-    "Chapter *",
-    "Greetings & Essentials",
-    "singleSelect"
-  );
-  await fillInputAfterLabel(
-    page,
-    "Topic *",
-    "Daily Conversations",
-    "singleSelect"
-  );
-  await fillInputAfterLabel(page, "Lesson Number *", "2", "text");
-  await fillInputAfterLabel(
-    page,
-    "Description",
-    "Explore cultural context in language use. Understand formal vs informal registers, regional idioms, and non-verbal communication cues. Role-play scenarios including business meetings, social gatherings, and customer service interactions.",
-    "textarea"
-  );
-  await page.getByRole("button", { name: "Create" }).click();
-  await closeToastMessage(page);
-}
-export async function AddTimeTableAutomator(page) {
-  //open Time Table
-  await page
-    .locator("div")
-    .filter({ hasText: /^Time Table$/ })
-    .nth(1)
-    .click();
-  //add time table automator
-  await page.getByText("Time Table Automator").click();
-  await page.getByRole("button", { name: "Add Time Table Automator" }).click();
-  await fillInputAfterLabel(page, "Subject *", "English", "singleSelect");
-  await fillInputAfterLabel(page, "Teacher", "JDjohn doe", "singleSelect");
-  await fillInputAfterLabel(page, "Room", "Room 1", "singleSelect");
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select Day$/ })
-    .nth(2)
-    .click();
-  await page
-    .locator("li")
-    .filter({ hasText: /^thursday$/ })
-    .click();
-  await page.locator("#TimeTableStartTimeId").click();
-  await page.locator("div").filter({ hasText: /^10$/ }).first().click();
-  await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await timeClick(page, "AM");
-  await page.getByRole("button", { name: "Apply" }).click();
-  await page.locator("#TimeTableEndTimeId").click();
-  await page.locator("div").filter({ hasText: /^11$/ }).first().click();
-  await page.locator("div").filter({ hasText: /^00$/ }).click();
-  await timeClick(page, "AM");
-  await page.getByRole("button", { name: "Apply" }).click();
-  await page.getByRole("button", { name: "Save" }).click();
-  await closeToastMessage(page);
-}
-export async function AddCurrentTimeTable(page) {
-  //Add Current Time Table
-  await page.getByText("Current Time Table").click();
-  await page.getByRole("button", { name: "Add Current Time Table" }).click();
-  await fillInputAfterLabel(page, "Subject *", "English", "singleSelect");
-  await fillInputAfterLabel(page, "Teacher", "JDjohn doe", "singleSelect");
-  await page.locator(".flex-1 > div > div > .h-11").first().click();
-  await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator(
-      "div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
-    )
-    .first()
-    .click();
-  await page.locator("div").filter({ hasText: /^03$/ }).first().click();
-  await page.locator("div").filter({ hasText: /^45$/ }).click();
-  await timeClick(page, "PM");
-  await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator("div")
-    .filter({ hasText: /^Select Date$/ })
-    .nth(2)
-    .click();
-  await page.getByRole("button", { name: "Apply" }).click();
-  await page
-    .locator(
-      "div:nth-child(4) > div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
-    )
-    .first()
-    .click();
-  await page.locator("div").filter({ hasText: /^04$/ }).first().click();
-  await page.locator("div").filter({ hasText: /^45$/ }).click();
-  await timeClick(page, "PM");
-  await page.getByRole("button", { name: "Apply" }).click();
-  await fillInputAfterLabel(page, "Room", "Room 1", "singleSelect");
-  await page.getByRole("button", { name: "Save" }).click();
-  await closeToastMessage(page);
-  await page
-    .locator("div")
-    .filter({ hasText: /^Syllabus Manager$/ })
-    .nth(1)
-    .click();
-  await page.getByRole("link", { name: "Lesson Planner" }).click();
-  await page.getByText("Add lesson").first().click();
-  await page.getByText("Pronunciation Basics0English").click();
-  await closeToastMessage(page);
-}
 export async function AddSubjectInClass(page) {
   // add one more subject at class level
   await page
@@ -252,7 +240,7 @@ export async function AddSubjectInClass(page) {
     .filter({ hasText: /^Select$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "JDjohn doe" }).click();
+  await page.locator("li").filter({ hasText: "JWjames wilson" }).click();
   await page.locator(".w-full > section > div > div").first().click();
   await page.getByRole("button", { name: "Save" }).click();
 }

@@ -35,18 +35,18 @@ export async function AddSupportQuery(page) {
     "Performance",
     "singleSelect"
   );
-  await fillInputAfterLabel(page, "Teacher *", "MJmichael johnson", "singleSelect");
+  await fillInputAfterLabel(page, "Teacher *", "JWjames wilson", "singleSelect");
   await fillInputAfterLabel(
     page,
     "Guardian *",
     "EJemily Johnson",
     "singleSelect"
   );
-  await fillInputAfterLabel(page, "Student", "DLdavid lodge", "singleSelect");
+  await fillInputAfterLabel(page, "Student", "BCbenjamin carter", "singleSelect");
   await page.locator("textarea").click();
   await page
     .locator("textarea")
-    .fill("Hi! We'd love to connect and share valuable insights about David's progress.");
+    .fill("Hi! We'd love to connect and share valuable insights about Benjamin's progress.");
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
 

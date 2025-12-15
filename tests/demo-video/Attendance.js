@@ -1,7 +1,6 @@
-import { fillInputAfterLabel } from "./utils";
+import { fillInputAfterLabel, timeClick, closeToastMessage } from "./utils";
 
 export async function AddCampusAttendance(page) {
-
   //Mark Attendance
   await page
     .locator("div")
@@ -12,28 +11,38 @@ export async function AddCampusAttendance(page) {
   await page.getByRole("link", { name: "Campus Attendance" }).click();
   await page.getByRole("button", { name: "Mark Attendance In" }).click();
   await page
-    .locator(
-      "div:nth-child(2) > div:nth-child(2) > div > .relative > div > div"
-    )
+    .locator(".flex > div:nth-child(2) > div > .relative > div > div")
     .first()
     .click();
-  await page.locator("span").filter({ hasText: /^20$/ }).click();
+  await page.locator("div").filter({ hasText: /^01$/ }).first().click();
+  await page.locator("div").filter({ hasText: /^00$/ }).click();
+  await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Student$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "DLdavid lodge" }).click();
+  await page.locator("li").filter({ hasText: "BCbenjamin carter" }).click();
   await page.getByRole("button", { name: "Mark", exact: true }).click();
+  await closeToastMessage(page);
   await page.getByRole("button", { name: "Mark Attendance Out" }).click();
+  await page
+    .locator(".flex > div:nth-child(2) > div > .relative > div > div")
+    .first()
+    .click();
+  await page.locator("div").filter({ hasText: /^01$/ }).first().click();
+  await page.locator("div").filter({ hasText: /^30$/ }).nth(4).click();
+  await timeClick(page, "PM");
+  await page.getByRole("button", { name: "Apply" }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Student$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "DLdavid lodge" }).click();
+  await page.locator("li").filter({ hasText: "BCbenjamin carter" }).click();
   await page.getByRole("button", { name: "Mark", exact: true }).click();
+  await closeToastMessage(page);
 }
 export async function AddSectionAttendance(page) {
   //Add Section Attendance
@@ -42,7 +51,7 @@ export async function AddSectionAttendance(page) {
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await fillInputAfterLabel(page, "Attendance Title *", "Morning", "text");
   await page
-    .getByRole("row", { name: "JS James Smith" })
+    .getByRole("row", { name: "BC Benjamin Carter" })
     .locator("span")
     .nth(3)
     .click();
@@ -52,12 +61,18 @@ export async function AddPeriodAttendance(page) {
   //add period attendance
   await page.getByText("Period Attendance").click();
   await page.getByRole("button", { name: "Mark Attendance" }).click();
-  await page.locator('div').filter({ hasText: /^Select Current Time Table$/ }).nth(2).click();
-  await page.locator(".absolute > .relative").click();
+  await page
+    .locator("div")
+    .filter({ hasText: /^Select Current Time Table$/ })
+    .nth(2)
+    .click();
+  await page
+    .locator("li")
+    .filter({ hasText: "English: 11:00 AM - 11:45 AM" })
+    .click();
   await page
     .getByRole("cell", { name: "Present" })
     .locator("label span")
     .click();
   await page.getByRole("button", { name: "Mark", exact: true }).click();
 }
-

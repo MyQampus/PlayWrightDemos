@@ -1,30 +1,33 @@
 export async function Dashboard(page) {
   await page.getByRole("link", { name: "Dashboard" }).click();
-
   await page
-    .locator("#campusAttendance div")
-    .filter({ hasText: "Campus Attendance Filters" })
-    .first()
+    .locator("div")
+    .filter({ hasText: /^campus attendance$/ })
+    .nth(1)
+    .click();
+  await page.waitForTimeout(1000);  
+  await page
+    .locator("div")
+    .filter({ hasText: /^section attendance$/ })
+    .nth(2)
+    .click();
+  await page.waitForTimeout(1000);  
+  await page
+    .locator("div")
+    .filter({ hasText: /^period attendance$/ })
+    .nth(1)
     .click();
   await page.waitForTimeout(1000);
   await page
-    .locator("#sectionAttendance div")
-    .filter({ hasText: "Section Attendance Filters" })
-    .first()
+    .locator("div")
+    .filter({ hasText: /^timetable$/ })
+    .nth(1)
     .click();
   await page.waitForTimeout(1000);
   await page
-    .locator("#periodAttendance div")
-    .filter({ hasText: "Period Attendance Filters" })
-    .first()
+    .locator("div")
+    .filter({ hasText: /^exams$/ })
+    .nth(1)
     .click();
-  await page.waitForTimeout(1000);
-  await page
-    .locator("#timetable div")
-    .filter({ hasText: "Timetable Filters pioneer" })
-    .first()
-    .click();
-  await page.waitForTimeout(1000);
-  await page.locator("#exams").click();
   await page.waitForTimeout(1000);
 }

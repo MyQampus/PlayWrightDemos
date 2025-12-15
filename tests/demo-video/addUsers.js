@@ -14,7 +14,7 @@ export async function AddCampusAdmin(page) {
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
   await fillInputAfterLabel(page, "Email *", "john.smith@gmail.com", "text");
   await page.getByPlaceholder('2015550123').click();
-  await page.getByPlaceholder('2015550123').type('2098765455',{ delay: 100 });
+  await page.getByPlaceholder('2015550123').type('2098765458',{ delay: 100 });
   await page.getByRole("button", { name: "Select Date" }).click();
   await page.locator("#datePickerYearSelector").first().click();
   await page.locator("#datePickerYearSelector").first().click();
@@ -36,10 +36,10 @@ export async function AddCampusAdmin(page) {
 export async function AddStaff(page) {
   await page.getByRole("link", { name: "Staff", exact: true }).click();
   await page.getByRole("button", { name: "Add Staff" }).click();
-  await fillInputAfterLabel(page, "First Name", "John", "text");
-  await fillInputAfterLabel(page, "Last Name", "Doe", "text");
+  await fillInputAfterLabel(page, "First Name", "Alex", "text");
+  await fillInputAfterLabel(page, "Last Name", "Morgan", "text");
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
-  await fillInputAfterLabel(page, "Email *", "john.doe@gmail.com", "text");
+  await fillInputAfterLabel(page, "Email *", "alex.morgan@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
   await page.getByPlaceholder("2015550123").type("2014567899",{ delay: 100 });
   await page.getByRole('button', { name: 'Select Date' }).first().click();
@@ -71,10 +71,10 @@ export async function AddTeacher(page) {
   await page.waitForTimeout(1000);
   await page.getByRole("button", { name: "Add Teacher" }).click();
   await page.waitForLoadState("domcontentloaded", { timeout: 20000 });
-  await fillInputAfterLabel(page, "First Name", "Michael", "text");
-  await fillInputAfterLabel(page, "Last Name", "Johnson", "text");
+  await fillInputAfterLabel(page, "First Name", "James", "text");
+  await fillInputAfterLabel(page, "Last Name", "Wilson", "text");
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
-  await fillInputAfterLabel(page, "Email *", "michael.johnson@gmail.com", "text");
+  await fillInputAfterLabel(page, "Email *", "james.wilson@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
   await page.getByPlaceholder("2015550123").type("2056789234",{ delay: 100 });
   await page.getByText("Date Of BirthSelect Date").click();
@@ -98,17 +98,22 @@ export async function AddTeacher(page) {
   // await fillInputAfterLabel(page, "Identity Type", "national identity card", "singleSelect");
   // await fillInputAfterLabel(page, "Identity Number *", "3434567897647", "text");
   await page.getByRole("button", { name: "Next" }).click();
-  await page.getByRole("button", { name: "Save" }).click();
+  await page.locator('div:nth-child(2) > .min-w-1 > section > div > div').first().click();
+  await page.locator('li').filter({ hasText: '9th class' }).click();
+  await page.locator('div').filter({ hasText: /^Select Teacher Section$/ }).nth(2).click();
+  await page.locator('li').filter({ hasText: 'a section' }).click();
+  await page.getByRole('button', { name: 'Save' }).click();
+  // await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
 export async function AddStudent(page) {
   // Add student
   await page.getByRole("link", { name: "Students" }).first().click();
   await page.getByRole("button", { name: "Add Student" }).click();
-  await fillInputAfterLabel(page, "First Name", "David", "text");
-  await fillInputAfterLabel(page, "Last Name", "Lodge", "text");
+  await fillInputAfterLabel(page, "First Name", "Benjamin", "text");
+  await fillInputAfterLabel(page, "Last Name", "Carter", "text");
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
-  await fillInputAfterLabel(page, "Email *", "david.lodge@gmail.com", "text");
+  await fillInputAfterLabel(page, "Email *", "benjamin.carter@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
   await page.getByPlaceholder("2015550123").type("2019653471",{ delay: 100 });
   await page
@@ -134,13 +139,12 @@ export async function AddStudent(page) {
 }
 export async function AddStudentEnrollment(page) {
   // Student Enrollment
-  await clickUntilTargetVisible(page, '#studentDavidLodge', 'Enrollment');
+  await clickUntilTargetVisible(page, '#studentBenjaminCarter', 'Enrollment');
   await page
     .locator("div:nth-child(2) > .min-w-1 > section > div > div > .w-full")
     .click();
   await page.locator("li").filter({ hasText: "9th class" }).click();
-  await page.locator('div').filter({ hasText: /^Select Sections$/ }).nth(2).click();
-  await page.locator('li').filter({ hasText: 'a section' }).click();
+  await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await fillInputAfterLabel(page, "Roll Number", "1", "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
@@ -179,7 +183,7 @@ export async function AddGuardian(page) {
   await closeToastMessage(page);
   //Associate Student to Guardian
   await clickUntilTargetVisible(page, '#guardianActionEmilyJohnson', 'Associate Student');
-  await fillInputAfterLabel(page, "Student", "DLdavid lodge", "singleSelect");
+  await fillInputAfterLabel(page, "Student", "BCbenjamin carter", "singleSelect");
   await fillInputAfterLabel(page, "Relation", "Father", "text");
   await page.locator(".slider").click();
   await page.getByRole("button", { name: "Associate" }).click();
@@ -229,13 +233,13 @@ export async function AddExistingUserAsTeacher(page) {
     .click();
   await page.getByRole("link", { name: "Teachers" }).click();
   await page.getByRole("button", { name: "Add Existing User" }).click();
-  await fillInputAfterLabel(page, "Users *", "JDjohn doe", "singleSelect");
+  await fillInputAfterLabel(page, "Users *", "AMalex morgan", "singleSelect");
   await page
     .locator("div:nth-child(2) > .min-w-1 > section > div > div")
     .first()
     .click();
   await page.locator("li").filter({ hasText: "9th class" }).click();
-  await fillInputAfterLabel(page, "Sections *", "a section", "singleSelect");
+  await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -250,9 +254,9 @@ export async function AddStudentInClass(page) {
   await page.getByRole("link", { name: "Students" }).first().click();
   await page.getByRole("button", { name: "Add Student" }).click();
   await fillInputAfterLabel(page, "First Name *", "James", "text");
-  await fillInputAfterLabel(page, "Last Name *", "Smith", "text");
+  await fillInputAfterLabel(page, "Last Name *", "Carlos", "text");
   await fillInputAfterLabel(page, "Gender", "male", "singleSelect");
-  await fillInputAfterLabel(page, "Email *", "james.smith@gmail.com", "text");
+  await fillInputAfterLabel(page, "Email *", "james.carlos@gmail.com", "text");
   await page.getByPlaceholder("2015550123").click();
   await page.getByPlaceholder("2015550123").type("2027834322",{ delay: 100 });
   await page.getByRole("button", { name: "Select Date" }).click();
