@@ -103,7 +103,6 @@ export async function AddTeacher(page) {
   await page.locator('div').filter({ hasText: /^Select Teacher Section$/ }).nth(2).click();
   await page.locator('li').filter({ hasText: 'a section' }).click();
   await page.getByRole('button', { name: 'Save' }).click();
-  // await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
 export async function AddStudent(page) {
