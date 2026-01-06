@@ -4,6 +4,7 @@ import {
   clickUntilTargetVisible,
   timeClick,
 } from "./utils.js";
+import { teacher } from "./userData.js";
 export async function AddTimeTableAutomator(page) {
   //open Time Table
   await page
@@ -15,7 +16,7 @@ export async function AddTimeTableAutomator(page) {
   await page.getByText("Time Table Automator").click();
   await page.getByRole("button", { name: "Add Time Table Automator" }).click();
   await fillInputAfterLabel(page, "Subject *", "English", "singleSelect");
-  await fillInputAfterLabel(page, "Teacher", "JWjames wilson", "singleSelect");
+  await fillInputAfterLabel(page, "Teacher", `${teacher.firstName[0]}${teacher.lastName[0]}${teacher.firstName.toLowerCase()} ${teacher.lastName.toLowerCase()}`, "singleSelect");
   await fillInputAfterLabel(page, "Room", "Room 1", "singleSelect");
   await page
     .locator("div")
@@ -44,7 +45,7 @@ export async function AddCurrentTimeTable(page) {
   await page.getByText("Current Time Table").click();
   await page.getByRole("button", { name: "Add Current Time Table" }).click();
   await fillInputAfterLabel(page, "Subject *", "English", "singleSelect");
-  await fillInputAfterLabel(page, "Teacher", "JWjames wilson", "singleSelect");
+  await fillInputAfterLabel(page, "Teacher", `${teacher.firstName[0]}${teacher.lastName[0]}${teacher.firstName.toLowerCase()} ${teacher.lastName.toLowerCase()}`, "singleSelect");
   await page.locator(".flex-1 > div > div > .h-11").first().click();
   await page.getByRole("button", { name: "Apply" }).click();
   await page

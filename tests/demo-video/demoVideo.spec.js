@@ -119,10 +119,10 @@ test.describe("test case for demo video", () => {
     await AddSubjectResult(page);
     await AddSectionResult(page);
     await AddAnnouncemnetType(page);
-    // await AddStaffAnnouncemnets(page); // Announcemneta Feature have some issues so commenting these functions
-    // await AddStudentAnnouncement(page);
-    // await AddGuardianAnnouncement(page);
-    // await AddTeacherAnnouncement(page);
+    await AddStaffAnnouncemnets(page);
+    await AddStudentAnnouncement(page);
+    await AddGuardianAnnouncement(page);
+    await AddTeacherAnnouncement(page);
     await AddSupportQuery(page);
     // await AddAppointmentCategories(page); // Appointment Feature is not enabled
     // await AddAppoinmentAvailability(page);

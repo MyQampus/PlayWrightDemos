@@ -4,6 +4,7 @@ import {
   clickUntilTargetVisible,
   timeClick,
 } from "./utils.js";
+import { teacher } from "./userData.js";
 export async function AddSyllabusTemplateProvider(page) {
   // Add Syllabus Automater
   await page
@@ -130,7 +131,7 @@ export async function AddSubject(page) {
   await page.getByRole("button", { name: "Create" }).click();
   await closeToastMessage(page);
   await clickUntilTargetVisible(page, "#subjectActionEN", "Assign Teacher");
-  await fillInputAfterLabel(page, "Teachers", "JWjames wilson", "singleSelect");
+  await fillInputAfterLabel(page, "Teachers", `${teacher.firstName[0]}${teacher.lastName[0]}${teacher.firstName.toLowerCase()} ${teacher.lastName.toLowerCase()}`, "singleSelect");
   await page.locator("header").filter({ hasText: "Enroll Teacher" }).click();
   await page.getByRole("button", { name: "Save" }).click();
 }
@@ -240,7 +241,7 @@ export async function AddSubjectInClass(page) {
     .filter({ hasText: /^Select$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "JWjames wilson" }).click();
+  await page.locator("li").filter({ hasText: `${teacher.firstName[0]}${teacher.lastName[0]}${teacher.firstName.toLowerCase()} ${teacher.lastName.toLowerCase()}` }).click();
   await page.locator(".w-full > section > div > div").first().click();
   await page.getByRole("button", { name: "Save" }).click();
 }

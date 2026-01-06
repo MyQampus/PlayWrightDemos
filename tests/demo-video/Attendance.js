@@ -1,4 +1,5 @@
 import { fillInputAfterLabel, timeClick, closeToastMessage } from "./utils";
+import { student } from "./userData.js";
 
 export async function AddCampusAttendance(page) {
   //Mark Attendance
@@ -23,7 +24,7 @@ export async function AddCampusAttendance(page) {
     .filter({ hasText: /^Select Student$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "BCbenjamin carter" }).click();
+  await page.locator("li").filter({ hasText: `${student.firstName[0]}${student.lastName[0]}${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}` }).click();
   await page.getByRole("button", { name: "Mark", exact: true }).click();
   await closeToastMessage(page);
   await page.getByRole("button", { name: "Mark Attendance Out" }).click();
@@ -32,7 +33,7 @@ export async function AddCampusAttendance(page) {
     .first()
     .click();
   await page.locator("div").filter({ hasText: /^01$/ }).first().click();
-  await page.locator("div").filter({ hasText: /^30$/ }).nth(4).click();
+  await page.locator('.minutes > div:nth-child(31)').click();
   await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
   await page
@@ -40,7 +41,7 @@ export async function AddCampusAttendance(page) {
     .filter({ hasText: /^Select Student$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "BCbenjamin carter" }).click();
+  await page.locator("li").filter({ hasText: `${student.firstName[0]}${student.lastName[0]}${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}` }).click();
   await page.getByRole("button", { name: "Mark", exact: true }).click();
   await closeToastMessage(page);
 }
@@ -51,7 +52,7 @@ export async function AddSectionAttendance(page) {
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await fillInputAfterLabel(page, "Attendance Title *", "Morning", "text");
   await page
-    .getByRole("row", { name: "BC Benjamin Carter" })
+    .getByRole("row", { name: `${student.firstName[0]}${student.lastName[0]} ${student.firstName} ${student.lastName}`,exact: true })
     .locator("span")
     .nth(3)
     .click();

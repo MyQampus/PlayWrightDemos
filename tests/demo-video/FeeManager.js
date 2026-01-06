@@ -3,6 +3,7 @@ import {
   closeToastMessage,
   clickUntilTargetVisible,
 } from "./utils.js";
+import { student, guardian } from "./userData.js";
 
 export async function AddFeeType(page) {
   // add fee type
@@ -35,7 +36,7 @@ export async function AddStudentFee(page) {
   await fillInputAfterLabel(
     page,
     "Student Name *",
-    "BCbenjamin carter",
+    guardian.studentSelect,
     "singleSelect"
   );
   await fillInputAfterLabel(page, "Fee Type *", "monthly fee", "singleSelect");
@@ -53,9 +54,9 @@ export async function AcceptStudentFee(page) {
   async function acceptPayment(amount) {
     await clickUntilTargetVisible(
       page,
-      "#receivableActionBenjaminCarter0",
-      "Accept Payment"
-    );
+        `#receivableAction${student.firstName}${student.lastName}0`,
+        "Accept Payment"
+      );
     // Fill payment details
     const amountField = page.getByPlaceholder("Receiving Amount");
     await amountField.click();
@@ -88,7 +89,7 @@ export async function ReceivedAndAcceptPayment(page) {
     .locator(".w-\\[250px\\] > div > .min-w-1 > section > div > div")
     .first()
     .click();
-  await page.locator("li").filter({ hasText: "benjamin carter" }).click();
+  await page.locator("li").filter({ hasText: `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}` }).click();
   await page.locator(".w-full > section > div > .h-11").click();
   await page.locator("li").filter({ hasText: "monthly tuition fee" }).click();
   await page.locator(".w-full > section > div > div").first().click();
@@ -135,7 +136,7 @@ export async function AddMonthlyFeeGeneratorTestCase(page) {
   await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
   await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
   await page.getByRole("button", { name: "Add Custom Fee" }).click();
-  await fillInputAfterLabel(page, "Student ", "benjamin carter", "singleSelect");
+  await fillInputAfterLabel(page, "Student ", `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`, "singleSelect");
   await fillInputAfterLabel(page, "Fee Amount", "100", "text");
   await fillInputAfterLabel(page, "Reason", "Attend one more subject", "text");
   await page.getByRole("button", { name: "Add", exact: true }).click();
@@ -163,7 +164,7 @@ export async function AddFeeDiscountAndViewTestCase(page) {
   await page.getByRole("link", { name: "Receivable" }).click();
   await clickUntilTargetVisible(
     page,
-    "#receivableActionBenjaminCarter2",
+    `#receivableAction${student.firstName}${student.lastName}2`,
     "Add Discount"
   );
   await fillInputAfterLabel(

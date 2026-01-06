@@ -1,4 +1,5 @@
 import { fillInputAfterLabel, closeToastMessage } from "./utils";
+import { teacher, student, guardian } from "./userData.js";
 
 export async function AddSupportQuery(page) {
   await page
@@ -35,14 +36,14 @@ export async function AddSupportQuery(page) {
     "Performance",
     "singleSelect"
   );
-  await fillInputAfterLabel(page, "Teacher *", "JWjames wilson", "singleSelect");
+  await fillInputAfterLabel(page, "Teacher *", `${teacher.firstName[0]}${teacher.lastName[0]}${teacher.firstName.toLowerCase()} ${teacher.lastName.toLowerCase()}`, "singleSelect");
   await fillInputAfterLabel(
     page,
     "Guardian *",
-    "EJemily Johnson",
+    `${guardian.firstName[0]}${guardian.lastName[0]}${guardian.firstName.toLowerCase()} ${guardian.lastName.toLowerCase()}`,
     "singleSelect"
   );
-  await fillInputAfterLabel(page, "Student", "BCbenjamin carter", "singleSelect");
+  await fillInputAfterLabel(page, "Student", `${student.firstName[0]}${student.lastName[0]}${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`, "singleSelect");
   await page.locator("textarea").click();
   await page
     .locator("textarea")

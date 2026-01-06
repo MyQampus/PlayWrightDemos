@@ -4,6 +4,7 @@ import {
   clickUntilTargetVisible,
   timeClick,
 } from "./utils";
+import { teacher } from "./userData.js";
 
 export async function AddExamTypes(page) {
   // add exam type
@@ -83,7 +84,7 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "James Wilson" }).click();
+  await page.locator("li").filter({ hasText: `${teacher.firstName} ${teacher.lastName}` }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
@@ -123,7 +124,7 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(3)
     .click();
-  await page.locator("li").filter({ hasText: "James Wilson" }).click();
+  await page.locator("li").filter({ hasText: `${teacher.firstName} ${teacher.lastName}` }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
@@ -178,7 +179,7 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "James Wilson" }).click();
+  await page.locator("li").filter({ hasText: `${teacher.firstName} ${teacher.lastName}` }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
@@ -218,7 +219,7 @@ export async function AddExams(page) {
     .filter({ hasText: /^Select Invigilator$/ })
     .nth(3)
     .click();
-  await page.locator("li").filter({ hasText: "James Wilson" }).click();
+  await page.locator("li").filter({ hasText: `${teacher.firstName} ${teacher.lastName}` }).click();
   await page
     .locator("div")
     .filter({ hasText: /^Select Room$/ })
