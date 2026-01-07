@@ -31,8 +31,8 @@ export const teacher = {
   joinDate: { year: "2025", month: "Jan", day: "4" },
   bloodGroup: "AB+",
   address: "456 Elm St, Metropolis",
-  class: "9th class",
-  section: "a section",
+  class: "Class 5",
+  section: "Section A",
 };
 
 export const student = {
@@ -45,6 +45,7 @@ export const student = {
   bloodGroup: "A-",
   address: "123 University Ave, Birmingham",
   registrationNumber: "673",
+  section: "Section A",
 };
 
 export const guardian = {
@@ -81,9 +82,13 @@ export const studentInClass = {
   bloodGroup: "A-",
   address: "75 Consett Rd, Hillingdon",
   registrationNumber: "1",
-  section: "a section",
+  section: "Section A",
 };
 
 export const existingUserSelect = {
   usersSelectValue: "AMalex morgan",
 };
+
+// Default class and section values used across tests
+export const DEFAULT_CLASS = "Class 5";
+export const DEFAULT_SECTION = "Section A";

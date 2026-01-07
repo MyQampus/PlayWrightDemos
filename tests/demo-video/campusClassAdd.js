@@ -1,4 +1,5 @@
 import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
+import { DEFAULT_CLASS, DEFAULT_SECTION } from "./userData.js";
 
 export async function AddCampus(page) {
   //add campus
@@ -13,7 +14,7 @@ export async function AddClass(page) {
   // add classes
   await page.getByRole("link", { name: "Classes" }).nth(1).click();
   await page.getByRole("button", { name: "Add Class" }).click();
-  await fillInputAfterLabel(page, "Class Title *", "9th class", "text");
+  await fillInputAfterLabel(page, "Class Title *", DEFAULT_CLASS, "text");
   await fillInputAfterLabel(
     page,
     "Class Description",
@@ -27,14 +28,14 @@ export async function AddSection(page) {
   //add section
   await page.getByRole("link", { name: "Sections" }).click();
   await page.getByRole("button", { name: "Add Section" }).click();
-  await fillInputAfterLabel(page, "Section Title *", "a section", "text");
+  await fillInputAfterLabel(page, "Section Title *", DEFAULT_SECTION, "text");
   await fillInputAfterLabel(
     page,
     "Section Description",
     "practical",
     "text"
   );
-  await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
+  await fillInputAfterLabel(page, "Class *", DEFAULT_CLASS, "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }

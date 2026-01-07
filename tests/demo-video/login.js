@@ -38,8 +38,8 @@ export async function loginSetup(page, baseUrl, email, domain, password) {
   await page.locator("div").filter({ hasText: /^00$/ }).click();
   await timeClick(page, "PM");
   await page.getByRole("button", { name: "Apply" }).click();
-  await fillInputAfterLabel(page, "Class Name", "Class One", "text");
-  await fillInputAfterLabel(page, "Section", "Alpha", "text");
+  await fillInputAfterLabel(page, "Class Name", "10 Class", "text"); 
+  await fillInputAfterLabel(page, "Section", "A Section", "text");
   await page.getByRole("button", { name: "Next", exact: true }).click();
   await page
     .locator("div")

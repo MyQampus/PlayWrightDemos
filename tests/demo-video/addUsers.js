@@ -1,5 +1,5 @@
 import { fillInputAfterLabel, closeToastMessage, clickUntilTargetVisible } from "./utils.js";
-import { campusAdmin, staff, teacher, student, guardian, pickupPerson, studentInClass, existingUserSelect } from "./userData.js";
+import { campusAdmin, staff, teacher, student, guardian, pickupPerson, studentInClass, existingUserSelect, DEFAULT_CLASS, DEFAULT_SECTION } from "./userData.js";
 
 
 export async function AddCampusAdmin(page) {
@@ -147,9 +147,9 @@ export async function AddStudentEnrollment(page) {
   await page
     .locator("div:nth-child(2) > .min-w-1 > section > div > div > .w-full")
     .click();
-  await page.locator("li").filter({ hasText: "9th class" }).click();
-  await fillInputAfterLabel(page, "Section *", studentInClass.section, "singleSelect");
-  await fillInputAfterLabel(page, "Roll Number", studentInClass.registrationNumber, "text");
+  await page.locator("li").filter({ hasText: "Class 5" }).click();
+  await fillInputAfterLabel(page, "Section *", student.section, "singleSelect");
+  await fillInputAfterLabel(page, "Roll Number", student.registrationNumber, "text");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -254,7 +254,7 @@ export async function AddStudentInClass(page) {
     .filter({ hasText: /^Select Class$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "9th class" }).click();
+  await page.locator("li").filter({ hasText: DEFAULT_CLASS }).click();
   await page.getByRole("link", { name: "Students" }).first().click();
   await page.getByRole("button", { name: "Add Student" }).click();
   await fillInputAfterLabel(page, "First Name *", studentInClass.firstName, "text");

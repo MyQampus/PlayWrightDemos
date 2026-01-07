@@ -4,7 +4,7 @@ import {
   clickUntilTargetVisible,
   timeClick,
 } from "./utils.js";
-import { teacher } from "./userData.js";
+import { teacher, DEFAULT_SECTION, DEFAULT_CLASS } from "./userData.js";
 export async function AddSyllabusTemplateProvider(page) {
   // Add Syllabus Automater
   await page
@@ -124,7 +124,7 @@ export async function AddSubject(page) {
     .filter({ hasText: /^Select Section$/ })
     .nth(2)
     .click();
-  await page.locator("li").filter({ hasText: "a section" }).click();
+  await page.locator("li").filter({ hasText: DEFAULT_SECTION }).click();
   await page.getByRole("button", { name: "Add Subjects" }).click();
   await fillInputAfterLabel(page, "Subject Title *", "English", "text");
   await fillInputAfterLabel(page, "Concise Name *", "EN", "text");

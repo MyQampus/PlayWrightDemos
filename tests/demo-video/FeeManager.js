@@ -3,7 +3,7 @@ import {
   closeToastMessage,
   clickUntilTargetVisible,
 } from "./utils.js";
-import { student, guardian } from "./userData.js";
+import { student, guardian, DEFAULT_CLASS, DEFAULT_SECTION } from "./userData.js";
 
 export async function AddFeeType(page) {
   // add fee type
@@ -44,8 +44,8 @@ export async function AddStudentFee(page) {
   await fillInputAfterLabel(page, "Payment Method", "cash", "text");
   await page.getByRole("button", { name: "Select Date" }).click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
-  await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
+  await fillInputAfterLabel(page, "Class *", DEFAULT_CLASS, "singleSelect");
+  await fillInputAfterLabel(page, "Section *", DEFAULT_SECTION, "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -121,8 +121,8 @@ export async function AddSectionFeeTestCase(page) {
     .first()
     .click();
   await page.getByRole("button", { name: "Apply" }).click();
-  await fillInputAfterLabel(page, "CLass *", "9th class", "singleSelect");
-  await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
+  await fillInputAfterLabel(page, "CLass *", DEFAULT_CLASS, "singleSelect");
+  await fillInputAfterLabel(page, "Section *", DEFAULT_SECTION, "singleSelect");
   await page.getByRole("button", { name: "Save" }).click();
   await closeToastMessage(page);
 }
@@ -133,8 +133,8 @@ export async function AddMonthlyFeeGeneratorTestCase(page) {
   await fillInputAfterLabel(page, "Amount", "250", "text");
   await fillInputAfterLabel(page, "Fee Generation Date *", "2", "text");
   await fillInputAfterLabel(page, "Due Date of Fee Payment *", "10", "text");
-  await fillInputAfterLabel(page, "Class *", "9th class", "singleSelect");
-  await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
+  await fillInputAfterLabel(page, "Class *", DEFAULT_CLASS, "singleSelect");
+  await fillInputAfterLabel(page, "Section *", DEFAULT_SECTION, "singleSelect");
   await page.getByRole("button", { name: "Add Custom Fee" }).click();
   await fillInputAfterLabel(page, "Student ", `${student.firstName.toLowerCase()} ${student.lastName.toLowerCase()}`, "singleSelect");
   await fillInputAfterLabel(page, "Fee Amount", "100", "text");

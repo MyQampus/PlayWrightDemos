@@ -1,5 +1,5 @@
 import { fillInputAfterLabel, timeClick, closeToastMessage } from "./utils";
-import { student } from "./userData.js";
+import { student, DEFAULT_SECTION, DEFAULT_CLASS } from "./userData.js";
 
 export async function AddCampusAttendance(page) {
   //Mark Attendance
@@ -49,7 +49,7 @@ export async function AddSectionAttendance(page) {
   //Add Section Attendance
   await page.getByRole("link", { name: "Section Attendance" }).click();
   await page.getByRole("button", { name: "Mark Section Attendance" }).click();
-  await fillInputAfterLabel(page, "Section *", "a section", "singleSelect");
+  await fillInputAfterLabel(page, "Section *", DEFAULT_SECTION, "singleSelect");
   await fillInputAfterLabel(page, "Attendance Title *", "Morning", "text");
   await page
     .getByRole("row", { name: `${student.firstName[0]}${student.lastName[0]} ${student.firstName} ${student.lastName}`,exact: true })
