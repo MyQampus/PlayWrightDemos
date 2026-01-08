@@ -1,14 +1,10 @@
 import { fillInputAfterLabel, closeToastMessage } from "./utils.js";
+import { DEFAULT_CLASS } from "./userData.js";
 
 export async function AddAnnouncemnetType(page) {
   await page.waitForTimeout(1000);
-  await page.locator(".min-w-1 > section > div > div").first().click();
-  await page
-    .locator("section")
-    .filter({ hasText: /^9th class9th class10 Class$/ })
-    .getByRole("img")
-    .nth(2)
-    .click();
+  await page.getByText(DEFAULT_CLASS).click();
+  await page.locator('.bg-primary-gray-50 > div > div:nth-child(2)').click();
 
   await page
     .locator("div")

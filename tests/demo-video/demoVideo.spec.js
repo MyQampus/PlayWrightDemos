@@ -6,7 +6,6 @@ import {
   AddClass,
   AddSection,
   AddRoom,
-  AddGradingStructure,
 } from "./campusClassAdd.js";
 import {
   AddCampusAdmin,
@@ -20,10 +19,6 @@ import {
   AddExistingUserAsTeacher,
   AddStudentInClass,
 } from "./addUsers.js";
-import {
-  AddSyllabusAutomater,
-  AddSubjectSyllabusTemplate,
-} from "./syllabusAutomater.js";
 import {
   AddCampusAttendance,
   AddSectionAttendance,
@@ -40,19 +35,39 @@ import {
   AddFeeDiscountAndViewTestCase,
 } from "./FeeManager.js";
 import {
+  AddSyllabusTemplateProvider,
+  AddSubjectSyllabusTemplate,
   AddSubject,
   AddChapter,
   AddTopic,
   AddLesson,
-  AddLessonPlanner,
-  AddTimeTableAutomator,
-  AddCurrentTimeTable,
   AddSubjectInClass,
 } from "./syllabusManager.js";
-import { AddExams, AddExamTypes, AddExamsMarks, AddSubjectResult, AddSectionResult } from "./exam.js";
-import { AddAnnouncemnetType, AddStaffAnnouncemnets, AddGuardianAnnouncement, AddStudentAnnouncement, AddTeacherAnnouncement } from "./Announcements.js";
+import {
+  AddTimeTableAutomator,
+  AddCurrentTimeTable,
+  AddLessonPlanner,
+} from "./TimeTableManager.js";
+import {
+  AddExams,
+  AddExamTypes,
+  AddExamsMarks,
+  AddSubjectResult,
+  AddSectionResult,
+  AddGradingStructure,
+} from "./ExamsandGradesMananger.js";
+import {
+  AddAnnouncemnetType,
+  AddStaffAnnouncemnets,
+  AddGuardianAnnouncement,
+  AddStudentAnnouncement,
+  AddTeacherAnnouncement,
+} from "./Announcements.js";
 import { AddSupportQuery } from "./SupportQuery.js";
-import { AddAppointmentCategories, AddAppoinmentAvailability } from "./appointment.js";
+import {
+  AddAppointmentCategories,
+  AddAppoinmentAvailability,
+} from "./appointment.js";
 import { Dashboard } from "./Dashboard.js";
 const authFile = "./authenticated_user.json";
 test.describe("test case for demo video", () => {
@@ -76,7 +91,6 @@ test.describe("test case for demo video", () => {
     await AddRoom(page);
     await AddExistingUserAsTeacher(page);
     await AddStudentInClass(page);
-    await AddGradingStructure(page);
     await AddFeeType(page);
     await AddStudentFee(page);
     await AcceptStudentFee(page);
@@ -85,22 +99,23 @@ test.describe("test case for demo video", () => {
     await AddMonthlyFeeGeneratorTestCase(page);
     await AddFeeDiscountTypeTestCase(page);
     await AddFeeDiscountAndViewTestCase(page);
-    await AddSyllabusAutomater(page);
+    await AddSyllabusTemplateProvider(page);
     await AddSubjectSyllabusTemplate(page);
     await AddSubject(page);
     await AddChapter(page);
     await AddTopic(page);
     await AddLesson(page);
-    await AddLessonPlanner(page);
     await AddTimeTableAutomator(page);
     await AddCurrentTimeTable(page);
+    await AddLessonPlanner(page);
     await AddCampusAttendance(page);
-    await AddPeriodAttendance(page);
     await AddSectionAttendance(page);
+    await AddPeriodAttendance(page);
     await AddSubjectInClass(page);
     await AddExamTypes(page);
     await AddExams(page);
     await AddExamsMarks(page);
+    await AddGradingStructure(page);
     await AddSubjectResult(page);
     await AddSectionResult(page);
     await AddAnnouncemnetType(page);
@@ -109,8 +124,8 @@ test.describe("test case for demo video", () => {
     await AddGuardianAnnouncement(page);
     await AddTeacherAnnouncement(page);
     await AddSupportQuery(page);
-    await AddAppointmentCategories(page);
-    await AddAppoinmentAvailability(page);
+    // await AddAppointmentCategories(page); // Appointment Feature is not enabled
+    // await AddAppoinmentAvailability(page);
     await Dashboard(page);
     await page.context().storageState({ path: authFile });
   });
